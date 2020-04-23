@@ -1,0 +1,2087 @@
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccLB96uI.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.main,"ax",%progbits
+  20              		.align	2
+  21              		.global	main
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	main, %function
+  25              	main:
+  26              	.LFB64:
+  27              		.file 1 "main.c"
+   1:main.c        **** /**
+   2:main.c        **** * \brief Main source file for the I2C-Master project.
+   3:main.c        **** *
+   4:main.c        **** * In this project we set up a I2C master device with
+   5:main.c        **** * to understand the I2C protocol and communicate with a
+   6:main.c        **** * a I2C Slave device (LIS3DH Accelerometer).
+   7:main.c        **** *
+   8:main.c        **** * \author Gabriele Belotti
+   9:main.c        **** * \date , 2020
+  10:main.c        **** */
+  11:main.c        **** 
+  12:main.c        **** // Include required header files
+  13:main.c        **** #include "I2C_Interface.h"
+  14:main.c        **** #include "project.h"
+  15:main.c        **** #include "stdio.h"
+  16:main.c        **** 
+  17:main.c        **** //brief 7-bit I2C address of the slave device.
+  18:main.c        **** #define LIS3DH_DEVICE_ADDRESS 0x18
+  19:main.c        **** 
+  20:main.c        **** //brief Address of the WHO AM I register
+  21:main.c        **** #define LIS3DH_WHO_AM_I_REG_ADDR 0x0F
+  22:main.c        **** 
+  23:main.c        **** //brief Address of the Status register
+  24:main.c        **** #define LIS3DH_STATUS_REG 0x27
+  25:main.c        **** 
+  26:main.c        **** //brief Address of the Control register 1
+  27:main.c        **** #define LIS3DH_CTRL_REG1 0x20
+  28:main.c        **** 
+  29:main.c        **** //brief Hex value to set normal mode 100Hz to the accelerator
+  30:main.c        **** #define LIS3DH_NORMAL_MODE_100_CTRL_REG1 0x57
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccLB96uI.s 			page 2
+
+
+  31:main.c        **** 
+  32:main.c        **** //brief Address of the Control register 4
+  33:main.c        **** #define LIS3DH_CTRL_REG4 0x23
+  34:main.c        **** 
+  35:main.c        **** //output registers updated after MSB and LSB reading, FSR [-2g;+2g], normal mode
+  36:main.c        **** #define LIS3DH_CTRL_REG4_BDU_ACTIVE 0x80 
+  37:main.c        **** 
+  38:main.c        **** int main(void)
+  39:main.c        **** {
+  28              		.loc 1 39 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 56
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 10B5     		push	{r4, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 4, -8
+  35              		.cfi_offset 14, -4
+  36 0002 8EB0     		sub	sp, sp, #56
+  37              		.cfi_def_cfa_offset 64
+  40:main.c        ****     CyGlobalIntEnable; /* Enable global interrupts. */
+  38              		.loc 1 40 0
+  39              		.syntax unified
+  40              	@ 40 "main.c" 1
+  41 0004 62B6     		CPSIE   i
+  42              	@ 0 "" 2
+  41:main.c        **** 
+  42:main.c        ****     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
+  43:main.c        ****     I2C_Peripheral_Start(); //I2C enabled
+  43              		.loc 1 43 0
+  44              		.thumb
+  45              		.syntax unified
+  46 0006 FFF7FEFF 		bl	I2C_Peripheral_Start
+  47              	.LVL0:
+  44:main.c        ****     UART_Debug_Start(); // UART enabled
+  48              		.loc 1 44 0
+  49 000a FFF7FEFF 		bl	UART_Debug_Start
+  50              	.LVL1:
+  45:main.c        ****     
+  46:main.c        ****     CyDelay(5); //"The boot procedure is complete about 5 milliseconds after device power-up."
+  51              		.loc 1 46 0
+  52 000e 0520     		movs	r0, #5
+  53 0010 FFF7FEFF 		bl	CyDelay
+  54              	.LVL2:
+  55              	.LBB2:
+  47:main.c        ****     
+  48:main.c        ****     // String to print out messages on the UART
+  49:main.c        ****     char message[50];
+  50:main.c        **** 
+  51:main.c        ****     // Check which devices are present on the I2C bus
+  52:main.c        ****     for (int i = 0 ; i < 128; i++)
+  56              		.loc 1 52 0
+  57 0014 0024     		movs	r4, #0
+  58 0016 0CE0     		b	.L2
+  59              	.LVL3:
+  60              	.L4:
+  53:main.c        ****     {
+  54:main.c        ****         if (I2C_Peripheral_IsDeviceConnected(i))
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccLB96uI.s 			page 3
+
+
+  61              		.loc 1 54 0
+  62 0018 E0B2     		uxtb	r0, r4
+  63 001a FFF7FEFF 		bl	I2C_Peripheral_IsDeviceConnected
+  64              	.LVL4:
+  65 001e 38B1     		cbz	r0, .L3
+  55:main.c        ****         {
+  56:main.c        ****             // print out the address is hex format
+  57:main.c        ****             sprintf(message, "Device 0x%02X is connected\r\n", i);
+  66              		.loc 1 57 0
+  67 0020 2246     		mov	r2, r4
+  68 0022 5349     		ldr	r1, .L20
+  69 0024 01A8     		add	r0, sp, #4
+  70 0026 FFF7FEFF 		bl	sprintf
+  71              	.LVL5:
+  58:main.c        ****             UART_Debug_PutString(message); 
+  72              		.loc 1 58 0
+  73 002a 01A8     		add	r0, sp, #4
+  74 002c FFF7FEFF 		bl	UART_Debug_PutString
+  75              	.LVL6:
+  76              	.L3:
+  52:main.c        ****     {
+  77              		.loc 1 52 0 discriminator 2
+  78 0030 0134     		adds	r4, r4, #1
+  79              	.LVL7:
+  80              	.L2:
+  52:main.c        ****     {
+  81              		.loc 1 52 0 is_stmt 0 discriminator 1
+  82 0032 7F2C     		cmp	r4, #127
+  83 0034 F0DD     		ble	.L4
+  84              	.LBE2:
+  59:main.c        ****         }
+  60:main.c        ****         
+  61:main.c        ****     }
+  62:main.c        ****     
+  63:main.c        ****     /******************************************/
+  64:main.c        ****     /*            I2C Reading                 */
+  65:main.c        ****     /******************************************/
+  66:main.c        ****     
+  67:main.c        ****     /* Read WHO AM I REGISTER register */
+  68:main.c        ****     uint8_t who_am_i_reg;
+  69:main.c        ****     ErrorCode error = I2C_Peripheral_ReadRegister(LIS3DH_DEVICE_ADDRESS,
+  85              		.loc 1 69 0 is_stmt 1
+  86 0036 0DF10302 		add	r2, sp, #3
+  87 003a 0F21     		movs	r1, #15
+  88 003c 1820     		movs	r0, #24
+  89 003e FFF7FEFF 		bl	I2C_Peripheral_ReadRegister
+  90              	.LVL8:
+  70:main.c        ****                                                   LIS3DH_WHO_AM_I_REG_ADDR, 
+  71:main.c        ****                                                   &who_am_i_reg);
+  72:main.c        ****     if (error == NO_ERROR)
+  91              		.loc 1 72 0
+  92 0042 48B9     		cbnz	r0, .L5
+  73:main.c        ****     {
+  74:main.c        ****         sprintf(message, "WHO AM I REG: 0x%02X [Expected: 0x33]\r\n", who_am_i_reg);
+  93              		.loc 1 74 0
+  94 0044 9DF80320 		ldrb	r2, [sp, #3]	@ zero_extendqisi2
+  95 0048 4A49     		ldr	r1, .L20+4
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccLB96uI.s 			page 4
+
+
+  96 004a 01A8     		add	r0, sp, #4
+  97              	.LVL9:
+  98 004c FFF7FEFF 		bl	sprintf
+  99              	.LVL10:
+  75:main.c        ****         UART_Debug_PutString(message); 
+ 100              		.loc 1 75 0
+ 101 0050 01A8     		add	r0, sp, #4
+ 102 0052 FFF7FEFF 		bl	UART_Debug_PutString
+ 103              	.LVL11:
+ 104 0056 02E0     		b	.L6
+ 105              	.LVL12:
+ 106              	.L5:
+  76:main.c        ****     }
+  77:main.c        ****     else
+  78:main.c        ****     {
+  79:main.c        ****         UART_Debug_PutString("Error occurred during I2C comm\r\n");   
+ 107              		.loc 1 79 0
+ 108 0058 4748     		ldr	r0, .L20+8
+ 109              	.LVL13:
+ 110 005a FFF7FEFF 		bl	UART_Debug_PutString
+ 111              	.LVL14:
+ 112              	.L6:
+  80:main.c        ****     }
+  81:main.c        ****     
+  82:main.c        ****     /*      I2C Reading Status Register       */
+  83:main.c        ****     
+  84:main.c        ****     uint8_t status_register; 
+  85:main.c        ****     error = I2C_Peripheral_ReadRegister(LIS3DH_DEVICE_ADDRESS,
+ 113              		.loc 1 85 0
+ 114 005e 0DF10202 		add	r2, sp, #2
+ 115 0062 2721     		movs	r1, #39
+ 116 0064 1820     		movs	r0, #24
+ 117 0066 FFF7FEFF 		bl	I2C_Peripheral_ReadRegister
+ 118              	.LVL15:
+  86:main.c        ****                                         LIS3DH_STATUS_REG,
+  87:main.c        ****                                         &status_register);
+  88:main.c        ****     
+  89:main.c        ****     if (error == NO_ERROR)
+ 119              		.loc 1 89 0
+ 120 006a 48B9     		cbnz	r0, .L7
+  90:main.c        ****     {
+  91:main.c        ****         sprintf(message, "STATUS REGISTER: 0x%02X\r\n", status_register);
+ 121              		.loc 1 91 0
+ 122 006c 9DF80220 		ldrb	r2, [sp, #2]	@ zero_extendqisi2
+ 123 0070 4249     		ldr	r1, .L20+12
+ 124 0072 01A8     		add	r0, sp, #4
+ 125              	.LVL16:
+ 126 0074 FFF7FEFF 		bl	sprintf
+ 127              	.LVL17:
+  92:main.c        ****         UART_Debug_PutString(message); 
+ 128              		.loc 1 92 0
+ 129 0078 01A8     		add	r0, sp, #4
+ 130 007a FFF7FEFF 		bl	UART_Debug_PutString
+ 131              	.LVL18:
+ 132 007e 02E0     		b	.L8
+ 133              	.LVL19:
+ 134              	.L7:
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccLB96uI.s 			page 5
+
+
+  93:main.c        ****     }
+  94:main.c        ****     else
+  95:main.c        ****     {
+  96:main.c        ****         UART_Debug_PutString("Error occurred during I2C comm to read status register\r\n");   
+ 135              		.loc 1 96 0
+ 136 0080 3F48     		ldr	r0, .L20+16
+ 137              	.LVL20:
+ 138 0082 FFF7FEFF 		bl	UART_Debug_PutString
+ 139              	.LVL21:
+ 140              	.L8:
+  97:main.c        ****     }
+  98:main.c        ****     
+  99:main.c        ****     /******************************************/
+ 100:main.c        ****     /*        Read Control Register 1         */
+ 101:main.c        ****     /******************************************/
+ 102:main.c        ****     uint8_t ctrl_reg1; 
+ 103:main.c        ****     error = I2C_Peripheral_ReadRegister(LIS3DH_DEVICE_ADDRESS,
+ 141              		.loc 1 103 0
+ 142 0086 0DF10102 		add	r2, sp, #1
+ 143 008a 2021     		movs	r1, #32
+ 144 008c 1820     		movs	r0, #24
+ 145 008e FFF7FEFF 		bl	I2C_Peripheral_ReadRegister
+ 146              	.LVL22:
+ 104:main.c        ****                                         LIS3DH_CTRL_REG1,
+ 105:main.c        ****                                         &ctrl_reg1);
+ 106:main.c        ****     
+ 107:main.c        ****     if (error == NO_ERROR)
+ 147              		.loc 1 107 0
+ 148 0092 48B9     		cbnz	r0, .L9
+ 108:main.c        ****     {
+ 109:main.c        ****         sprintf(message, "CONTROL REGISTER 1: 0x%02X\r\n", ctrl_reg1);
+ 149              		.loc 1 109 0
+ 150 0094 9DF80120 		ldrb	r2, [sp, #1]	@ zero_extendqisi2
+ 151 0098 3A49     		ldr	r1, .L20+20
+ 152 009a 01A8     		add	r0, sp, #4
+ 153              	.LVL23:
+ 154 009c FFF7FEFF 		bl	sprintf
+ 155              	.LVL24:
+ 110:main.c        ****         UART_Debug_PutString(message); 
+ 156              		.loc 1 110 0
+ 157 00a0 01A8     		add	r0, sp, #4
+ 158 00a2 FFF7FEFF 		bl	UART_Debug_PutString
+ 159              	.LVL25:
+ 160 00a6 02E0     		b	.L10
+ 161              	.LVL26:
+ 162              	.L9:
+ 111:main.c        ****     }
+ 112:main.c        ****     else
+ 113:main.c        ****     {
+ 114:main.c        ****         UART_Debug_PutString("Error occurred during I2C comm to read control register 1\r\n");   
+ 163              		.loc 1 114 0
+ 164 00a8 3748     		ldr	r0, .L20+24
+ 165              	.LVL27:
+ 166 00aa FFF7FEFF 		bl	UART_Debug_PutString
+ 167              	.LVL28:
+ 168              	.L10:
+ 115:main.c        ****     }
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccLB96uI.s 			page 6
+
+
+ 116:main.c        ****     
+ 117:main.c        ****     /******************************************/
+ 118:main.c        ****     /*            I2C Writing                 */
+ 119:main.c        ****     /******************************************/
+ 120:main.c        ****     
+ 121:main.c        ****         
+ 122:main.c        ****     UART_Debug_PutString("\r\nWriting new values..\r\n");
+ 169              		.loc 1 122 0
+ 170 00ae 3748     		ldr	r0, .L20+28
+ 171 00b0 FFF7FEFF 		bl	UART_Debug_PutString
+ 172              	.LVL29:
+ 123:main.c        ****     
+ 124:main.c        ****     if (ctrl_reg1 != LIS3DH_NORMAL_MODE_100_CTRL_REG1)
+ 173              		.loc 1 124 0
+ 174 00b4 9DF80130 		ldrb	r3, [sp, #1]	@ zero_extendqisi2
+ 175 00b8 572B     		cmp	r3, #87
+ 176 00ba 14D0     		beq	.L11
+ 125:main.c        ****     {
+ 126:main.c        ****         ctrl_reg1 = LIS3DH_NORMAL_MODE_100_CTRL_REG1;
+ 177              		.loc 1 126 0
+ 178 00bc 5722     		movs	r2, #87
+ 179 00be 8DF80120 		strb	r2, [sp, #1]
+ 127:main.c        ****     
+ 128:main.c        ****         error = I2C_Peripheral_WriteRegister(LIS3DH_DEVICE_ADDRESS,
+ 180              		.loc 1 128 0
+ 181 00c2 2021     		movs	r1, #32
+ 182 00c4 1820     		movs	r0, #24
+ 183 00c6 FFF7FEFF 		bl	I2C_Peripheral_WriteRegister
+ 184              	.LVL30:
+ 129:main.c        ****                                              LIS3DH_CTRL_REG1,
+ 130:main.c        ****                                              ctrl_reg1);
+ 131:main.c        ****     
+ 132:main.c        ****         if (error == NO_ERROR)
+ 185              		.loc 1 132 0
+ 186 00ca 48B9     		cbnz	r0, .L12
+ 133:main.c        ****         {
+ 134:main.c        ****             sprintf(message, "CONTROL REGISTER 1 successfully written as: 0x%02X\r\n", ctrl_reg1);
+ 187              		.loc 1 134 0
+ 188 00cc 9DF80120 		ldrb	r2, [sp, #1]	@ zero_extendqisi2
+ 189 00d0 2F49     		ldr	r1, .L20+32
+ 190 00d2 01A8     		add	r0, sp, #4
+ 191              	.LVL31:
+ 192 00d4 FFF7FEFF 		bl	sprintf
+ 193              	.LVL32:
+ 135:main.c        ****             UART_Debug_PutString(message); 
+ 194              		.loc 1 135 0
+ 195 00d8 01A8     		add	r0, sp, #4
+ 196 00da FFF7FEFF 		bl	UART_Debug_PutString
+ 197              	.LVL33:
+ 198 00de 02E0     		b	.L11
+ 199              	.LVL34:
+ 200              	.L12:
+ 136:main.c        ****         }
+ 137:main.c        ****         else
+ 138:main.c        ****         {
+ 139:main.c        ****             UART_Debug_PutString("Error occurred during I2C comm to set control register 1\r\n");  
+ 201              		.loc 1 139 0
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccLB96uI.s 			page 7
+
+
+ 202 00e0 2C48     		ldr	r0, .L20+36
+ 203              	.LVL35:
+ 204 00e2 FFF7FEFF 		bl	UART_Debug_PutString
+ 205              	.LVL36:
+ 206              	.L11:
+ 140:main.c        ****         }
+ 141:main.c        ****     }
+ 142:main.c        ****     
+ 143:main.c        ****     /******************************************/
+ 144:main.c        ****     /*     Read Control Register 1 again      */
+ 145:main.c        ****     /******************************************/
+ 146:main.c        **** 
+ 147:main.c        ****     error = I2C_Peripheral_ReadRegister(LIS3DH_DEVICE_ADDRESS,
+ 207              		.loc 1 147 0
+ 208 00e6 0DF10102 		add	r2, sp, #1
+ 209 00ea 2021     		movs	r1, #32
+ 210 00ec 1820     		movs	r0, #24
+ 211 00ee FFF7FEFF 		bl	I2C_Peripheral_ReadRegister
+ 212              	.LVL37:
+ 148:main.c        ****                                         LIS3DH_CTRL_REG1,
+ 149:main.c        ****                                         &ctrl_reg1);
+ 150:main.c        ****     
+ 151:main.c        ****     if (error == NO_ERROR)
+ 213              		.loc 1 151 0
+ 214 00f2 48B9     		cbnz	r0, .L13
+ 152:main.c        ****     {
+ 153:main.c        ****         sprintf(message, "CONTROL REGISTER 1 after overwrite operation: 0x%02X\r\n", ctrl_reg1);
+ 215              		.loc 1 153 0
+ 216 00f4 9DF80120 		ldrb	r2, [sp, #1]	@ zero_extendqisi2
+ 217 00f8 2749     		ldr	r1, .L20+40
+ 218 00fa 01A8     		add	r0, sp, #4
+ 219              	.LVL38:
+ 220 00fc FFF7FEFF 		bl	sprintf
+ 221              	.LVL39:
+ 154:main.c        ****         UART_Debug_PutString(message); 
+ 222              		.loc 1 154 0
+ 223 0100 01A8     		add	r0, sp, #4
+ 224 0102 FFF7FEFF 		bl	UART_Debug_PutString
+ 225              	.LVL40:
+ 226 0106 02E0     		b	.L14
+ 227              	.LVL41:
+ 228              	.L13:
+ 155:main.c        ****     }
+ 156:main.c        ****     else
+ 157:main.c        ****     {
+ 158:main.c        ****         UART_Debug_PutString("Error occurred during I2C comm to read control register 1\r\n");   
+ 229              		.loc 1 158 0
+ 230 0108 1F48     		ldr	r0, .L20+24
+ 231              	.LVL42:
+ 232 010a FFF7FEFF 		bl	UART_Debug_PutString
+ 233              	.LVL43:
+ 234              	.L14:
+ 159:main.c        ****     }
+ 160:main.c        ****     
+ 161:main.c        ****      /******************************************/
+ 162:main.c        ****      /* Read Control Register 4 */
+ 163:main.c        ****      /******************************************/
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccLB96uI.s 			page 8
+
+
+ 164:main.c        **** 
+ 165:main.c        ****     
+ 166:main.c        ****     
+ 167:main.c        ****     uint8_t ctrl_reg4;
+ 168:main.c        **** 
+ 169:main.c        ****     error = I2C_Peripheral_ReadRegister(LIS3DH_DEVICE_ADDRESS,
+ 235              		.loc 1 169 0
+ 236 010e 6A46     		mov	r2, sp
+ 237 0110 2321     		movs	r1, #35
+ 238 0112 1820     		movs	r0, #24
+ 239 0114 FFF7FEFF 		bl	I2C_Peripheral_ReadRegister
+ 240              	.LVL44:
+ 170:main.c        ****                                         LIS3DH_CTRL_REG4,
+ 171:main.c        ****                                         &ctrl_reg4);
+ 172:main.c        ****     
+ 173:main.c        ****     if (error == NO_ERROR)
+ 241              		.loc 1 173 0
+ 242 0118 48B9     		cbnz	r0, .L15
+ 174:main.c        ****     {
+ 175:main.c        ****         sprintf(message, "CONTROL REGISTER 4: 0x%02X\r\n", ctrl_reg4);
+ 243              		.loc 1 175 0
+ 244 011a 9DF80020 		ldrb	r2, [sp]	@ zero_extendqisi2
+ 245 011e 1F49     		ldr	r1, .L20+44
+ 246 0120 01A8     		add	r0, sp, #4
+ 247              	.LVL45:
+ 248 0122 FFF7FEFF 		bl	sprintf
+ 249              	.LVL46:
+ 176:main.c        ****         UART_Debug_PutString(message); 
+ 250              		.loc 1 176 0
+ 251 0126 01A8     		add	r0, sp, #4
+ 252 0128 FFF7FEFF 		bl	UART_Debug_PutString
+ 253              	.LVL47:
+ 254 012c 02E0     		b	.L16
+ 255              	.LVL48:
+ 256              	.L15:
+ 177:main.c        ****     }
+ 178:main.c        ****     else
+ 179:main.c        ****     {
+ 180:main.c        ****         UART_Debug_PutString("Error occurred during I2C comm to read control register4\r\n");   
+ 257              		.loc 1 180 0
+ 258 012e 1C48     		ldr	r0, .L20+48
+ 259              	.LVL49:
+ 260 0130 FFF7FEFF 		bl	UART_Debug_PutString
+ 261              	.LVL50:
+ 262              	.L16:
+ 181:main.c        ****     }
+ 182:main.c        ****     
+ 183:main.c        ****     
+ 184:main.c        ****     ctrl_reg4 = LIS3DH_CTRL_REG4_BDU_ACTIVE; 
+ 263              		.loc 1 184 0
+ 264 0134 8022     		movs	r2, #128
+ 265 0136 0EAC     		add	r4, sp, #56
+ 266              	.LVL51:
+ 267 0138 04F8382D 		strb	r2, [r4, #-56]!
+ 185:main.c        ****     
+ 186:main.c        ****     error = I2C_Peripheral_WriteRegister(LIS3DH_DEVICE_ADDRESS,
+ 268              		.loc 1 186 0
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccLB96uI.s 			page 9
+
+
+ 269 013c 2321     		movs	r1, #35
+ 270 013e 1820     		movs	r0, #24
+ 271 0140 FFF7FEFF 		bl	I2C_Peripheral_WriteRegister
+ 272              	.LVL52:
+ 187:main.c        ****                                          LIS3DH_CTRL_REG4,
+ 188:main.c        ****                                          ctrl_reg4);
+ 189:main.c        ****     
+ 190:main.c        ****     error = I2C_Peripheral_ReadRegister(LIS3DH_DEVICE_ADDRESS,
+ 273              		.loc 1 190 0
+ 274 0144 2246     		mov	r2, r4
+ 275 0146 2321     		movs	r1, #35
+ 276 0148 1820     		movs	r0, #24
+ 277 014a FFF7FEFF 		bl	I2C_Peripheral_ReadRegister
+ 278              	.LVL53:
+ 191:main.c        ****                                         LIS3DH_CTRL_REG4,
+ 192:main.c        ****                                         &ctrl_reg4);
+ 193:main.c        ****     
+ 194:main.c        ****     
+ 195:main.c        ****     if (error == NO_ERROR)
+ 279              		.loc 1 195 0
+ 280 014e 48B9     		cbnz	r0, .L17
+ 196:main.c        ****     {
+ 197:main.c        ****         sprintf(message, "CONTROL REGISTER 4 after being updated: 0x%02X\r\n", ctrl_reg4);
+ 281              		.loc 1 197 0
+ 282 0150 9DF80020 		ldrb	r2, [sp]	@ zero_extendqisi2
+ 283 0154 1349     		ldr	r1, .L20+52
+ 284 0156 01A8     		add	r0, sp, #4
+ 285              	.LVL54:
+ 286 0158 FFF7FEFF 		bl	sprintf
+ 287              	.LVL55:
+ 198:main.c        ****         UART_Debug_PutString(message); 
+ 288              		.loc 1 198 0
+ 289 015c 01A8     		add	r0, sp, #4
+ 290 015e FFF7FEFF 		bl	UART_Debug_PutString
+ 291              	.LVL56:
+ 292 0162 02E0     		b	.L18
+ 293              	.LVL57:
+ 294              	.L17:
+ 199:main.c        ****     }
+ 200:main.c        ****     else
+ 201:main.c        ****     {
+ 202:main.c        ****         UART_Debug_PutString("Error occurred during I2C comm to read control register4\r\n");   
+ 295              		.loc 1 202 0
+ 296 0164 0E48     		ldr	r0, .L20+48
+ 297              	.LVL58:
+ 298 0166 FFF7FEFF 		bl	UART_Debug_PutString
+ 299              	.LVL59:
+ 300              	.L18:
+ 203:main.c        ****     }
+ 204:main.c        ****     
+ 205:main.c        ****     //int16_t OutTemp;
+ 206:main.c        ****     //uint8_t header = 0xA0;
+ 207:main.c        ****     //uint8_t footer = 0xC0;
+ 208:main.c        ****     //uint8_t OutArray[4]; 
+ 209:main.c        ****     //uint8_t TemperatureData[2];
+ 210:main.c        ****     
+ 211:main.c        ****     //OutArray[0] = header;
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccLB96uI.s 			page 10
+
+
+ 212:main.c        ****     //OutArray[3] = footer;
+ 213:main.c        ****     
+ 214:main.c        ****     //for(;;)
+ 215:main.c        ****     //{
+ 216:main.c        ****         //CyDelay(100);
+ 217:main.c        ****         //error = I2C_Peripheral_ReadRegister(LIS3DH_DEVICE_ADDRESS,
+ 218:main.c        ****           //                                  LIS3DH_OUT_ADC_3L,
+ 219:main.c        ****            //                                 &TemperatureData[0]);
+ 220:main.c        ****         
+ 221:main.c        ****         //error = I2C_Peripheral_ReadRegister(LIS3DH_DEVICE_ADDRESS,
+ 222:main.c        ****           //LIS3DH_OUT_ADC_3H,
+ 223:main.c        ****             //                                &TemperatureData[1]);
+ 224:main.c        ****         //if(error == NO_ERROR)
+ 225:main.c        ****         //{
+ 226:main.c        ****           //  OutTemp = (int16)((TemperatureData[0] | (TemperatureData[1]<<8)))>>6;
+ 227:main.c        ****             //OutArray[1] = (uint8_t)(OutTemp & 0xFF);
+ 228:main.c        ****             //OutArray[2] = (uint8_t)(OutTemp >> 8);
+ 229:main.c        ****             //UART_Debug_PutArray(OutArray, 4);
+ 230:main.c        ****         //}
+ 231:main.c        ****     //}
+ 232:main.c        **** }
+ 301              		.loc 1 232 0
+ 302 016a 0020     		movs	r0, #0
+ 303 016c 0EB0     		add	sp, sp, #56
+ 304              		.cfi_def_cfa_offset 8
+ 305              		@ sp needed
+ 306 016e 10BD     		pop	{r4, pc}
+ 307              	.L21:
+ 308              		.align	2
+ 309              	.L20:
+ 310 0170 00000000 		.word	.LC0
+ 311 0174 20000000 		.word	.LC1
+ 312 0178 48000000 		.word	.LC2
+ 313 017c 6C000000 		.word	.LC3
+ 314 0180 88000000 		.word	.LC4
+ 315 0184 C4000000 		.word	.LC5
+ 316 0188 E4000000 		.word	.LC6
+ 317 018c 20010000 		.word	.LC7
+ 318 0190 3C010000 		.word	.LC8
+ 319 0194 74010000 		.word	.LC9
+ 320 0198 B0010000 		.word	.LC10
+ 321 019c E8010000 		.word	.LC11
+ 322 01a0 08020000 		.word	.LC12
+ 323 01a4 44020000 		.word	.LC13
+ 324              		.cfi_endproc
+ 325              	.LFE64:
+ 326              		.size	main, .-main
+ 327              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 328              		.align	2
+ 329              	.LC0:
+ 330 0000 44657669 		.ascii	"Device 0x%02X is connected\015\012\000"
+ 330      63652030 
+ 330      78253032 
+ 330      58206973 
+ 330      20636F6E 
+ 331 001d 000000   		.space	3
+ 332              	.LC1:
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccLB96uI.s 			page 11
+
+
+ 333 0020 57484F20 		.ascii	"WHO AM I REG: 0x%02X [Expected: 0x33]\015\012\000"
+ 333      414D2049 
+ 333      20524547 
+ 333      3A203078 
+ 333      25303258 
+ 334              	.LC2:
+ 335 0048 4572726F 		.ascii	"Error occurred during I2C comm\015\012\000"
+ 335      72206F63 
+ 335      63757272 
+ 335      65642064 
+ 335      7572696E 
+ 336 0069 000000   		.space	3
+ 337              	.LC3:
+ 338 006c 53544154 		.ascii	"STATUS REGISTER: 0x%02X\015\012\000"
+ 338      55532052 
+ 338      45474953 
+ 338      5445523A 
+ 338      20307825 
+ 339 0086 0000     		.space	2
+ 340              	.LC4:
+ 341 0088 4572726F 		.ascii	"Error occurred during I2C comm to read status regis"
+ 341      72206F63 
+ 341      63757272 
+ 341      65642064 
+ 341      7572696E 
+ 342 00bb 7465720D 		.ascii	"ter\015\012\000"
+ 342      0A00
+ 343 00c1 000000   		.space	3
+ 344              	.LC5:
+ 345 00c4 434F4E54 		.ascii	"CONTROL REGISTER 1: 0x%02X\015\012\000"
+ 345      524F4C20 
+ 345      52454749 
+ 345      53544552 
+ 345      20313A20 
+ 346 00e1 000000   		.space	3
+ 347              	.LC6:
+ 348 00e4 4572726F 		.ascii	"Error occurred during I2C comm to read control regi"
+ 348      72206F63 
+ 348      63757272 
+ 348      65642064 
+ 348      7572696E 
+ 349 0117 73746572 		.ascii	"ster 1\015\012\000"
+ 349      20310D0A 
+ 349      00
+ 350              	.LC7:
+ 351 0120 0D0A5772 		.ascii	"\015\012Writing new values..\015\012\000"
+ 351      6974696E 
+ 351      67206E65 
+ 351      77207661 
+ 351      6C756573 
+ 352 0139 000000   		.space	3
+ 353              	.LC8:
+ 354 013c 434F4E54 		.ascii	"CONTROL REGISTER 1 successfully written as: 0x%02X\015"
+ 354      524F4C20 
+ 354      52454749 
+ 354      53544552 
+ 354      20312073 
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccLB96uI.s 			page 12
+
+
+ 355 016f 0A00     		.ascii	"\012\000"
+ 356 0171 000000   		.space	3
+ 357              	.LC9:
+ 358 0174 4572726F 		.ascii	"Error occurred during I2C comm to set control regis"
+ 358      72206F63 
+ 358      63757272 
+ 358      65642064 
+ 358      7572696E 
+ 359 01a7 74657220 		.ascii	"ter 1\015\012\000"
+ 359      310D0A00 
+ 360 01af 00       		.space	1
+ 361              	.LC10:
+ 362 01b0 434F4E54 		.ascii	"CONTROL REGISTER 1 after overwrite operation: 0x%02"
+ 362      524F4C20 
+ 362      52454749 
+ 362      53544552 
+ 362      20312061 
+ 363 01e3 580D0A00 		.ascii	"X\015\012\000"
+ 364 01e7 00       		.space	1
+ 365              	.LC11:
+ 366 01e8 434F4E54 		.ascii	"CONTROL REGISTER 4: 0x%02X\015\012\000"
+ 366      524F4C20 
+ 366      52454749 
+ 366      53544552 
+ 366      20343A20 
+ 367 0205 000000   		.space	3
+ 368              	.LC12:
+ 369 0208 4572726F 		.ascii	"Error occurred during I2C comm to read control regi"
+ 369      72206F63 
+ 369      63757272 
+ 369      65642064 
+ 369      7572696E 
+ 370 023b 73746572 		.ascii	"ster4\015\012\000"
+ 370      340D0A00 
+ 371 0243 00       		.space	1
+ 372              	.LC13:
+ 373 0244 434F4E54 		.ascii	"CONTROL REGISTER 4 after being updated: 0x%02X\015\012"
+ 373      524F4C20 
+ 373      52454749 
+ 373      53544552 
+ 373      20342061 
+ 374 0274 00       		.ascii	"\000"
+ 375              		.text
+ 376              	.Letext0:
+ 377              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
+ 378              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
+ 379              		.file 4 "ErrorCodes.h"
+ 380              		.file 5 "I2C_Interface.h"
+ 381              		.file 6 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
+ 382              		.file 7 "Generated_Source\\PSoC5/UART_Debug.h"
+ 383              		.file 8 "Generated_Source\\PSoC5/CyLib.h"
+ 384              		.file 9 "Generated_Source\\PSoC5/core_cm3.h"
+ 385              		.section	.debug_info,"",%progbits
+ 386              	.Ldebug_info0:
+ 387 0000 4C050000 		.4byte	0x54c
+ 388 0004 0400     		.2byte	0x4
+ 389 0006 00000000 		.4byte	.Ldebug_abbrev0
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccLB96uI.s 			page 13
+
+
+ 390 000a 04       		.byte	0x4
+ 391 000b 01       		.uleb128 0x1
+ 392 000c A1000000 		.4byte	.LASF35
+ 393 0010 0C       		.byte	0xc
+ 394 0011 25020000 		.4byte	.LASF36
+ 395 0015 12000000 		.4byte	.LASF37
+ 396 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 397 001d 00000000 		.4byte	0
+ 398 0021 00000000 		.4byte	.Ldebug_line0
+ 399 0025 02       		.uleb128 0x2
+ 400 0026 01       		.byte	0x1
+ 401 0027 06       		.byte	0x6
+ 402 0028 72020000 		.4byte	.LASF0
+ 403 002c 03       		.uleb128 0x3
+ 404 002d 08000000 		.4byte	.LASF4
+ 405 0031 02       		.byte	0x2
+ 406 0032 1D       		.byte	0x1d
+ 407 0033 37000000 		.4byte	0x37
+ 408 0037 02       		.uleb128 0x2
+ 409 0038 01       		.byte	0x1
+ 410 0039 08       		.byte	0x8
+ 411 003a 93000000 		.4byte	.LASF1
+ 412 003e 02       		.uleb128 0x2
+ 413 003f 02       		.byte	0x2
+ 414 0040 05       		.byte	0x5
+ 415 0041 4D020000 		.4byte	.LASF2
+ 416 0045 02       		.uleb128 0x2
+ 417 0046 02       		.byte	0x2
+ 418 0047 07       		.byte	0x7
+ 419 0048 41010000 		.4byte	.LASF3
+ 420 004c 03       		.uleb128 0x3
+ 421 004d 70000000 		.4byte	.LASF5
+ 422 0051 02       		.byte	0x2
+ 423 0052 3F       		.byte	0x3f
+ 424 0053 57000000 		.4byte	0x57
+ 425 0057 02       		.uleb128 0x2
+ 426 0058 04       		.byte	0x4
+ 427 0059 05       		.byte	0x5
+ 428 005a 7A000000 		.4byte	.LASF6
+ 429 005e 02       		.uleb128 0x2
+ 430 005f 04       		.byte	0x4
+ 431 0060 07       		.byte	0x7
+ 432 0061 2F010000 		.4byte	.LASF7
+ 433 0065 02       		.uleb128 0x2
+ 434 0066 08       		.byte	0x8
+ 435 0067 05       		.byte	0x5
+ 436 0068 06020000 		.4byte	.LASF8
+ 437 006c 02       		.uleb128 0x2
+ 438 006d 08       		.byte	0x8
+ 439 006e 07       		.byte	0x7
+ 440 006f C0010000 		.4byte	.LASF9
+ 441 0073 04       		.uleb128 0x4
+ 442 0074 04       		.byte	0x4
+ 443 0075 05       		.byte	0x5
+ 444 0076 696E7400 		.ascii	"int\000"
+ 445 007a 02       		.uleb128 0x2
+ 446 007b 04       		.byte	0x4
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccLB96uI.s 			page 14
+
+
+ 447 007c 07       		.byte	0x7
+ 448 007d B3010000 		.4byte	.LASF10
+ 449 0081 03       		.uleb128 0x3
+ 450 0082 D7010000 		.4byte	.LASF11
+ 451 0086 03       		.byte	0x3
+ 452 0087 18       		.byte	0x18
+ 453 0088 2C000000 		.4byte	0x2c
+ 454 008c 03       		.uleb128 0x3
+ 455 008d EF010000 		.4byte	.LASF12
+ 456 0091 03       		.byte	0x3
+ 457 0092 2C       		.byte	0x2c
+ 458 0093 4C000000 		.4byte	0x4c
+ 459 0097 02       		.uleb128 0x2
+ 460 0098 04       		.byte	0x4
+ 461 0099 04       		.byte	0x4
+ 462 009a 8D000000 		.4byte	.LASF13
+ 463 009e 02       		.uleb128 0x2
+ 464 009f 08       		.byte	0x8
+ 465 00a0 04       		.byte	0x4
+ 466 00a1 61010000 		.4byte	.LASF14
+ 467 00a5 02       		.uleb128 0x2
+ 468 00a6 01       		.byte	0x1
+ 469 00a7 08       		.byte	0x8
+ 470 00a8 2C020000 		.4byte	.LASF15
+ 471 00ac 05       		.uleb128 0x5
+ 472 00ad 01       		.byte	0x1
+ 473 00ae 37000000 		.4byte	0x37
+ 474 00b2 04       		.byte	0x4
+ 475 00b3 15       		.byte	0x15
+ 476 00b4 C5000000 		.4byte	0xc5
+ 477 00b8 06       		.uleb128 0x6
+ 478 00b9 57020000 		.4byte	.LASF16
+ 479 00bd 00       		.byte	0
+ 480 00be 06       		.uleb128 0x6
+ 481 00bf 60020000 		.4byte	.LASF17
+ 482 00c3 01       		.byte	0x1
+ 483 00c4 00       		.byte	0
+ 484 00c5 03       		.uleb128 0x3
+ 485 00c6 83000000 		.4byte	.LASF18
+ 486 00ca 04       		.byte	0x4
+ 487 00cb 18       		.byte	0x18
+ 488 00cc AC000000 		.4byte	0xac
+ 489 00d0 02       		.uleb128 0x2
+ 490 00d1 08       		.byte	0x8
+ 491 00d2 04       		.byte	0x4
+ 492 00d3 66020000 		.4byte	.LASF19
+ 493 00d7 02       		.uleb128 0x2
+ 494 00d8 04       		.byte	0x4
+ 495 00d9 07       		.byte	0x7
+ 496 00da F7010000 		.4byte	.LASF20
+ 497 00de 07       		.uleb128 0x7
+ 498 00df 9A010000 		.4byte	.LASF38
+ 499 00e3 01       		.byte	0x1
+ 500 00e4 26       		.byte	0x26
+ 501 00e5 73000000 		.4byte	0x73
+ 502 00e9 00000000 		.4byte	.LFB64
+ 503 00ed A8010000 		.4byte	.LFE64-.LFB64
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccLB96uI.s 			page 15
+
+
+ 504 00f1 01       		.uleb128 0x1
+ 505 00f2 9C       		.byte	0x9c
+ 506 00f3 D6040000 		.4byte	0x4d6
+ 507 00f7 08       		.uleb128 0x8
+ 508 00f8 00000000 		.4byte	.LASF21
+ 509 00fc 01       		.byte	0x1
+ 510 00fd 31       		.byte	0x31
+ 511 00fe D6040000 		.4byte	0x4d6
+ 512 0102 02       		.uleb128 0x2
+ 513 0103 91       		.byte	0x91
+ 514 0104 44       		.sleb128 -60
+ 515 0105 08       		.uleb128 0x8
+ 516 0106 7E020000 		.4byte	.LASF22
+ 517 010a 01       		.byte	0x1
+ 518 010b 44       		.byte	0x44
+ 519 010c 81000000 		.4byte	0x81
+ 520 0110 02       		.uleb128 0x2
+ 521 0111 91       		.byte	0x91
+ 522 0112 43       		.sleb128 -61
+ 523 0113 09       		.uleb128 0x9
+ 524 0114 00020000 		.4byte	.LASF23
+ 525 0118 01       		.byte	0x1
+ 526 0119 45       		.byte	0x45
+ 527 011a C5000000 		.4byte	0xc5
+ 528 011e 00000000 		.4byte	.LLST0
+ 529 0122 08       		.uleb128 0x8
+ 530 0123 DF010000 		.4byte	.LASF24
+ 531 0127 01       		.byte	0x1
+ 532 0128 54       		.byte	0x54
+ 533 0129 81000000 		.4byte	0x81
+ 534 012d 02       		.uleb128 0x2
+ 535 012e 91       		.byte	0x91
+ 536 012f 42       		.sleb128 -62
+ 537 0130 08       		.uleb128 0x8
+ 538 0131 9F010000 		.4byte	.LASF25
+ 539 0135 01       		.byte	0x1
+ 540 0136 66       		.byte	0x66
+ 541 0137 81000000 		.4byte	0x81
+ 542 013b 02       		.uleb128 0x2
+ 543 013c 91       		.byte	0x91
+ 544 013d 41       		.sleb128 -63
+ 545 013e 08       		.uleb128 0x8
+ 546 013f A9010000 		.4byte	.LASF26
+ 547 0143 01       		.byte	0x1
+ 548 0144 A7       		.byte	0xa7
+ 549 0145 81000000 		.4byte	0x81
+ 550 0149 02       		.uleb128 0x2
+ 551 014a 91       		.byte	0x91
+ 552 014b 40       		.sleb128 -64
+ 553 014c 0A       		.uleb128 0xa
+ 554 014d 14000000 		.4byte	.LBB2
+ 555 0151 22000000 		.4byte	.LBE2-.LBB2
+ 556 0155 AE010000 		.4byte	0x1ae
+ 557 0159 0B       		.uleb128 0xb
+ 558 015a 6900     		.ascii	"i\000"
+ 559 015c 01       		.byte	0x1
+ 560 015d 34       		.byte	0x34
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccLB96uI.s 			page 16
+
+
+ 561 015e 73000000 		.4byte	0x73
+ 562 0162 A2000000 		.4byte	.LLST1
+ 563 0166 0C       		.uleb128 0xc
+ 564 0167 1E000000 		.4byte	.LVL4
+ 565 016b F7040000 		.4byte	0x4f7
+ 566 016f 7A010000 		.4byte	0x17a
+ 567 0173 0D       		.uleb128 0xd
+ 568 0174 01       		.uleb128 0x1
+ 569 0175 50       		.byte	0x50
+ 570 0176 02       		.uleb128 0x2
+ 571 0177 74       		.byte	0x74
+ 572 0178 00       		.sleb128 0
+ 573 0179 00       		.byte	0
+ 574 017a 0C       		.uleb128 0xc
+ 575 017b 2A000000 		.4byte	.LVL5
+ 576 017f 02050000 		.4byte	0x502
+ 577 0183 9D010000 		.4byte	0x19d
+ 578 0187 0D       		.uleb128 0xd
+ 579 0188 01       		.uleb128 0x1
+ 580 0189 50       		.byte	0x50
+ 581 018a 02       		.uleb128 0x2
+ 582 018b 91       		.byte	0x91
+ 583 018c 44       		.sleb128 -60
+ 584 018d 0D       		.uleb128 0xd
+ 585 018e 01       		.uleb128 0x1
+ 586 018f 51       		.byte	0x51
+ 587 0190 05       		.uleb128 0x5
+ 588 0191 03       		.byte	0x3
+ 589 0192 00000000 		.4byte	.LC0
+ 590 0196 0D       		.uleb128 0xd
+ 591 0197 01       		.uleb128 0x1
+ 592 0198 52       		.byte	0x52
+ 593 0199 02       		.uleb128 0x2
+ 594 019a 74       		.byte	0x74
+ 595 019b 00       		.sleb128 0
+ 596 019c 00       		.byte	0
+ 597 019d 0E       		.uleb128 0xe
+ 598 019e 30000000 		.4byte	.LVL6
+ 599 01a2 0D050000 		.4byte	0x50d
+ 600 01a6 0D       		.uleb128 0xd
+ 601 01a7 01       		.uleb128 0x1
+ 602 01a8 50       		.byte	0x50
+ 603 01a9 02       		.uleb128 0x2
+ 604 01aa 91       		.byte	0x91
+ 605 01ab 44       		.sleb128 -60
+ 606 01ac 00       		.byte	0
+ 607 01ad 00       		.byte	0
+ 608 01ae 0F       		.uleb128 0xf
+ 609 01af 0A000000 		.4byte	.LVL0
+ 610 01b3 18050000 		.4byte	0x518
+ 611 01b7 0F       		.uleb128 0xf
+ 612 01b8 0E000000 		.4byte	.LVL1
+ 613 01bc 23050000 		.4byte	0x523
+ 614 01c0 0C       		.uleb128 0xc
+ 615 01c1 14000000 		.4byte	.LVL2
+ 616 01c5 2E050000 		.4byte	0x52e
+ 617 01c9 D3010000 		.4byte	0x1d3
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccLB96uI.s 			page 17
+
+
+ 618 01cd 0D       		.uleb128 0xd
+ 619 01ce 01       		.uleb128 0x1
+ 620 01cf 50       		.byte	0x50
+ 621 01d0 01       		.uleb128 0x1
+ 622 01d1 35       		.byte	0x35
+ 623 01d2 00       		.byte	0
+ 624 01d3 0C       		.uleb128 0xc
+ 625 01d4 42000000 		.4byte	.LVL8
+ 626 01d8 39050000 		.4byte	0x539
+ 627 01dc F1010000 		.4byte	0x1f1
+ 628 01e0 0D       		.uleb128 0xd
+ 629 01e1 01       		.uleb128 0x1
+ 630 01e2 50       		.byte	0x50
+ 631 01e3 01       		.uleb128 0x1
+ 632 01e4 48       		.byte	0x48
+ 633 01e5 0D       		.uleb128 0xd
+ 634 01e6 01       		.uleb128 0x1
+ 635 01e7 51       		.byte	0x51
+ 636 01e8 01       		.uleb128 0x1
+ 637 01e9 3F       		.byte	0x3f
+ 638 01ea 0D       		.uleb128 0xd
+ 639 01eb 01       		.uleb128 0x1
+ 640 01ec 52       		.byte	0x52
+ 641 01ed 02       		.uleb128 0x2
+ 642 01ee 91       		.byte	0x91
+ 643 01ef 43       		.sleb128 -61
+ 644 01f0 00       		.byte	0
+ 645 01f1 0C       		.uleb128 0xc
+ 646 01f2 50000000 		.4byte	.LVL10
+ 647 01f6 02050000 		.4byte	0x502
+ 648 01fa 0E020000 		.4byte	0x20e
+ 649 01fe 0D       		.uleb128 0xd
+ 650 01ff 01       		.uleb128 0x1
+ 651 0200 50       		.byte	0x50
+ 652 0201 02       		.uleb128 0x2
+ 653 0202 91       		.byte	0x91
+ 654 0203 44       		.sleb128 -60
+ 655 0204 0D       		.uleb128 0xd
+ 656 0205 01       		.uleb128 0x1
+ 657 0206 51       		.byte	0x51
+ 658 0207 05       		.uleb128 0x5
+ 659 0208 03       		.byte	0x3
+ 660 0209 20000000 		.4byte	.LC1
+ 661 020d 00       		.byte	0
+ 662 020e 0C       		.uleb128 0xc
+ 663 020f 56000000 		.4byte	.LVL11
+ 664 0213 0D050000 		.4byte	0x50d
+ 665 0217 22020000 		.4byte	0x222
+ 666 021b 0D       		.uleb128 0xd
+ 667 021c 01       		.uleb128 0x1
+ 668 021d 50       		.byte	0x50
+ 669 021e 02       		.uleb128 0x2
+ 670 021f 91       		.byte	0x91
+ 671 0220 44       		.sleb128 -60
+ 672 0221 00       		.byte	0
+ 673 0222 0C       		.uleb128 0xc
+ 674 0223 5E000000 		.4byte	.LVL14
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccLB96uI.s 			page 18
+
+
+ 675 0227 0D050000 		.4byte	0x50d
+ 676 022b 39020000 		.4byte	0x239
+ 677 022f 0D       		.uleb128 0xd
+ 678 0230 01       		.uleb128 0x1
+ 679 0231 50       		.byte	0x50
+ 680 0232 05       		.uleb128 0x5
+ 681 0233 03       		.byte	0x3
+ 682 0234 48000000 		.4byte	.LC2
+ 683 0238 00       		.byte	0
+ 684 0239 0C       		.uleb128 0xc
+ 685 023a 6A000000 		.4byte	.LVL15
+ 686 023e 39050000 		.4byte	0x539
+ 687 0242 58020000 		.4byte	0x258
+ 688 0246 0D       		.uleb128 0xd
+ 689 0247 01       		.uleb128 0x1
+ 690 0248 50       		.byte	0x50
+ 691 0249 01       		.uleb128 0x1
+ 692 024a 48       		.byte	0x48
+ 693 024b 0D       		.uleb128 0xd
+ 694 024c 01       		.uleb128 0x1
+ 695 024d 51       		.byte	0x51
+ 696 024e 02       		.uleb128 0x2
+ 697 024f 08       		.byte	0x8
+ 698 0250 27       		.byte	0x27
+ 699 0251 0D       		.uleb128 0xd
+ 700 0252 01       		.uleb128 0x1
+ 701 0253 52       		.byte	0x52
+ 702 0254 02       		.uleb128 0x2
+ 703 0255 91       		.byte	0x91
+ 704 0256 42       		.sleb128 -62
+ 705 0257 00       		.byte	0
+ 706 0258 0C       		.uleb128 0xc
+ 707 0259 78000000 		.4byte	.LVL17
+ 708 025d 02050000 		.4byte	0x502
+ 709 0261 75020000 		.4byte	0x275
+ 710 0265 0D       		.uleb128 0xd
+ 711 0266 01       		.uleb128 0x1
+ 712 0267 50       		.byte	0x50
+ 713 0268 02       		.uleb128 0x2
+ 714 0269 91       		.byte	0x91
+ 715 026a 44       		.sleb128 -60
+ 716 026b 0D       		.uleb128 0xd
+ 717 026c 01       		.uleb128 0x1
+ 718 026d 51       		.byte	0x51
+ 719 026e 05       		.uleb128 0x5
+ 720 026f 03       		.byte	0x3
+ 721 0270 6C000000 		.4byte	.LC3
+ 722 0274 00       		.byte	0
+ 723 0275 0C       		.uleb128 0xc
+ 724 0276 7E000000 		.4byte	.LVL18
+ 725 027a 0D050000 		.4byte	0x50d
+ 726 027e 89020000 		.4byte	0x289
+ 727 0282 0D       		.uleb128 0xd
+ 728 0283 01       		.uleb128 0x1
+ 729 0284 50       		.byte	0x50
+ 730 0285 02       		.uleb128 0x2
+ 731 0286 91       		.byte	0x91
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccLB96uI.s 			page 19
+
+
+ 732 0287 44       		.sleb128 -60
+ 733 0288 00       		.byte	0
+ 734 0289 0C       		.uleb128 0xc
+ 735 028a 86000000 		.4byte	.LVL21
+ 736 028e 0D050000 		.4byte	0x50d
+ 737 0292 A0020000 		.4byte	0x2a0
+ 738 0296 0D       		.uleb128 0xd
+ 739 0297 01       		.uleb128 0x1
+ 740 0298 50       		.byte	0x50
+ 741 0299 05       		.uleb128 0x5
+ 742 029a 03       		.byte	0x3
+ 743 029b 88000000 		.4byte	.LC4
+ 744 029f 00       		.byte	0
+ 745 02a0 0C       		.uleb128 0xc
+ 746 02a1 92000000 		.4byte	.LVL22
+ 747 02a5 39050000 		.4byte	0x539
+ 748 02a9 BF020000 		.4byte	0x2bf
+ 749 02ad 0D       		.uleb128 0xd
+ 750 02ae 01       		.uleb128 0x1
+ 751 02af 50       		.byte	0x50
+ 752 02b0 01       		.uleb128 0x1
+ 753 02b1 48       		.byte	0x48
+ 754 02b2 0D       		.uleb128 0xd
+ 755 02b3 01       		.uleb128 0x1
+ 756 02b4 51       		.byte	0x51
+ 757 02b5 02       		.uleb128 0x2
+ 758 02b6 08       		.byte	0x8
+ 759 02b7 20       		.byte	0x20
+ 760 02b8 0D       		.uleb128 0xd
+ 761 02b9 01       		.uleb128 0x1
+ 762 02ba 52       		.byte	0x52
+ 763 02bb 02       		.uleb128 0x2
+ 764 02bc 91       		.byte	0x91
+ 765 02bd 41       		.sleb128 -63
+ 766 02be 00       		.byte	0
+ 767 02bf 0C       		.uleb128 0xc
+ 768 02c0 A0000000 		.4byte	.LVL24
+ 769 02c4 02050000 		.4byte	0x502
+ 770 02c8 DC020000 		.4byte	0x2dc
+ 771 02cc 0D       		.uleb128 0xd
+ 772 02cd 01       		.uleb128 0x1
+ 773 02ce 50       		.byte	0x50
+ 774 02cf 02       		.uleb128 0x2
+ 775 02d0 91       		.byte	0x91
+ 776 02d1 44       		.sleb128 -60
+ 777 02d2 0D       		.uleb128 0xd
+ 778 02d3 01       		.uleb128 0x1
+ 779 02d4 51       		.byte	0x51
+ 780 02d5 05       		.uleb128 0x5
+ 781 02d6 03       		.byte	0x3
+ 782 02d7 C4000000 		.4byte	.LC5
+ 783 02db 00       		.byte	0
+ 784 02dc 0C       		.uleb128 0xc
+ 785 02dd A6000000 		.4byte	.LVL25
+ 786 02e1 0D050000 		.4byte	0x50d
+ 787 02e5 F0020000 		.4byte	0x2f0
+ 788 02e9 0D       		.uleb128 0xd
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccLB96uI.s 			page 20
+
+
+ 789 02ea 01       		.uleb128 0x1
+ 790 02eb 50       		.byte	0x50
+ 791 02ec 02       		.uleb128 0x2
+ 792 02ed 91       		.byte	0x91
+ 793 02ee 44       		.sleb128 -60
+ 794 02ef 00       		.byte	0
+ 795 02f0 0C       		.uleb128 0xc
+ 796 02f1 AE000000 		.4byte	.LVL28
+ 797 02f5 0D050000 		.4byte	0x50d
+ 798 02f9 07030000 		.4byte	0x307
+ 799 02fd 0D       		.uleb128 0xd
+ 800 02fe 01       		.uleb128 0x1
+ 801 02ff 50       		.byte	0x50
+ 802 0300 05       		.uleb128 0x5
+ 803 0301 03       		.byte	0x3
+ 804 0302 E4000000 		.4byte	.LC6
+ 805 0306 00       		.byte	0
+ 806 0307 0C       		.uleb128 0xc
+ 807 0308 B4000000 		.4byte	.LVL29
+ 808 030c 0D050000 		.4byte	0x50d
+ 809 0310 1E030000 		.4byte	0x31e
+ 810 0314 0D       		.uleb128 0xd
+ 811 0315 01       		.uleb128 0x1
+ 812 0316 50       		.byte	0x50
+ 813 0317 05       		.uleb128 0x5
+ 814 0318 03       		.byte	0x3
+ 815 0319 20010000 		.4byte	.LC7
+ 816 031d 00       		.byte	0
+ 817 031e 0C       		.uleb128 0xc
+ 818 031f CA000000 		.4byte	.LVL30
+ 819 0323 44050000 		.4byte	0x544
+ 820 0327 3D030000 		.4byte	0x33d
+ 821 032b 0D       		.uleb128 0xd
+ 822 032c 01       		.uleb128 0x1
+ 823 032d 50       		.byte	0x50
+ 824 032e 01       		.uleb128 0x1
+ 825 032f 48       		.byte	0x48
+ 826 0330 0D       		.uleb128 0xd
+ 827 0331 01       		.uleb128 0x1
+ 828 0332 51       		.byte	0x51
+ 829 0333 02       		.uleb128 0x2
+ 830 0334 08       		.byte	0x8
+ 831 0335 20       		.byte	0x20
+ 832 0336 0D       		.uleb128 0xd
+ 833 0337 01       		.uleb128 0x1
+ 834 0338 52       		.byte	0x52
+ 835 0339 02       		.uleb128 0x2
+ 836 033a 08       		.byte	0x8
+ 837 033b 57       		.byte	0x57
+ 838 033c 00       		.byte	0
+ 839 033d 0C       		.uleb128 0xc
+ 840 033e D8000000 		.4byte	.LVL32
+ 841 0342 02050000 		.4byte	0x502
+ 842 0346 5A030000 		.4byte	0x35a
+ 843 034a 0D       		.uleb128 0xd
+ 844 034b 01       		.uleb128 0x1
+ 845 034c 50       		.byte	0x50
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccLB96uI.s 			page 21
+
+
+ 846 034d 02       		.uleb128 0x2
+ 847 034e 91       		.byte	0x91
+ 848 034f 44       		.sleb128 -60
+ 849 0350 0D       		.uleb128 0xd
+ 850 0351 01       		.uleb128 0x1
+ 851 0352 51       		.byte	0x51
+ 852 0353 05       		.uleb128 0x5
+ 853 0354 03       		.byte	0x3
+ 854 0355 3C010000 		.4byte	.LC8
+ 855 0359 00       		.byte	0
+ 856 035a 0C       		.uleb128 0xc
+ 857 035b DE000000 		.4byte	.LVL33
+ 858 035f 0D050000 		.4byte	0x50d
+ 859 0363 6E030000 		.4byte	0x36e
+ 860 0367 0D       		.uleb128 0xd
+ 861 0368 01       		.uleb128 0x1
+ 862 0369 50       		.byte	0x50
+ 863 036a 02       		.uleb128 0x2
+ 864 036b 91       		.byte	0x91
+ 865 036c 44       		.sleb128 -60
+ 866 036d 00       		.byte	0
+ 867 036e 0C       		.uleb128 0xc
+ 868 036f E6000000 		.4byte	.LVL36
+ 869 0373 0D050000 		.4byte	0x50d
+ 870 0377 85030000 		.4byte	0x385
+ 871 037b 0D       		.uleb128 0xd
+ 872 037c 01       		.uleb128 0x1
+ 873 037d 50       		.byte	0x50
+ 874 037e 05       		.uleb128 0x5
+ 875 037f 03       		.byte	0x3
+ 876 0380 74010000 		.4byte	.LC9
+ 877 0384 00       		.byte	0
+ 878 0385 0C       		.uleb128 0xc
+ 879 0386 F2000000 		.4byte	.LVL37
+ 880 038a 39050000 		.4byte	0x539
+ 881 038e A4030000 		.4byte	0x3a4
+ 882 0392 0D       		.uleb128 0xd
+ 883 0393 01       		.uleb128 0x1
+ 884 0394 50       		.byte	0x50
+ 885 0395 01       		.uleb128 0x1
+ 886 0396 48       		.byte	0x48
+ 887 0397 0D       		.uleb128 0xd
+ 888 0398 01       		.uleb128 0x1
+ 889 0399 51       		.byte	0x51
+ 890 039a 02       		.uleb128 0x2
+ 891 039b 08       		.byte	0x8
+ 892 039c 20       		.byte	0x20
+ 893 039d 0D       		.uleb128 0xd
+ 894 039e 01       		.uleb128 0x1
+ 895 039f 52       		.byte	0x52
+ 896 03a0 02       		.uleb128 0x2
+ 897 03a1 91       		.byte	0x91
+ 898 03a2 41       		.sleb128 -63
+ 899 03a3 00       		.byte	0
+ 900 03a4 0C       		.uleb128 0xc
+ 901 03a5 00010000 		.4byte	.LVL39
+ 902 03a9 02050000 		.4byte	0x502
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccLB96uI.s 			page 22
+
+
+ 903 03ad C1030000 		.4byte	0x3c1
+ 904 03b1 0D       		.uleb128 0xd
+ 905 03b2 01       		.uleb128 0x1
+ 906 03b3 50       		.byte	0x50
+ 907 03b4 02       		.uleb128 0x2
+ 908 03b5 91       		.byte	0x91
+ 909 03b6 44       		.sleb128 -60
+ 910 03b7 0D       		.uleb128 0xd
+ 911 03b8 01       		.uleb128 0x1
+ 912 03b9 51       		.byte	0x51
+ 913 03ba 05       		.uleb128 0x5
+ 914 03bb 03       		.byte	0x3
+ 915 03bc B0010000 		.4byte	.LC10
+ 916 03c0 00       		.byte	0
+ 917 03c1 0C       		.uleb128 0xc
+ 918 03c2 06010000 		.4byte	.LVL40
+ 919 03c6 0D050000 		.4byte	0x50d
+ 920 03ca D5030000 		.4byte	0x3d5
+ 921 03ce 0D       		.uleb128 0xd
+ 922 03cf 01       		.uleb128 0x1
+ 923 03d0 50       		.byte	0x50
+ 924 03d1 02       		.uleb128 0x2
+ 925 03d2 91       		.byte	0x91
+ 926 03d3 44       		.sleb128 -60
+ 927 03d4 00       		.byte	0
+ 928 03d5 0C       		.uleb128 0xc
+ 929 03d6 0E010000 		.4byte	.LVL43
+ 930 03da 0D050000 		.4byte	0x50d
+ 931 03de EC030000 		.4byte	0x3ec
+ 932 03e2 0D       		.uleb128 0xd
+ 933 03e3 01       		.uleb128 0x1
+ 934 03e4 50       		.byte	0x50
+ 935 03e5 05       		.uleb128 0x5
+ 936 03e6 03       		.byte	0x3
+ 937 03e7 E4000000 		.4byte	.LC6
+ 938 03eb 00       		.byte	0
+ 939 03ec 0C       		.uleb128 0xc
+ 940 03ed 18010000 		.4byte	.LVL44
+ 941 03f1 39050000 		.4byte	0x539
+ 942 03f5 0B040000 		.4byte	0x40b
+ 943 03f9 0D       		.uleb128 0xd
+ 944 03fa 01       		.uleb128 0x1
+ 945 03fb 50       		.byte	0x50
+ 946 03fc 01       		.uleb128 0x1
+ 947 03fd 48       		.byte	0x48
+ 948 03fe 0D       		.uleb128 0xd
+ 949 03ff 01       		.uleb128 0x1
+ 950 0400 51       		.byte	0x51
+ 951 0401 02       		.uleb128 0x2
+ 952 0402 08       		.byte	0x8
+ 953 0403 23       		.byte	0x23
+ 954 0404 0D       		.uleb128 0xd
+ 955 0405 01       		.uleb128 0x1
+ 956 0406 52       		.byte	0x52
+ 957 0407 02       		.uleb128 0x2
+ 958 0408 7D       		.byte	0x7d
+ 959 0409 00       		.sleb128 0
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccLB96uI.s 			page 23
+
+
+ 960 040a 00       		.byte	0
+ 961 040b 0C       		.uleb128 0xc
+ 962 040c 26010000 		.4byte	.LVL46
+ 963 0410 02050000 		.4byte	0x502
+ 964 0414 28040000 		.4byte	0x428
+ 965 0418 0D       		.uleb128 0xd
+ 966 0419 01       		.uleb128 0x1
+ 967 041a 50       		.byte	0x50
+ 968 041b 02       		.uleb128 0x2
+ 969 041c 91       		.byte	0x91
+ 970 041d 44       		.sleb128 -60
+ 971 041e 0D       		.uleb128 0xd
+ 972 041f 01       		.uleb128 0x1
+ 973 0420 51       		.byte	0x51
+ 974 0421 05       		.uleb128 0x5
+ 975 0422 03       		.byte	0x3
+ 976 0423 E8010000 		.4byte	.LC11
+ 977 0427 00       		.byte	0
+ 978 0428 0C       		.uleb128 0xc
+ 979 0429 2C010000 		.4byte	.LVL47
+ 980 042d 0D050000 		.4byte	0x50d
+ 981 0431 3C040000 		.4byte	0x43c
+ 982 0435 0D       		.uleb128 0xd
+ 983 0436 01       		.uleb128 0x1
+ 984 0437 50       		.byte	0x50
+ 985 0438 02       		.uleb128 0x2
+ 986 0439 91       		.byte	0x91
+ 987 043a 44       		.sleb128 -60
+ 988 043b 00       		.byte	0
+ 989 043c 0C       		.uleb128 0xc
+ 990 043d 34010000 		.4byte	.LVL50
+ 991 0441 0D050000 		.4byte	0x50d
+ 992 0445 53040000 		.4byte	0x453
+ 993 0449 0D       		.uleb128 0xd
+ 994 044a 01       		.uleb128 0x1
+ 995 044b 50       		.byte	0x50
+ 996 044c 05       		.uleb128 0x5
+ 997 044d 03       		.byte	0x3
+ 998 044e 08020000 		.4byte	.LC12
+ 999 0452 00       		.byte	0
+ 1000 0453 0C       		.uleb128 0xc
+ 1001 0454 44010000 		.4byte	.LVL52
+ 1002 0458 44050000 		.4byte	0x544
+ 1003 045c 72040000 		.4byte	0x472
+ 1004 0460 0D       		.uleb128 0xd
+ 1005 0461 01       		.uleb128 0x1
+ 1006 0462 50       		.byte	0x50
+ 1007 0463 01       		.uleb128 0x1
+ 1008 0464 48       		.byte	0x48
+ 1009 0465 0D       		.uleb128 0xd
+ 1010 0466 01       		.uleb128 0x1
+ 1011 0467 51       		.byte	0x51
+ 1012 0468 02       		.uleb128 0x2
+ 1013 0469 08       		.byte	0x8
+ 1014 046a 23       		.byte	0x23
+ 1015 046b 0D       		.uleb128 0xd
+ 1016 046c 01       		.uleb128 0x1
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccLB96uI.s 			page 24
+
+
+ 1017 046d 52       		.byte	0x52
+ 1018 046e 02       		.uleb128 0x2
+ 1019 046f 09       		.byte	0x9
+ 1020 0470 80       		.byte	0x80
+ 1021 0471 00       		.byte	0
+ 1022 0472 0C       		.uleb128 0xc
+ 1023 0473 4E010000 		.4byte	.LVL53
+ 1024 0477 39050000 		.4byte	0x539
+ 1025 047b 91040000 		.4byte	0x491
+ 1026 047f 0D       		.uleb128 0xd
+ 1027 0480 01       		.uleb128 0x1
+ 1028 0481 50       		.byte	0x50
+ 1029 0482 01       		.uleb128 0x1
+ 1030 0483 48       		.byte	0x48
+ 1031 0484 0D       		.uleb128 0xd
+ 1032 0485 01       		.uleb128 0x1
+ 1033 0486 51       		.byte	0x51
+ 1034 0487 02       		.uleb128 0x2
+ 1035 0488 08       		.byte	0x8
+ 1036 0489 23       		.byte	0x23
+ 1037 048a 0D       		.uleb128 0xd
+ 1038 048b 01       		.uleb128 0x1
+ 1039 048c 52       		.byte	0x52
+ 1040 048d 02       		.uleb128 0x2
+ 1041 048e 74       		.byte	0x74
+ 1042 048f 00       		.sleb128 0
+ 1043 0490 00       		.byte	0
+ 1044 0491 0C       		.uleb128 0xc
+ 1045 0492 5C010000 		.4byte	.LVL55
+ 1046 0496 02050000 		.4byte	0x502
+ 1047 049a AE040000 		.4byte	0x4ae
+ 1048 049e 0D       		.uleb128 0xd
+ 1049 049f 01       		.uleb128 0x1
+ 1050 04a0 50       		.byte	0x50
+ 1051 04a1 02       		.uleb128 0x2
+ 1052 04a2 91       		.byte	0x91
+ 1053 04a3 44       		.sleb128 -60
+ 1054 04a4 0D       		.uleb128 0xd
+ 1055 04a5 01       		.uleb128 0x1
+ 1056 04a6 51       		.byte	0x51
+ 1057 04a7 05       		.uleb128 0x5
+ 1058 04a8 03       		.byte	0x3
+ 1059 04a9 44020000 		.4byte	.LC13
+ 1060 04ad 00       		.byte	0
+ 1061 04ae 0C       		.uleb128 0xc
+ 1062 04af 62010000 		.4byte	.LVL56
+ 1063 04b3 0D050000 		.4byte	0x50d
+ 1064 04b7 C2040000 		.4byte	0x4c2
+ 1065 04bb 0D       		.uleb128 0xd
+ 1066 04bc 01       		.uleb128 0x1
+ 1067 04bd 50       		.byte	0x50
+ 1068 04be 02       		.uleb128 0x2
+ 1069 04bf 91       		.byte	0x91
+ 1070 04c0 44       		.sleb128 -60
+ 1071 04c1 00       		.byte	0
+ 1072 04c2 0E       		.uleb128 0xe
+ 1073 04c3 6A010000 		.4byte	.LVL59
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccLB96uI.s 			page 25
+
+
+ 1074 04c7 0D050000 		.4byte	0x50d
+ 1075 04cb 0D       		.uleb128 0xd
+ 1076 04cc 01       		.uleb128 0x1
+ 1077 04cd 50       		.byte	0x50
+ 1078 04ce 05       		.uleb128 0x5
+ 1079 04cf 03       		.byte	0x3
+ 1080 04d0 08020000 		.4byte	.LC12
+ 1081 04d4 00       		.byte	0
+ 1082 04d5 00       		.byte	0
+ 1083 04d6 10       		.uleb128 0x10
+ 1084 04d7 A5000000 		.4byte	0xa5
+ 1085 04db E6040000 		.4byte	0x4e6
+ 1086 04df 11       		.uleb128 0x11
+ 1087 04e0 D7000000 		.4byte	0xd7
+ 1088 04e4 31       		.byte	0x31
+ 1089 04e5 00       		.byte	0
+ 1090 04e6 12       		.uleb128 0x12
+ 1091 04e7 54010000 		.4byte	.LASF39
+ 1092 04eb 09       		.byte	0x9
+ 1093 04ec 1207     		.2byte	0x712
+ 1094 04ee F2040000 		.4byte	0x4f2
+ 1095 04f2 13       		.uleb128 0x13
+ 1096 04f3 8C000000 		.4byte	0x8c
+ 1097 04f7 14       		.uleb128 0x14
+ 1098 04f8 4F000000 		.4byte	.LASF27
+ 1099 04fc 4F000000 		.4byte	.LASF27
+ 1100 0500 05       		.byte	0x5
+ 1101 0501 5D       		.byte	0x5d
+ 1102 0502 14       		.uleb128 0x14
+ 1103 0503 8B020000 		.4byte	.LASF28
+ 1104 0507 8B020000 		.4byte	.LASF28
+ 1105 050b 06       		.byte	0x6
+ 1106 050c E7       		.byte	0xe7
+ 1107 050d 14       		.uleb128 0x14
+ 1108 050e 68010000 		.4byte	.LASF29
+ 1109 0512 68010000 		.4byte	.LASF29
+ 1110 0516 07       		.byte	0x7
+ 1111 0517 8B       		.byte	0x8b
+ 1112 0518 14       		.uleb128 0x14
+ 1113 0519 9B020000 		.4byte	.LASF30
+ 1114 051d 9B020000 		.4byte	.LASF30
+ 1115 0521 05       		.byte	0x5
+ 1116 0522 17       		.byte	0x17
+ 1117 0523 14       		.uleb128 0x14
+ 1118 0524 14020000 		.4byte	.LASF31
+ 1119 0528 14020000 		.4byte	.LASF31
+ 1120 052c 07       		.byte	0x7
+ 1121 052d 54       		.byte	0x54
+ 1122 052e 14       		.uleb128 0x14
+ 1123 052f 93020000 		.4byte	.LASF32
+ 1124 0533 93020000 		.4byte	.LASF32
+ 1125 0537 08       		.byte	0x8
+ 1126 0538 76       		.byte	0x76
+ 1127 0539 14       		.uleb128 0x14
+ 1128 053a 31020000 		.4byte	.LASF33
+ 1129 053e 31020000 		.4byte	.LASF33
+ 1130 0542 05       		.byte	0x5
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccLB96uI.s 			page 26
+
+
+ 1131 0543 28       		.byte	0x28
+ 1132 0544 14       		.uleb128 0x14
+ 1133 0545 7D010000 		.4byte	.LASF34
+ 1134 0549 7D010000 		.4byte	.LASF34
+ 1135 054d 05       		.byte	0x5
+ 1136 054e 43       		.byte	0x43
+ 1137 054f 00       		.byte	0
+ 1138              		.section	.debug_abbrev,"",%progbits
+ 1139              	.Ldebug_abbrev0:
+ 1140 0000 01       		.uleb128 0x1
+ 1141 0001 11       		.uleb128 0x11
+ 1142 0002 01       		.byte	0x1
+ 1143 0003 25       		.uleb128 0x25
+ 1144 0004 0E       		.uleb128 0xe
+ 1145 0005 13       		.uleb128 0x13
+ 1146 0006 0B       		.uleb128 0xb
+ 1147 0007 03       		.uleb128 0x3
+ 1148 0008 0E       		.uleb128 0xe
+ 1149 0009 1B       		.uleb128 0x1b
+ 1150 000a 0E       		.uleb128 0xe
+ 1151 000b 55       		.uleb128 0x55
+ 1152 000c 17       		.uleb128 0x17
+ 1153 000d 11       		.uleb128 0x11
+ 1154 000e 01       		.uleb128 0x1
+ 1155 000f 10       		.uleb128 0x10
+ 1156 0010 17       		.uleb128 0x17
+ 1157 0011 00       		.byte	0
+ 1158 0012 00       		.byte	0
+ 1159 0013 02       		.uleb128 0x2
+ 1160 0014 24       		.uleb128 0x24
+ 1161 0015 00       		.byte	0
+ 1162 0016 0B       		.uleb128 0xb
+ 1163 0017 0B       		.uleb128 0xb
+ 1164 0018 3E       		.uleb128 0x3e
+ 1165 0019 0B       		.uleb128 0xb
+ 1166 001a 03       		.uleb128 0x3
+ 1167 001b 0E       		.uleb128 0xe
+ 1168 001c 00       		.byte	0
+ 1169 001d 00       		.byte	0
+ 1170 001e 03       		.uleb128 0x3
+ 1171 001f 16       		.uleb128 0x16
+ 1172 0020 00       		.byte	0
+ 1173 0021 03       		.uleb128 0x3
+ 1174 0022 0E       		.uleb128 0xe
+ 1175 0023 3A       		.uleb128 0x3a
+ 1176 0024 0B       		.uleb128 0xb
+ 1177 0025 3B       		.uleb128 0x3b
+ 1178 0026 0B       		.uleb128 0xb
+ 1179 0027 49       		.uleb128 0x49
+ 1180 0028 13       		.uleb128 0x13
+ 1181 0029 00       		.byte	0
+ 1182 002a 00       		.byte	0
+ 1183 002b 04       		.uleb128 0x4
+ 1184 002c 24       		.uleb128 0x24
+ 1185 002d 00       		.byte	0
+ 1186 002e 0B       		.uleb128 0xb
+ 1187 002f 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccLB96uI.s 			page 27
+
+
+ 1188 0030 3E       		.uleb128 0x3e
+ 1189 0031 0B       		.uleb128 0xb
+ 1190 0032 03       		.uleb128 0x3
+ 1191 0033 08       		.uleb128 0x8
+ 1192 0034 00       		.byte	0
+ 1193 0035 00       		.byte	0
+ 1194 0036 05       		.uleb128 0x5
+ 1195 0037 04       		.uleb128 0x4
+ 1196 0038 01       		.byte	0x1
+ 1197 0039 0B       		.uleb128 0xb
+ 1198 003a 0B       		.uleb128 0xb
+ 1199 003b 49       		.uleb128 0x49
+ 1200 003c 13       		.uleb128 0x13
+ 1201 003d 3A       		.uleb128 0x3a
+ 1202 003e 0B       		.uleb128 0xb
+ 1203 003f 3B       		.uleb128 0x3b
+ 1204 0040 0B       		.uleb128 0xb
+ 1205 0041 01       		.uleb128 0x1
+ 1206 0042 13       		.uleb128 0x13
+ 1207 0043 00       		.byte	0
+ 1208 0044 00       		.byte	0
+ 1209 0045 06       		.uleb128 0x6
+ 1210 0046 28       		.uleb128 0x28
+ 1211 0047 00       		.byte	0
+ 1212 0048 03       		.uleb128 0x3
+ 1213 0049 0E       		.uleb128 0xe
+ 1214 004a 1C       		.uleb128 0x1c
+ 1215 004b 0B       		.uleb128 0xb
+ 1216 004c 00       		.byte	0
+ 1217 004d 00       		.byte	0
+ 1218 004e 07       		.uleb128 0x7
+ 1219 004f 2E       		.uleb128 0x2e
+ 1220 0050 01       		.byte	0x1
+ 1221 0051 3F       		.uleb128 0x3f
+ 1222 0052 19       		.uleb128 0x19
+ 1223 0053 03       		.uleb128 0x3
+ 1224 0054 0E       		.uleb128 0xe
+ 1225 0055 3A       		.uleb128 0x3a
+ 1226 0056 0B       		.uleb128 0xb
+ 1227 0057 3B       		.uleb128 0x3b
+ 1228 0058 0B       		.uleb128 0xb
+ 1229 0059 27       		.uleb128 0x27
+ 1230 005a 19       		.uleb128 0x19
+ 1231 005b 49       		.uleb128 0x49
+ 1232 005c 13       		.uleb128 0x13
+ 1233 005d 11       		.uleb128 0x11
+ 1234 005e 01       		.uleb128 0x1
+ 1235 005f 12       		.uleb128 0x12
+ 1236 0060 06       		.uleb128 0x6
+ 1237 0061 40       		.uleb128 0x40
+ 1238 0062 18       		.uleb128 0x18
+ 1239 0063 9742     		.uleb128 0x2117
+ 1240 0065 19       		.uleb128 0x19
+ 1241 0066 01       		.uleb128 0x1
+ 1242 0067 13       		.uleb128 0x13
+ 1243 0068 00       		.byte	0
+ 1244 0069 00       		.byte	0
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccLB96uI.s 			page 28
+
+
+ 1245 006a 08       		.uleb128 0x8
+ 1246 006b 34       		.uleb128 0x34
+ 1247 006c 00       		.byte	0
+ 1248 006d 03       		.uleb128 0x3
+ 1249 006e 0E       		.uleb128 0xe
+ 1250 006f 3A       		.uleb128 0x3a
+ 1251 0070 0B       		.uleb128 0xb
+ 1252 0071 3B       		.uleb128 0x3b
+ 1253 0072 0B       		.uleb128 0xb
+ 1254 0073 49       		.uleb128 0x49
+ 1255 0074 13       		.uleb128 0x13
+ 1256 0075 02       		.uleb128 0x2
+ 1257 0076 18       		.uleb128 0x18
+ 1258 0077 00       		.byte	0
+ 1259 0078 00       		.byte	0
+ 1260 0079 09       		.uleb128 0x9
+ 1261 007a 34       		.uleb128 0x34
+ 1262 007b 00       		.byte	0
+ 1263 007c 03       		.uleb128 0x3
+ 1264 007d 0E       		.uleb128 0xe
+ 1265 007e 3A       		.uleb128 0x3a
+ 1266 007f 0B       		.uleb128 0xb
+ 1267 0080 3B       		.uleb128 0x3b
+ 1268 0081 0B       		.uleb128 0xb
+ 1269 0082 49       		.uleb128 0x49
+ 1270 0083 13       		.uleb128 0x13
+ 1271 0084 02       		.uleb128 0x2
+ 1272 0085 17       		.uleb128 0x17
+ 1273 0086 00       		.byte	0
+ 1274 0087 00       		.byte	0
+ 1275 0088 0A       		.uleb128 0xa
+ 1276 0089 0B       		.uleb128 0xb
+ 1277 008a 01       		.byte	0x1
+ 1278 008b 11       		.uleb128 0x11
+ 1279 008c 01       		.uleb128 0x1
+ 1280 008d 12       		.uleb128 0x12
+ 1281 008e 06       		.uleb128 0x6
+ 1282 008f 01       		.uleb128 0x1
+ 1283 0090 13       		.uleb128 0x13
+ 1284 0091 00       		.byte	0
+ 1285 0092 00       		.byte	0
+ 1286 0093 0B       		.uleb128 0xb
+ 1287 0094 34       		.uleb128 0x34
+ 1288 0095 00       		.byte	0
+ 1289 0096 03       		.uleb128 0x3
+ 1290 0097 08       		.uleb128 0x8
+ 1291 0098 3A       		.uleb128 0x3a
+ 1292 0099 0B       		.uleb128 0xb
+ 1293 009a 3B       		.uleb128 0x3b
+ 1294 009b 0B       		.uleb128 0xb
+ 1295 009c 49       		.uleb128 0x49
+ 1296 009d 13       		.uleb128 0x13
+ 1297 009e 02       		.uleb128 0x2
+ 1298 009f 17       		.uleb128 0x17
+ 1299 00a0 00       		.byte	0
+ 1300 00a1 00       		.byte	0
+ 1301 00a2 0C       		.uleb128 0xc
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccLB96uI.s 			page 29
+
+
+ 1302 00a3 898201   		.uleb128 0x4109
+ 1303 00a6 01       		.byte	0x1
+ 1304 00a7 11       		.uleb128 0x11
+ 1305 00a8 01       		.uleb128 0x1
+ 1306 00a9 31       		.uleb128 0x31
+ 1307 00aa 13       		.uleb128 0x13
+ 1308 00ab 01       		.uleb128 0x1
+ 1309 00ac 13       		.uleb128 0x13
+ 1310 00ad 00       		.byte	0
+ 1311 00ae 00       		.byte	0
+ 1312 00af 0D       		.uleb128 0xd
+ 1313 00b0 8A8201   		.uleb128 0x410a
+ 1314 00b3 00       		.byte	0
+ 1315 00b4 02       		.uleb128 0x2
+ 1316 00b5 18       		.uleb128 0x18
+ 1317 00b6 9142     		.uleb128 0x2111
+ 1318 00b8 18       		.uleb128 0x18
+ 1319 00b9 00       		.byte	0
+ 1320 00ba 00       		.byte	0
+ 1321 00bb 0E       		.uleb128 0xe
+ 1322 00bc 898201   		.uleb128 0x4109
+ 1323 00bf 01       		.byte	0x1
+ 1324 00c0 11       		.uleb128 0x11
+ 1325 00c1 01       		.uleb128 0x1
+ 1326 00c2 31       		.uleb128 0x31
+ 1327 00c3 13       		.uleb128 0x13
+ 1328 00c4 00       		.byte	0
+ 1329 00c5 00       		.byte	0
+ 1330 00c6 0F       		.uleb128 0xf
+ 1331 00c7 898201   		.uleb128 0x4109
+ 1332 00ca 00       		.byte	0
+ 1333 00cb 11       		.uleb128 0x11
+ 1334 00cc 01       		.uleb128 0x1
+ 1335 00cd 31       		.uleb128 0x31
+ 1336 00ce 13       		.uleb128 0x13
+ 1337 00cf 00       		.byte	0
+ 1338 00d0 00       		.byte	0
+ 1339 00d1 10       		.uleb128 0x10
+ 1340 00d2 01       		.uleb128 0x1
+ 1341 00d3 01       		.byte	0x1
+ 1342 00d4 49       		.uleb128 0x49
+ 1343 00d5 13       		.uleb128 0x13
+ 1344 00d6 01       		.uleb128 0x1
+ 1345 00d7 13       		.uleb128 0x13
+ 1346 00d8 00       		.byte	0
+ 1347 00d9 00       		.byte	0
+ 1348 00da 11       		.uleb128 0x11
+ 1349 00db 21       		.uleb128 0x21
+ 1350 00dc 00       		.byte	0
+ 1351 00dd 49       		.uleb128 0x49
+ 1352 00de 13       		.uleb128 0x13
+ 1353 00df 2F       		.uleb128 0x2f
+ 1354 00e0 0B       		.uleb128 0xb
+ 1355 00e1 00       		.byte	0
+ 1356 00e2 00       		.byte	0
+ 1357 00e3 12       		.uleb128 0x12
+ 1358 00e4 34       		.uleb128 0x34
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccLB96uI.s 			page 30
+
+
+ 1359 00e5 00       		.byte	0
+ 1360 00e6 03       		.uleb128 0x3
+ 1361 00e7 0E       		.uleb128 0xe
+ 1362 00e8 3A       		.uleb128 0x3a
+ 1363 00e9 0B       		.uleb128 0xb
+ 1364 00ea 3B       		.uleb128 0x3b
+ 1365 00eb 05       		.uleb128 0x5
+ 1366 00ec 49       		.uleb128 0x49
+ 1367 00ed 13       		.uleb128 0x13
+ 1368 00ee 3F       		.uleb128 0x3f
+ 1369 00ef 19       		.uleb128 0x19
+ 1370 00f0 3C       		.uleb128 0x3c
+ 1371 00f1 19       		.uleb128 0x19
+ 1372 00f2 00       		.byte	0
+ 1373 00f3 00       		.byte	0
+ 1374 00f4 13       		.uleb128 0x13
+ 1375 00f5 35       		.uleb128 0x35
+ 1376 00f6 00       		.byte	0
+ 1377 00f7 49       		.uleb128 0x49
+ 1378 00f8 13       		.uleb128 0x13
+ 1379 00f9 00       		.byte	0
+ 1380 00fa 00       		.byte	0
+ 1381 00fb 14       		.uleb128 0x14
+ 1382 00fc 2E       		.uleb128 0x2e
+ 1383 00fd 00       		.byte	0
+ 1384 00fe 3F       		.uleb128 0x3f
+ 1385 00ff 19       		.uleb128 0x19
+ 1386 0100 3C       		.uleb128 0x3c
+ 1387 0101 19       		.uleb128 0x19
+ 1388 0102 6E       		.uleb128 0x6e
+ 1389 0103 0E       		.uleb128 0xe
+ 1390 0104 03       		.uleb128 0x3
+ 1391 0105 0E       		.uleb128 0xe
+ 1392 0106 3A       		.uleb128 0x3a
+ 1393 0107 0B       		.uleb128 0xb
+ 1394 0108 3B       		.uleb128 0x3b
+ 1395 0109 0B       		.uleb128 0xb
+ 1396 010a 00       		.byte	0
+ 1397 010b 00       		.byte	0
+ 1398 010c 00       		.byte	0
+ 1399              		.section	.debug_loc,"",%progbits
+ 1400              	.Ldebug_loc0:
+ 1401              	.LLST0:
+ 1402 0000 42000000 		.4byte	.LVL8
+ 1403 0004 4C000000 		.4byte	.LVL9
+ 1404 0008 0100     		.2byte	0x1
+ 1405 000a 50       		.byte	0x50
+ 1406 000b 58000000 		.4byte	.LVL12
+ 1407 000f 5A000000 		.4byte	.LVL13
+ 1408 0013 0100     		.2byte	0x1
+ 1409 0015 50       		.byte	0x50
+ 1410 0016 6A000000 		.4byte	.LVL15
+ 1411 001a 74000000 		.4byte	.LVL16
+ 1412 001e 0100     		.2byte	0x1
+ 1413 0020 50       		.byte	0x50
+ 1414 0021 80000000 		.4byte	.LVL19
+ 1415 0025 82000000 		.4byte	.LVL20
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccLB96uI.s 			page 31
+
+
+ 1416 0029 0100     		.2byte	0x1
+ 1417 002b 50       		.byte	0x50
+ 1418 002c 92000000 		.4byte	.LVL22
+ 1419 0030 9C000000 		.4byte	.LVL23
+ 1420 0034 0100     		.2byte	0x1
+ 1421 0036 50       		.byte	0x50
+ 1422 0037 A8000000 		.4byte	.LVL26
+ 1423 003b AA000000 		.4byte	.LVL27
+ 1424 003f 0100     		.2byte	0x1
+ 1425 0041 50       		.byte	0x50
+ 1426 0042 CA000000 		.4byte	.LVL30
+ 1427 0046 D4000000 		.4byte	.LVL31
+ 1428 004a 0100     		.2byte	0x1
+ 1429 004c 50       		.byte	0x50
+ 1430 004d E0000000 		.4byte	.LVL34
+ 1431 0051 E2000000 		.4byte	.LVL35
+ 1432 0055 0100     		.2byte	0x1
+ 1433 0057 50       		.byte	0x50
+ 1434 0058 F2000000 		.4byte	.LVL37
+ 1435 005c FC000000 		.4byte	.LVL38
+ 1436 0060 0100     		.2byte	0x1
+ 1437 0062 50       		.byte	0x50
+ 1438 0063 08010000 		.4byte	.LVL41
+ 1439 0067 0A010000 		.4byte	.LVL42
+ 1440 006b 0100     		.2byte	0x1
+ 1441 006d 50       		.byte	0x50
+ 1442 006e 18010000 		.4byte	.LVL44
+ 1443 0072 22010000 		.4byte	.LVL45
+ 1444 0076 0100     		.2byte	0x1
+ 1445 0078 50       		.byte	0x50
+ 1446 0079 2E010000 		.4byte	.LVL48
+ 1447 007d 30010000 		.4byte	.LVL49
+ 1448 0081 0100     		.2byte	0x1
+ 1449 0083 50       		.byte	0x50
+ 1450 0084 4E010000 		.4byte	.LVL53
+ 1451 0088 58010000 		.4byte	.LVL54
+ 1452 008c 0100     		.2byte	0x1
+ 1453 008e 50       		.byte	0x50
+ 1454 008f 64010000 		.4byte	.LVL57
+ 1455 0093 66010000 		.4byte	.LVL58
+ 1456 0097 0100     		.2byte	0x1
+ 1457 0099 50       		.byte	0x50
+ 1458 009a 00000000 		.4byte	0
+ 1459 009e 00000000 		.4byte	0
+ 1460              	.LLST1:
+ 1461 00a2 14000000 		.4byte	.LVL2
+ 1462 00a6 18000000 		.4byte	.LVL3
+ 1463 00aa 0200     		.2byte	0x2
+ 1464 00ac 30       		.byte	0x30
+ 1465 00ad 9F       		.byte	0x9f
+ 1466 00ae 18000000 		.4byte	.LVL3
+ 1467 00b2 38010000 		.4byte	.LVL51
+ 1468 00b6 0100     		.2byte	0x1
+ 1469 00b8 54       		.byte	0x54
+ 1470 00b9 00000000 		.4byte	0
+ 1471 00bd 00000000 		.4byte	0
+ 1472              		.section	.debug_aranges,"",%progbits
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccLB96uI.s 			page 32
+
+
+ 1473 0000 1C000000 		.4byte	0x1c
+ 1474 0004 0200     		.2byte	0x2
+ 1475 0006 00000000 		.4byte	.Ldebug_info0
+ 1476 000a 04       		.byte	0x4
+ 1477 000b 00       		.byte	0
+ 1478 000c 0000     		.2byte	0
+ 1479 000e 0000     		.2byte	0
+ 1480 0010 00000000 		.4byte	.LFB64
+ 1481 0014 A8010000 		.4byte	.LFE64-.LFB64
+ 1482 0018 00000000 		.4byte	0
+ 1483 001c 00000000 		.4byte	0
+ 1484              		.section	.debug_ranges,"",%progbits
+ 1485              	.Ldebug_ranges0:
+ 1486 0000 00000000 		.4byte	.LFB64
+ 1487 0004 A8010000 		.4byte	.LFE64
+ 1488 0008 00000000 		.4byte	0
+ 1489 000c 00000000 		.4byte	0
+ 1490              		.section	.debug_line,"",%progbits
+ 1491              	.Ldebug_line0:
+ 1492 0000 4A020000 		.section	.debug_str,"MS",%progbits,1
+ 1492      0200F001 
+ 1492      00000201 
+ 1492      FB0E0D00 
+ 1492      01010101 
+ 1493              	.LASF21:
+ 1494 0000 6D657373 		.ascii	"message\000"
+ 1494      61676500 
+ 1495              	.LASF4:
+ 1496 0008 5F5F7569 		.ascii	"__uint8_t\000"
+ 1496      6E74385F 
+ 1496      7400
+ 1497              	.LASF37:
+ 1498 0012 433A5C55 		.ascii	"C:\\Users\\Simone\\Desktop\\PSoC_03\\AY1920_II_HW_0"
+ 1498      73657273 
+ 1498      5C53696D 
+ 1498      6F6E655C 
+ 1498      4465736B 
+ 1499 0040 355F5052 		.ascii	"5_PROJ_2.cydsn\000"
+ 1499      4F4A5F32 
+ 1499      2E637964 
+ 1499      736E00
+ 1500              	.LASF27:
+ 1501 004f 4932435F 		.ascii	"I2C_Peripheral_IsDeviceConnected\000"
+ 1501      50657269 
+ 1501      70686572 
+ 1501      616C5F49 
+ 1501      73446576 
+ 1502              	.LASF5:
+ 1503 0070 5F5F696E 		.ascii	"__int32_t\000"
+ 1503      7433325F 
+ 1503      7400
+ 1504              	.LASF6:
+ 1505 007a 6C6F6E67 		.ascii	"long int\000"
+ 1505      20696E74 
+ 1505      00
+ 1506              	.LASF18:
+ 1507 0083 4572726F 		.ascii	"ErrorCode\000"
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccLB96uI.s 			page 33
+
+
+ 1507      72436F64 
+ 1507      6500
+ 1508              	.LASF13:
+ 1509 008d 666C6F61 		.ascii	"float\000"
+ 1509      7400
+ 1510              	.LASF1:
+ 1511 0093 756E7369 		.ascii	"unsigned char\000"
+ 1511      676E6564 
+ 1511      20636861 
+ 1511      7200
+ 1512              	.LASF35:
+ 1513 00a1 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1513      43313120 
+ 1513      352E342E 
+ 1513      31203230 
+ 1513      31363036 
+ 1514 00d4 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1514      20726576 
+ 1514      6973696F 
+ 1514      6E203233 
+ 1514      37373135 
+ 1515 0107 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1515      66756E63 
+ 1515      74696F6E 
+ 1515      2D736563 
+ 1515      74696F6E 
+ 1516              	.LASF7:
+ 1517 012f 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1517      20756E73 
+ 1517      69676E65 
+ 1517      6420696E 
+ 1517      7400
+ 1518              	.LASF3:
+ 1519 0141 73686F72 		.ascii	"short unsigned int\000"
+ 1519      7420756E 
+ 1519      7369676E 
+ 1519      65642069 
+ 1519      6E7400
+ 1520              	.LASF39:
+ 1521 0154 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1521      52784275 
+ 1521      66666572 
+ 1521      00
+ 1522              	.LASF14:
+ 1523 0161 646F7562 		.ascii	"double\000"
+ 1523      6C6500
+ 1524              	.LASF29:
+ 1525 0168 55415254 		.ascii	"UART_Debug_PutString\000"
+ 1525      5F446562 
+ 1525      75675F50 
+ 1525      75745374 
+ 1525      72696E67 
+ 1526              	.LASF34:
+ 1527 017d 4932435F 		.ascii	"I2C_Peripheral_WriteRegister\000"
+ 1527      50657269 
+ 1527      70686572 
+ 1527      616C5F57 
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccLB96uI.s 			page 34
+
+
+ 1527      72697465 
+ 1528              	.LASF38:
+ 1529 019a 6D61696E 		.ascii	"main\000"
+ 1529      00
+ 1530              	.LASF25:
+ 1531 019f 6374726C 		.ascii	"ctrl_reg1\000"
+ 1531      5F726567 
+ 1531      3100
+ 1532              	.LASF26:
+ 1533 01a9 6374726C 		.ascii	"ctrl_reg4\000"
+ 1533      5F726567 
+ 1533      3400
+ 1534              	.LASF10:
+ 1535 01b3 756E7369 		.ascii	"unsigned int\000"
+ 1535      676E6564 
+ 1535      20696E74 
+ 1535      00
+ 1536              	.LASF9:
+ 1537 01c0 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1537      206C6F6E 
+ 1537      6720756E 
+ 1537      7369676E 
+ 1537      65642069 
+ 1538              	.LASF11:
+ 1539 01d7 75696E74 		.ascii	"uint8_t\000"
+ 1539      385F7400 
+ 1540              	.LASF24:
+ 1541 01df 73746174 		.ascii	"status_register\000"
+ 1541      75735F72 
+ 1541      65676973 
+ 1541      74657200 
+ 1542              	.LASF12:
+ 1543 01ef 696E7433 		.ascii	"int32_t\000"
+ 1543      325F7400 
+ 1544              	.LASF20:
+ 1545 01f7 73697A65 		.ascii	"sizetype\000"
+ 1545      74797065 
+ 1545      00
+ 1546              	.LASF23:
+ 1547 0200 6572726F 		.ascii	"error\000"
+ 1547      7200
+ 1548              	.LASF8:
+ 1549 0206 6C6F6E67 		.ascii	"long long int\000"
+ 1549      206C6F6E 
+ 1549      6720696E 
+ 1549      7400
+ 1550              	.LASF31:
+ 1551 0214 55415254 		.ascii	"UART_Debug_Start\000"
+ 1551      5F446562 
+ 1551      75675F53 
+ 1551      74617274 
+ 1551      00
+ 1552              	.LASF36:
+ 1553 0225 6D61696E 		.ascii	"main.c\000"
+ 1553      2E6300
+ 1554              	.LASF15:
+ 1555 022c 63686172 		.ascii	"char\000"
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccLB96uI.s 			page 35
+
+
+ 1555      00
+ 1556              	.LASF33:
+ 1557 0231 4932435F 		.ascii	"I2C_Peripheral_ReadRegister\000"
+ 1557      50657269 
+ 1557      70686572 
+ 1557      616C5F52 
+ 1557      65616452 
+ 1558              	.LASF2:
+ 1559 024d 73686F72 		.ascii	"short int\000"
+ 1559      7420696E 
+ 1559      7400
+ 1560              	.LASF16:
+ 1561 0257 4E4F5F45 		.ascii	"NO_ERROR\000"
+ 1561      52524F52 
+ 1561      00
+ 1562              	.LASF17:
+ 1563 0260 4552524F 		.ascii	"ERROR\000"
+ 1563      5200
+ 1564              	.LASF19:
+ 1565 0266 6C6F6E67 		.ascii	"long double\000"
+ 1565      20646F75 
+ 1565      626C6500 
+ 1566              	.LASF0:
+ 1567 0272 7369676E 		.ascii	"signed char\000"
+ 1567      65642063 
+ 1567      68617200 
+ 1568              	.LASF22:
+ 1569 027e 77686F5F 		.ascii	"who_am_i_reg\000"
+ 1569      616D5F69 
+ 1569      5F726567 
+ 1569      00
+ 1570              	.LASF28:
+ 1571 028b 73707269 		.ascii	"sprintf\000"
+ 1571      6E746600 
+ 1572              	.LASF32:
+ 1573 0293 43794465 		.ascii	"CyDelay\000"
+ 1573      6C617900 
+ 1574              	.LASF30:
+ 1575 029b 4932435F 		.ascii	"I2C_Peripheral_Start\000"
+ 1575      50657269 
+ 1575      70686572 
+ 1575      616C5F53 
+ 1575      74617274 
+ 1576              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
