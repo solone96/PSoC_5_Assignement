@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 1
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccqukMtG.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 1
   28:main.c        **** 
   29:main.c        **** //brief Hex value to set normal mode 100Hz to the accelerator
   30:main.c        **** #define LIS3DH_NORMAL_MODE_100_CTRL_REG1 0x57
-ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 2
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccqukMtG.s 			page 2
 
 
   31:main.c        **** 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 1
   57:main.c        ****     
   58:main.c        ****     // String to print out messages on the UART
   59:main.c        ****     char message[50];
-ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 3
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccqukMtG.s 			page 3
 
 
   60:main.c        **** 
@@ -141,7 +141,7 @@ ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 1
   67:main.c        ****             sprintf(message, "Device 0x%02X is connected\r\n", i);
   66              		.loc 1 67 0
   67 0020 2246     		mov	r2, r4
-  68 0022 8049     		ldr	r1, .L24
+  68 0022 8249     		ldr	r1, .L24
   69 0024 07A8     		add	r0, sp, #28
   70 0026 FFF7FEFF 		bl	sprintf
   71              	.LVL5:
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 1
   88 003c 1820     		movs	r0, #24
   89 003e FFF7FEFF 		bl	I2C_Peripheral_ReadRegister
   90              	.LVL8:
-ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 4
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccqukMtG.s 			page 4
 
 
   80:main.c        ****                                                   LIS3DH_WHO_AM_I_REG_ADDR, 
@@ -190,7 +190,7 @@ ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 1
   84:main.c        ****         sprintf(message, "WHO AM I REG: 0x%02X [Expected: 0x33]\r\n", who_am_i_reg);
   93              		.loc 1 84 0
   94 0044 9DF81B20 		ldrb	r2, [sp, #27]	@ zero_extendqisi2
-  95 0048 7749     		ldr	r1, .L24+4
+  95 0048 7949     		ldr	r1, .L24+4
   96 004a 07A8     		add	r0, sp, #28
   97              	.LVL9:
   98 004c FFF7FEFF 		bl	sprintf
@@ -208,7 +208,7 @@ ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 1
   88:main.c        ****     {
   89:main.c        ****         UART_Debug_PutString("Error occurred during I2C comm\r\n");   
  107              		.loc 1 89 0
- 108 0058 7448     		ldr	r0, .L24+8
+ 108 0058 7648     		ldr	r0, .L24+8
  109              	.LVL13:
  110 005a FFF7FEFF 		bl	UART_Debug_PutString
  111              	.LVL14:
@@ -235,10 +235,10 @@ ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 1
  101:main.c        ****         sprintf(message, "STATUS REGISTER: 0x%02X\r\n", status_register);
  121              		.loc 1 101 0
  122 006c 9DF81A20 		ldrb	r2, [sp, #26]	@ zero_extendqisi2
- 123 0070 6F49     		ldr	r1, .L24+12
+ 123 0070 7149     		ldr	r1, .L24+12
  124 0072 07A8     		add	r0, sp, #28
  125              	.LVL16:
-ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 5
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccqukMtG.s 			page 5
 
 
  126 0074 FFF7FEFF 		bl	sprintf
@@ -256,7 +256,7 @@ ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 1
  105:main.c        ****     {
  106:main.c        ****         UART_Debug_PutString("Error occurred during I2C comm to read status register\r\n");   
  135              		.loc 1 106 0
- 136 0080 6C48     		ldr	r0, .L24+16
+ 136 0080 6E48     		ldr	r0, .L24+16
  137              	.LVL20:
  138 0082 FFF7FEFF 		bl	UART_Debug_PutString
  139              	.LVL21:
@@ -284,7 +284,7 @@ ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 1
  119:main.c        ****         sprintf(message, "CONTROL REGISTER 1: 0x%02X\r\n", ctrl_reg1);
  149              		.loc 1 119 0
  150 0094 9DF81920 		ldrb	r2, [sp, #25]	@ zero_extendqisi2
- 151 0098 6749     		ldr	r1, .L24+20
+ 151 0098 6949     		ldr	r1, .L24+20
  152 009a 07A8     		add	r0, sp, #28
  153              	.LVL23:
  154 009c FFF7FEFF 		bl	sprintf
@@ -298,14 +298,14 @@ ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 1
  161              	.LVL26:
  162              	.L9:
  121:main.c        ****     }
-ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 6
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccqukMtG.s 			page 6
 
 
  122:main.c        ****     else
  123:main.c        ****     {
  124:main.c        ****         UART_Debug_PutString("Error occurred during I2C comm to read control register 1\r\n");   
  163              		.loc 1 124 0
- 164 00a8 6448     		ldr	r0, .L24+24
+ 164 00a8 6648     		ldr	r0, .L24+24
  165              	.LVL27:
  166 00aa FFF7FEFF 		bl	UART_Debug_PutString
  167              	.LVL28:
@@ -319,7 +319,7 @@ ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 1
  131:main.c        ****         
  132:main.c        ****     UART_Debug_PutString("\r\nWriting new values..\r\n");
  169              		.loc 1 132 0
- 170 00ae 6448     		ldr	r0, .L24+28
+ 170 00ae 6648     		ldr	r0, .L24+28
  171 00b0 FFF7FEFF 		bl	UART_Debug_PutString
  172              	.LVL29:
  133:main.c        ****     
@@ -350,7 +350,7 @@ ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 1
  144:main.c        ****             sprintf(message, "CONTROL REGISTER 1 successfully written as: 0x%02X\r\n", ctrl_reg1);
  187              		.loc 1 144 0
  188 00cc 9DF81920 		ldrb	r2, [sp, #25]	@ zero_extendqisi2
- 189 00d0 5C49     		ldr	r1, .L24+32
+ 189 00d0 5E49     		ldr	r1, .L24+32
  190 00d2 07A8     		add	r0, sp, #28
  191              	.LVL31:
  192 00d4 FFF7FEFF 		bl	sprintf
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 1
  145:main.c        ****             UART_Debug_PutString(message); 
  194              		.loc 1 145 0
  195 00d8 07A8     		add	r0, sp, #28
-ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 7
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccqukMtG.s 			page 7
 
 
  196 00da FFF7FEFF 		bl	UART_Debug_PutString
@@ -371,7 +371,7 @@ ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 1
  148:main.c        ****         {
  149:main.c        ****             UART_Debug_PutString("Error occurred during I2C comm to set control register 1\r\n");  
  201              		.loc 1 149 0
- 202 00e0 5948     		ldr	r0, .L24+36
+ 202 00e0 5B48     		ldr	r0, .L24+36
  203              	.LVL35:
  204 00e2 FFF7FEFF 		bl	UART_Debug_PutString
  205              	.LVL36:
@@ -400,7 +400,7 @@ ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 1
  163:main.c        ****         sprintf(message, "CONTROL REGISTER 1 after overwrite operation: 0x%02X\r\n", ctrl_reg1);
  215              		.loc 1 163 0
  216 00f4 9DF81920 		ldrb	r2, [sp, #25]	@ zero_extendqisi2
- 217 00f8 5449     		ldr	r1, .L24+40
+ 217 00f8 5649     		ldr	r1, .L24+40
  218 00fa 07A8     		add	r0, sp, #28
  219              	.LVL38:
  220 00fc FFF7FEFF 		bl	sprintf
@@ -418,10 +418,10 @@ ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 1
  167:main.c        ****     {
  168:main.c        ****         UART_Debug_PutString("Error occurred during I2C comm to read control register 1\r\n");   
  229              		.loc 1 168 0
-ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 8
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccqukMtG.s 			page 8
 
 
- 230 0108 4C48     		ldr	r0, .L24+24
+ 230 0108 4E48     		ldr	r0, .L24+24
  231              	.LVL42:
  232 010a FFF7FEFF 		bl	UART_Debug_PutString
  233              	.LVL43:
@@ -453,7 +453,7 @@ ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 1
  185:main.c        ****         sprintf(message, "CONTROL REGISTER 4: 0x%02X\r\n", ctrl_reg4);
  243              		.loc 1 185 0
  244 011a 9DF81820 		ldrb	r2, [sp, #24]	@ zero_extendqisi2
- 245 011e 4C49     		ldr	r1, .L24+44
+ 245 011e 4E49     		ldr	r1, .L24+44
  246 0120 07A8     		add	r0, sp, #28
  247              	.LVL45:
  248 0122 FFF7FEFF 		bl	sprintf
@@ -471,14 +471,14 @@ ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 1
  189:main.c        ****     {
  190:main.c        ****         UART_Debug_PutString("Error occurred during I2C comm to read control register4\r\n");   
  257              		.loc 1 190 0
- 258 012e 4948     		ldr	r0, .L24+48
+ 258 012e 4B48     		ldr	r0, .L24+48
  259              	.LVL49:
  260 0130 FFF7FEFF 		bl	UART_Debug_PutString
  261              	.LVL50:
  262              	.L16:
  191:main.c        ****     }
  192:main.c        ****     
-ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 9
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccqukMtG.s 			page 9
 
 
  193:main.c        ****     
@@ -516,7 +516,7 @@ ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 1
  207:main.c        ****         sprintf(message, "CONTROL REGISTER 4 after being updated: 0x%02X\r\n", ctrl_reg4);
  281              		.loc 1 207 0
  282 0150 9DF81820 		ldrb	r2, [sp, #24]	@ zero_extendqisi2
- 283 0154 4049     		ldr	r1, .L24+52
+ 283 0154 4249     		ldr	r1, .L24+52
  284 0156 07A8     		add	r0, sp, #28
  285              	.LVL54:
  286 0158 FFF7FEFF 		bl	sprintf
@@ -534,11 +534,11 @@ ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 1
  211:main.c        ****     {
  212:main.c        ****         UART_Debug_PutString("Error occurred during I2C comm to read control register4\r\n");   
  295              		.loc 1 212 0
- 296 0164 3B48     		ldr	r0, .L24+48
+ 296 0164 3D48     		ldr	r0, .L24+48
  297              	.LVL58:
  298 0166 FFF7FEFF 		bl	UART_Debug_PutString
  299              	.LVL59:
-ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 10
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccqukMtG.s 			page 10
 
 
  300              	.L18:
@@ -547,2179 +547,2390 @@ ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 1
  215:main.c        ****     int16_t Out_X;
  216:main.c        ****     int16_t Out_Y;
  217:main.c        ****     int16_t Out_Z;
- 218:main.c        ****     uint8_t header = 0xA0;
- 219:main.c        ****     uint8_t footer = 0xC0;
- 220:main.c        ****     uint8_t OutArray[8]; 
- 221:main.c        ****     uint8_t X_Data[2];
- 222:main.c        ****     uint8_t Y_Data[2];
- 223:main.c        ****     uint8_t Z_Data[2];
- 224:main.c        ****     uint8_t status_reg;
- 225:main.c        ****     
- 226:main.c        ****     OutArray[0] = header;
- 301              		.loc 1 226 0
+ 218:main.c        ****     int16_t Out_X_mg;
+ 219:main.c        ****     int16_t Out_Y_mg;
+ 220:main.c        ****     int16_t Out_Z_mg;
+ 221:main.c        ****     uint8_t header = 0xA0;
+ 222:main.c        ****     uint8_t footer = 0xC0;
+ 223:main.c        ****     uint8_t OutArray[8]; 
+ 224:main.c        ****     uint8_t X_Data[2];
+ 225:main.c        ****     uint8_t Y_Data[2];
+ 226:main.c        ****     uint8_t Z_Data[2];
+ 227:main.c        ****     uint8_t status_reg;
+ 228:main.c        ****     
+ 229:main.c        ****     OutArray[0] = header;
+ 301              		.loc 1 229 0
  302 016a A023     		movs	r3, #160
  303 016c 8DF81030 		strb	r3, [sp, #16]
- 227:main.c        ****     OutArray[7] = footer;
- 304              		.loc 1 227 0
+ 230:main.c        ****     OutArray[7] = footer;
+ 304              		.loc 1 230 0
  305 0170 C023     		movs	r3, #192
  306 0172 8DF81730 		strb	r3, [sp, #23]
  307              	.L19:
- 228:main.c        ****     
- 229:main.c        ****     for(;;)
- 230:main.c        ****     {
- 231:main.c        ****         CyDelay(5); //output data at 100Hz = data available every 10ms, so the delay must be lower
- 308              		.loc 1 231 0
+ 231:main.c        ****     
+ 232:main.c        ****     for(;;)
+ 233:main.c        ****     {
+ 234:main.c        ****         CyDelay(5); //output data at 100Hz = data available every 10ms, so the delay must be lower
+ 308              		.loc 1 234 0
  309 0176 0520     		movs	r0, #5
  310 0178 FFF7FEFF 		bl	CyDelay
  311              	.LVL60:
- 232:main.c        ****         error= I2C_Peripheral_ReadRegister(LIS3DH_DEVICE_ADDRESS,
- 312              		.loc 1 232 0
+ 235:main.c        ****         error= I2C_Peripheral_ReadRegister(LIS3DH_DEVICE_ADDRESS,
+ 312              		.loc 1 235 0
  313 017c 0DF10302 		add	r2, sp, #3
  314 0180 2721     		movs	r1, #39
  315 0182 1820     		movs	r0, #24
  316 0184 FFF7FEFF 		bl	I2C_Peripheral_ReadRegister
  317              	.LVL61:
- 233:main.c        ****                                             LIS3DH_STATUS_REG,
- 234:main.c        ****                                            &status_reg);
- 235:main.c        ****         if (error==NO_ERROR)
- 318              		.loc 1 235 0
+ 236:main.c        ****                                             LIS3DH_STATUS_REG,
+ 237:main.c        ****                                            &status_reg);
+ 238:main.c        ****         if (error==NO_ERROR)
+ 318              		.loc 1 238 0
  319 0188 0028     		cmp	r0, #0
  320 018a F4D1     		bne	.L19
- 236:main.c        ****          {if(status_reg &= 0x08)
- 321              		.loc 1 236 0
+ 239:main.c        ****          {if(status_reg &= 0x08)
+ 321              		.loc 1 239 0
  322 018c 9DF80330 		ldrb	r3, [sp, #3]	@ zero_extendqisi2
  323 0190 03F00803 		and	r3, r3, #8
  324 0194 DBB2     		uxtb	r3, r3
  325 0196 8DF80330 		strb	r3, [sp, #3]
  326 019a 002B     		cmp	r3, #0
  327 019c EBD0     		beq	.L19
- 237:main.c        ****             {error = I2C_Peripheral_ReadRegisterMulti(LIS3DH_DEVICE_ADDRESS,
- 328              		.loc 1 237 0
+ 240:main.c        ****             {error = I2C_Peripheral_ReadRegisterMulti(LIS3DH_DEVICE_ADDRESS,
+ 328              		.loc 1 240 0
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccqukMtG.s 			page 11
+
+
  329 019e 03AB     		add	r3, sp, #12
  330 01a0 0222     		movs	r2, #2
  331 01a2 2821     		movs	r1, #40
-ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 11
-
-
  332 01a4 1820     		movs	r0, #24
  333              	.LVL62:
  334 01a6 FFF7FEFF 		bl	I2C_Peripheral_ReadRegisterMulti
  335              	.LVL63:
- 238:main.c        ****                                             LIS3DH_OUT_X_L,
- 239:main.c        ****                                             2,
- 240:main.c        ****                                             &X_Data[0]);
- 241:main.c        ****             
- 242:main.c        ****             error = I2C_Peripheral_ReadRegisterMulti(LIS3DH_DEVICE_ADDRESS,
- 336              		.loc 1 242 0
+ 241:main.c        ****                                             LIS3DH_OUT_X_L,
+ 242:main.c        ****                                             2,
+ 243:main.c        ****                                             &X_Data[0]);
+ 244:main.c        ****             
+ 245:main.c        ****             error = I2C_Peripheral_ReadRegisterMulti(LIS3DH_DEVICE_ADDRESS,
+ 336              		.loc 1 245 0
  337 01aa 02AB     		add	r3, sp, #8
  338 01ac 0222     		movs	r2, #2
  339 01ae 2A21     		movs	r1, #42
  340 01b0 1820     		movs	r0, #24
  341 01b2 FFF7FEFF 		bl	I2C_Peripheral_ReadRegisterMulti
  342              	.LVL64:
- 243:main.c        ****                                             LIS3DH_OUT_Y_L,
- 244:main.c        ****                                             2,
- 245:main.c        ****                                             &Y_Data[0]);
- 246:main.c        ****             
- 247:main.c        ****             error = I2C_Peripheral_ReadRegisterMulti(LIS3DH_DEVICE_ADDRESS,
- 343              		.loc 1 247 0
+ 246:main.c        ****                                             LIS3DH_OUT_Y_L,
+ 247:main.c        ****                                             2,
+ 248:main.c        ****                                             &Y_Data[0]);
+ 249:main.c        ****             
+ 250:main.c        ****             error = I2C_Peripheral_ReadRegisterMulti(LIS3DH_DEVICE_ADDRESS,
+ 343              		.loc 1 250 0
  344 01b6 01AB     		add	r3, sp, #4
  345 01b8 0222     		movs	r2, #2
  346 01ba 2C21     		movs	r1, #44
  347 01bc 1820     		movs	r0, #24
  348 01be FFF7FEFF 		bl	I2C_Peripheral_ReadRegisterMulti
  349              	.LVL65:
- 248:main.c        ****                                             LIS3DH_OUT_Z_L,
- 249:main.c        ****                                             2,
- 250:main.c        ****                                             &Z_Data[0]);
- 251:main.c        ****                 
- 252:main.c        ****              
- 253:main.c        ****             /*if (error == NO_ERROR)
- 254:main.c        ****             {sprintf(message, "OUT_X_L: 0x%02X\r\n", X_Data[0]);
- 255:main.c        ****              UART_Debug_PutString(message); 
- 256:main.c        ****              sprintf(message, "OUT_X_H: 0x%02X\r\n", X_Data[1]);
- 257:main.c        ****              UART_Debug_PutString(message); 
- 258:main.c        ****             }*/
- 259:main.c        ****             if(error == NO_ERROR)
- 350              		.loc 1 259 0
+ 251:main.c        ****                                             LIS3DH_OUT_Z_L,
+ 252:main.c        ****                                             2,
+ 253:main.c        ****                                             &Z_Data[0]);
+ 254:main.c        ****                 
+ 255:main.c        ****              
+ 256:main.c        ****             /*if (error == NO_ERROR)
+ 257:main.c        ****             {sprintf(message, "OUT_X_L: 0x%02X\r\n", X_Data[0]);
+ 258:main.c        ****              UART_Debug_PutString(message); 
+ 259:main.c        ****              sprintf(message, "OUT_X_H: 0x%02X\r\n", X_Data[1]);
+ 260:main.c        ****              UART_Debug_PutString(message); 
+ 261:main.c        ****             }*/
+ 262:main.c        ****             if(error == NO_ERROR)
+ 350              		.loc 1 262 0
  351 01c2 0028     		cmp	r0, #0
  352 01c4 D7D1     		bne	.L19
- 260:main.c        ****               {
- 261:main.c        ****                Out_X = (int16)((X_Data[0] | (X_Data[1]<<8)))>>6;
- 353              		.loc 1 261 0
+ 263:main.c        ****               {
+ 264:main.c        ****                Out_X = (int16)((X_Data[0] | (X_Data[1]<<8)))>>6;//out_x in digit (10bit)
+ 353              		.loc 1 264 0
  354 01c6 9DF80C30 		ldrb	r3, [sp, #12]	@ zero_extendqisi2
  355 01ca 9DF80D20 		ldrb	r2, [sp, #13]	@ zero_extendqisi2
  356 01ce 43EA0223 		orr	r3, r3, r2, lsl #8
  357 01d2 43F38913 		sbfx	r3, r3, #6, #10
  358              	.LVL66:
- 262:main.c        ****                OutArray[1] = (uint8_t)(Out_X & 0xFF);
- 359              		.loc 1 262 0
- 360 01d6 8DF81130 		strb	r3, [sp, #17]
- 263:main.c        ****                OutArray[2] = (uint8_t)(Out_X >> 8);
- 361              		.loc 1 263 0
- 362 01da C3F30723 		ubfx	r3, r3, #8, #8
-ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 12
-
-
- 363              	.LVL67:
- 364 01de 8DF81230 		strb	r3, [sp, #18]
- 264:main.c        ****                
- 265:main.c        ****                Out_Y = (int16)((Y_Data[0] | (Y_Data[1]<<8)))>>6;
- 365              		.loc 1 265 0
- 366 01e2 9DF80830 		ldrb	r3, [sp, #8]	@ zero_extendqisi2
- 367 01e6 9DF80920 		ldrb	r2, [sp, #9]	@ zero_extendqisi2
- 368              	.LVL68:
- 369 01ea 43EA0223 		orr	r3, r3, r2, lsl #8
- 370 01ee 43F38913 		sbfx	r3, r3, #6, #10
- 371              	.LVL69:
- 266:main.c        ****                OutArray[3] = (uint8_t)(Out_Y & 0xFF);
- 372              		.loc 1 266 0
- 373 01f2 8DF81330 		strb	r3, [sp, #19]
- 267:main.c        ****                OutArray[4] = (uint8_t)(Out_Y >> 8);
- 374              		.loc 1 267 0
- 375 01f6 C3F30723 		ubfx	r3, r3, #8, #8
- 376              	.LVL70:
- 377 01fa 8DF81430 		strb	r3, [sp, #20]
- 268:main.c        ****             
- 269:main.c        ****                Out_Z = (int16)((Z_Data[0] | (Z_Data[1]<<8)))>>6;
- 378              		.loc 1 269 0
- 379 01fe 9DF80430 		ldrb	r3, [sp, #4]	@ zero_extendqisi2
- 380 0202 9DF80520 		ldrb	r2, [sp, #5]	@ zero_extendqisi2
- 381              	.LVL71:
- 382 0206 43EA0223 		orr	r3, r3, r2, lsl #8
- 383 020a 43F38913 		sbfx	r3, r3, #6, #10
- 384              	.LVL72:
- 270:main.c        ****                OutArray[5] = (uint8_t)(Out_Z & 0xFF);
- 385              		.loc 1 270 0
- 386 020e 8DF81530 		strb	r3, [sp, #21]
- 271:main.c        ****                OutArray[6] = (uint8_t)(Out_Z >> 8);
- 387              		.loc 1 271 0
- 388 0212 C3F30723 		ubfx	r3, r3, #8, #8
- 389              	.LVL73:
- 390 0216 8DF81630 		strb	r3, [sp, #22]
- 272:main.c        ****                //sprintf(message, "OUT_X: %d\r\n", Out_X);
- 273:main.c        ****              //UART_Debug_PutString(message);
- 274:main.c        ****                UART_Debug_PutArray(OutArray, 8);
- 391              		.loc 1 274 0
- 392 021a 0821     		movs	r1, #8
- 393 021c 04A8     		add	r0, sp, #16
- 394              	.LVL74:
- 395 021e FFF7FEFF 		bl	UART_Debug_PutArray
- 396              	.LVL75:
- 397 0222 A8E7     		b	.L19
- 398              	.L25:
- 399              		.align	2
- 400              	.L24:
- 401 0224 00000000 		.word	.LC0
- 402 0228 20000000 		.word	.LC1
- 403 022c 48000000 		.word	.LC2
- 404 0230 6C000000 		.word	.LC3
- 405 0234 88000000 		.word	.LC4
- 406 0238 C4000000 		.word	.LC5
- 407 023c E4000000 		.word	.LC6
- 408 0240 20010000 		.word	.LC7
-ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 13
-
-
- 409 0244 3C010000 		.word	.LC8
- 410 0248 74010000 		.word	.LC9
- 411 024c B0010000 		.word	.LC10
- 412 0250 E8010000 		.word	.LC11
- 413 0254 08020000 		.word	.LC12
- 414 0258 44020000 		.word	.LC13
- 415              		.cfi_endproc
- 416              	.LFE64:
- 417              		.size	main, .-main
- 418              		.section	.rodata.str1.4,"aMS",%progbits,1
- 419              		.align	2
- 420              	.LC0:
- 421 0000 44657669 		.ascii	"Device 0x%02X is connected\015\012\000"
- 421      63652030 
- 421      78253032 
- 421      58206973 
- 421      20636F6E 
- 422 001d 000000   		.space	3
- 423              	.LC1:
- 424 0020 57484F20 		.ascii	"WHO AM I REG: 0x%02X [Expected: 0x33]\015\012\000"
- 424      414D2049 
- 424      20524547 
- 424      3A203078 
- 424      25303258 
- 425              	.LC2:
- 426 0048 4572726F 		.ascii	"Error occurred during I2C comm\015\012\000"
- 426      72206F63 
- 426      63757272 
- 426      65642064 
- 426      7572696E 
- 427 0069 000000   		.space	3
- 428              	.LC3:
- 429 006c 53544154 		.ascii	"STATUS REGISTER: 0x%02X\015\012\000"
- 429      55532052 
- 429      45474953 
- 429      5445523A 
- 429      20307825 
- 430 0086 0000     		.space	2
- 431              	.LC4:
- 432 0088 4572726F 		.ascii	"Error occurred during I2C comm to read status regis"
- 432      72206F63 
- 432      63757272 
- 432      65642064 
- 432      7572696E 
- 433 00bb 7465720D 		.ascii	"ter\015\012\000"
- 433      0A00
- 434 00c1 000000   		.space	3
- 435              	.LC5:
- 436 00c4 434F4E54 		.ascii	"CONTROL REGISTER 1: 0x%02X\015\012\000"
- 436      524F4C20 
- 436      52454749 
- 436      53544552 
- 436      20313A20 
- 437 00e1 000000   		.space	3
- 438              	.LC6:
- 439 00e4 4572726F 		.ascii	"Error occurred during I2C comm to read control regi"
- 439      72206F63 
-ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 14
-
-
- 439      63757272 
- 439      65642064 
- 439      7572696E 
- 440 0117 73746572 		.ascii	"ster 1\015\012\000"
- 440      20310D0A 
- 440      00
- 441              	.LC7:
- 442 0120 0D0A5772 		.ascii	"\015\012Writing new values..\015\012\000"
- 442      6974696E 
- 442      67206E65 
- 442      77207661 
- 442      6C756573 
- 443 0139 000000   		.space	3
- 444              	.LC8:
- 445 013c 434F4E54 		.ascii	"CONTROL REGISTER 1 successfully written as: 0x%02X\015"
- 445      524F4C20 
- 445      52454749 
- 445      53544552 
- 445      20312073 
- 446 016f 0A00     		.ascii	"\012\000"
- 447 0171 000000   		.space	3
- 448              	.LC9:
- 449 0174 4572726F 		.ascii	"Error occurred during I2C comm to set control regis"
- 449      72206F63 
- 449      63757272 
- 449      65642064 
- 449      7572696E 
- 450 01a7 74657220 		.ascii	"ter 1\015\012\000"
- 450      310D0A00 
- 451 01af 00       		.space	1
- 452              	.LC10:
- 453 01b0 434F4E54 		.ascii	"CONTROL REGISTER 1 after overwrite operation: 0x%02"
- 453      524F4C20 
- 453      52454749 
- 453      53544552 
- 453      20312061 
- 454 01e3 580D0A00 		.ascii	"X\015\012\000"
- 455 01e7 00       		.space	1
- 456              	.LC11:
- 457 01e8 434F4E54 		.ascii	"CONTROL REGISTER 4: 0x%02X\015\012\000"
- 457      524F4C20 
- 457      52454749 
- 457      53544552 
- 457      20343A20 
- 458 0205 000000   		.space	3
- 459              	.LC12:
- 460 0208 4572726F 		.ascii	"Error occurred during I2C comm to read control regi"
- 460      72206F63 
- 460      63757272 
- 460      65642064 
- 460      7572696E 
- 461 023b 73746572 		.ascii	"ster4\015\012\000"
- 461      340D0A00 
- 462 0243 00       		.space	1
- 463              	.LC13:
- 464 0244 434F4E54 		.ascii	"CONTROL REGISTER 4 after being updated: 0x%02X\015\012"
- 464      524F4C20 
-ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 15
-
-
- 464      52454749 
- 464      53544552 
- 464      20342061 
- 465 0274 00       		.ascii	"\000"
- 466              		.text
- 467              	.Letext0:
- 468              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
- 469              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
- 470              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
- 471              		.file 5 "ErrorCodes.h"
- 472              		.file 6 "I2C_Interface.h"
- 473              		.file 7 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
- 474              		.file 8 "Generated_Source\\PSoC5/UART_Debug.h"
- 475              		.file 9 "Generated_Source\\PSoC5/CyLib.h"
- 476              		.file 10 "Generated_Source\\PSoC5/core_cm3.h"
- 477              		.section	.debug_info,"",%progbits
- 478              	.Ldebug_info0:
- 479 0000 F1060000 		.4byte	0x6f1
- 480 0004 0400     		.2byte	0x4
- 481 0006 00000000 		.4byte	.Ldebug_abbrev0
- 482 000a 04       		.byte	0x4
- 483 000b 01       		.uleb128 0x1
- 484 000c C1000000 		.4byte	.LASF50
- 485 0010 0C       		.byte	0xc
- 486 0011 AD020000 		.4byte	.LASF51
- 487 0015 DF010000 		.4byte	.LASF52
- 488 0019 00000000 		.4byte	.Ldebug_ranges0+0
- 489 001d 00000000 		.4byte	0
- 490 0021 00000000 		.4byte	.Ldebug_line0
- 491 0025 02       		.uleb128 0x2
- 492 0026 01       		.byte	0x1
- 493 0027 06       		.byte	0x6
- 494 0028 08030000 		.4byte	.LASF0
- 495 002c 03       		.uleb128 0x3
- 496 002d 3A000000 		.4byte	.LASF2
- 497 0031 02       		.byte	0x2
- 498 0032 1D       		.byte	0x1d
- 499 0033 37000000 		.4byte	0x37
- 500 0037 02       		.uleb128 0x2
- 501 0038 01       		.byte	0x1
- 502 0039 08       		.byte	0x8
- 503 003a B3000000 		.4byte	.LASF1
- 504 003e 03       		.uleb128 0x3
- 505 003f CB010000 		.4byte	.LASF3
- 506 0043 02       		.byte	0x2
- 507 0044 29       		.byte	0x29
- 508 0045 49000000 		.4byte	0x49
- 509 0049 02       		.uleb128 0x2
- 510 004a 02       		.byte	0x2
- 511 004b 05       		.byte	0x5
- 512 004c D5020000 		.4byte	.LASF4
- 513 0050 02       		.uleb128 0x2
- 514 0051 02       		.byte	0x2
- 515 0052 07       		.byte	0x7
- 516 0053 67010000 		.4byte	.LASF5
- 517 0057 03       		.uleb128 0x3
- 518 0058 6C000000 		.4byte	.LASF6
-ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 16
-
-
- 519 005c 02       		.byte	0x2
- 520 005d 3F       		.byte	0x3f
- 521 005e 62000000 		.4byte	0x62
- 522 0062 02       		.uleb128 0x2
- 523 0063 04       		.byte	0x4
- 524 0064 05       		.byte	0x5
- 525 0065 76000000 		.4byte	.LASF7
- 526 0069 02       		.uleb128 0x2
- 527 006a 04       		.byte	0x4
- 528 006b 07       		.byte	0x7
- 529 006c 55010000 		.4byte	.LASF8
- 530 0070 02       		.uleb128 0x2
- 531 0071 08       		.byte	0x8
- 532 0072 05       		.byte	0x5
- 533 0073 8E020000 		.4byte	.LASF9
- 534 0077 02       		.uleb128 0x2
- 535 0078 08       		.byte	0x8
- 536 0079 07       		.byte	0x7
- 537 007a 33020000 		.4byte	.LASF10
- 538 007e 04       		.uleb128 0x4
- 539 007f 04       		.byte	0x4
- 540 0080 05       		.byte	0x5
- 541 0081 696E7400 		.ascii	"int\000"
- 542 0085 02       		.uleb128 0x2
- 543 0086 04       		.byte	0x4
- 544 0087 07       		.byte	0x7
- 545 0088 26020000 		.4byte	.LASF11
- 546 008c 03       		.uleb128 0x3
- 547 008d 4A020000 		.4byte	.LASF12
- 548 0091 03       		.byte	0x3
- 549 0092 18       		.byte	0x18
- 550 0093 2C000000 		.4byte	0x2c
- 551 0097 03       		.uleb128 0x3
- 552 0098 52020000 		.4byte	.LASF13
- 553 009c 03       		.byte	0x3
- 554 009d 20       		.byte	0x20
- 555 009e 3E000000 		.4byte	0x3e
- 556 00a2 03       		.uleb128 0x3
- 557 00a3 77020000 		.4byte	.LASF14
- 558 00a7 03       		.byte	0x3
- 559 00a8 2C       		.byte	0x2c
- 560 00a9 57000000 		.4byte	0x57
- 561 00ad 05       		.uleb128 0x5
- 562 00ae 4F010000 		.4byte	.LASF15
- 563 00b2 04       		.byte	0x4
- 564 00b3 E801     		.2byte	0x1e8
- 565 00b5 49000000 		.4byte	0x49
- 566 00b9 02       		.uleb128 0x2
- 567 00ba 04       		.byte	0x4
- 568 00bb 04       		.byte	0x4
- 569 00bc A4000000 		.4byte	.LASF16
- 570 00c0 02       		.uleb128 0x2
- 571 00c1 08       		.byte	0x8
- 572 00c2 04       		.byte	0x4
- 573 00c3 9D000000 		.4byte	.LASF17
- 574 00c7 02       		.uleb128 0x2
- 575 00c8 01       		.byte	0x1
-ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 17
-
-
- 576 00c9 08       		.byte	0x8
- 577 00ca B4020000 		.4byte	.LASF18
- 578 00ce 06       		.uleb128 0x6
- 579 00cf 01       		.byte	0x1
- 580 00d0 37000000 		.4byte	0x37
- 581 00d4 05       		.byte	0x5
- 582 00d5 15       		.byte	0x15
- 583 00d6 E7000000 		.4byte	0xe7
- 584 00da 07       		.uleb128 0x7
- 585 00db E6020000 		.4byte	.LASF19
- 586 00df 00       		.byte	0
- 587 00e0 07       		.uleb128 0x7
- 588 00e1 F6020000 		.4byte	.LASF20
- 589 00e5 01       		.byte	0x1
- 590 00e6 00       		.byte	0
- 591 00e7 03       		.uleb128 0x3
- 592 00e8 93000000 		.4byte	.LASF21
- 593 00ec 05       		.byte	0x5
- 594 00ed 18       		.byte	0x18
- 595 00ee CE000000 		.4byte	0xce
- 596 00f2 02       		.uleb128 0x2
- 597 00f3 08       		.byte	0x8
- 598 00f4 04       		.byte	0x4
- 599 00f5 FC020000 		.4byte	.LASF22
- 600 00f9 02       		.uleb128 0x2
- 601 00fa 04       		.byte	0x4
- 602 00fb 07       		.byte	0x7
- 603 00fc 7F020000 		.4byte	.LASF23
- 604 0100 08       		.uleb128 0x8
- 605 0101 C6010000 		.4byte	.LASF53
- 606 0105 01       		.byte	0x1
- 607 0106 30       		.byte	0x30
- 608 0107 7E000000 		.4byte	0x7e
- 609 010b 00000000 		.4byte	.LFB64
- 610 010f 5C020000 		.4byte	.LFE64-.LFB64
- 611 0113 01       		.uleb128 0x1
- 612 0114 9C       		.byte	0x9c
- 613 0115 45060000 		.4byte	0x645
- 614 0119 09       		.uleb128 0x9
- 615 011a 00000000 		.4byte	.LASF24
- 616 011e 01       		.byte	0x1
- 617 011f 3B       		.byte	0x3b
- 618 0120 45060000 		.4byte	0x645
- 619 0124 02       		.uleb128 0x2
- 620 0125 91       		.byte	0x91
- 621 0126 44       		.sleb128 -60
- 622 0127 09       		.uleb128 0x9
- 623 0128 14030000 		.4byte	.LASF25
- 624 012c 01       		.byte	0x1
- 625 012d 4E       		.byte	0x4e
- 626 012e 8C000000 		.4byte	0x8c
- 627 0132 02       		.uleb128 0x2
- 628 0133 91       		.byte	0x91
- 629 0134 43       		.sleb128 -61
- 630 0135 0A       		.uleb128 0xa
- 631 0136 88020000 		.4byte	.LASF26
- 632 013a 01       		.byte	0x1
-ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 18
-
-
- 633 013b 4F       		.byte	0x4f
- 634 013c E7000000 		.4byte	0xe7
- 635 0140 00000000 		.4byte	.LLST0
- 636 0144 09       		.uleb128 0x9
- 637 0145 67020000 		.4byte	.LASF27
- 638 0149 01       		.byte	0x1
- 639 014a 5E       		.byte	0x5e
- 640 014b 8C000000 		.4byte	0x8c
- 641 014f 02       		.uleb128 0x2
- 642 0150 91       		.byte	0x91
- 643 0151 42       		.sleb128 -62
- 644 0152 09       		.uleb128 0x9
- 645 0153 D5010000 		.4byte	.LASF28
- 646 0157 01       		.byte	0x1
- 647 0158 70       		.byte	0x70
- 648 0159 8C000000 		.4byte	0x8c
- 649 015d 02       		.uleb128 0x2
- 650 015e 91       		.byte	0x91
- 651 015f 41       		.sleb128 -63
- 652 0160 09       		.uleb128 0x9
- 653 0161 1C020000 		.4byte	.LASF29
- 654 0165 01       		.byte	0x1
- 655 0166 B1       		.byte	0xb1
- 656 0167 8C000000 		.4byte	0x8c
- 657 016b 02       		.uleb128 0x2
- 658 016c 91       		.byte	0x91
- 659 016d 40       		.sleb128 -64
- 660 016e 0A       		.uleb128 0xa
- 661 016f 08000000 		.4byte	.LASF30
- 662 0173 01       		.byte	0x1
- 663 0174 D7       		.byte	0xd7
- 664 0175 97000000 		.4byte	0x97
- 665 0179 B8000000 		.4byte	.LLST1
- 666 017d 0A       		.uleb128 0xa
- 667 017e 0E000000 		.4byte	.LASF31
- 668 0182 01       		.byte	0x1
- 669 0183 D8       		.byte	0xd8
- 670 0184 97000000 		.4byte	0x97
- 671 0188 0D010000 		.4byte	.LLST2
- 672 018c 0A       		.uleb128 0xa
- 673 018d 14000000 		.4byte	.LASF32
- 674 0191 01       		.byte	0x1
- 675 0192 D9       		.byte	0xd9
- 676 0193 97000000 		.4byte	0x97
- 677 0197 62010000 		.4byte	.LLST3
- 678 019b 0B       		.uleb128 0xb
- 679 019c EF020000 		.4byte	.LASF33
- 680 01a0 01       		.byte	0x1
- 681 01a1 DA       		.byte	0xda
- 682 01a2 8C000000 		.4byte	0x8c
- 683 01a6 A07F     		.sleb128 -96
- 684 01a8 0B       		.uleb128 0xb
- 685 01a9 7A010000 		.4byte	.LASF34
- 686 01ad 01       		.byte	0x1
- 687 01ae DB       		.byte	0xdb
- 688 01af 8C000000 		.4byte	0x8c
- 689 01b3 40       		.sleb128 -64
-ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 19
-
-
- 690 01b4 09       		.uleb128 0x9
- 691 01b5 AA000000 		.4byte	.LASF35
- 692 01b9 01       		.byte	0x1
- 693 01ba DC       		.byte	0xdc
- 694 01bb 55060000 		.4byte	0x655
- 695 01bf 03       		.uleb128 0x3
- 696 01c0 91       		.byte	0x91
- 697 01c1 B87F     		.sleb128 -72
- 698 01c3 09       		.uleb128 0x9
- 699 01c4 65000000 		.4byte	.LASF36
- 700 01c8 01       		.byte	0x1
- 701 01c9 DD       		.byte	0xdd
- 702 01ca 65060000 		.4byte	0x665
- 703 01ce 03       		.uleb128 0x3
- 704 01cf 91       		.byte	0x91
- 705 01d0 B47F     		.sleb128 -76
- 706 01d2 09       		.uleb128 0x9
- 707 01d3 81010000 		.4byte	.LASF37
- 708 01d7 01       		.byte	0x1
- 709 01d8 DE       		.byte	0xde
- 710 01d9 65060000 		.4byte	0x665
- 711 01dd 03       		.uleb128 0x3
- 712 01de 91       		.byte	0x91
- 713 01df B07F     		.sleb128 -80
- 714 01e1 09       		.uleb128 0x9
- 715 01e2 DF020000 		.4byte	.LASF38
- 716 01e6 01       		.byte	0x1
- 717 01e7 DF       		.byte	0xdf
- 718 01e8 65060000 		.4byte	0x665
- 719 01ec 03       		.uleb128 0x3
- 720 01ed 91       		.byte	0x91
- 721 01ee AC7F     		.sleb128 -84
- 722 01f0 09       		.uleb128 0x9
- 723 01f1 1A000000 		.4byte	.LASF39
- 724 01f5 01       		.byte	0x1
- 725 01f6 E0       		.byte	0xe0
- 726 01f7 8C000000 		.4byte	0x8c
- 727 01fb 03       		.uleb128 0x3
- 728 01fc 91       		.byte	0x91
- 729 01fd AB7F     		.sleb128 -85
- 730 01ff 0C       		.uleb128 0xc
- 731 0200 14000000 		.4byte	.LBB2
- 732 0204 22000000 		.4byte	.LBE2-.LBB2
- 733 0208 61020000 		.4byte	0x261
- 734 020c 0D       		.uleb128 0xd
- 735 020d 6900     		.ascii	"i\000"
- 736 020f 01       		.byte	0x1
- 737 0210 3E       		.byte	0x3e
- 738 0211 7E000000 		.4byte	0x7e
- 739 0215 93010000 		.4byte	.LLST4
- 740 0219 0E       		.uleb128 0xe
- 741 021a 1E000000 		.4byte	.LVL4
- 742 021e 86060000 		.4byte	0x686
- 743 0222 2D020000 		.4byte	0x22d
- 744 0226 0F       		.uleb128 0xf
- 745 0227 01       		.uleb128 0x1
- 746 0228 50       		.byte	0x50
-ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 20
-
-
- 747 0229 02       		.uleb128 0x2
- 748 022a 74       		.byte	0x74
- 749 022b 00       		.sleb128 0
- 750 022c 00       		.byte	0
- 751 022d 0E       		.uleb128 0xe
- 752 022e 2A000000 		.4byte	.LVL5
- 753 0232 91060000 		.4byte	0x691
- 754 0236 50020000 		.4byte	0x250
- 755 023a 0F       		.uleb128 0xf
- 756 023b 01       		.uleb128 0x1
- 757 023c 50       		.byte	0x50
- 758 023d 02       		.uleb128 0x2
- 759 023e 91       		.byte	0x91
- 760 023f 44       		.sleb128 -60
- 761 0240 0F       		.uleb128 0xf
- 762 0241 01       		.uleb128 0x1
- 763 0242 51       		.byte	0x51
- 764 0243 05       		.uleb128 0x5
- 765 0244 03       		.byte	0x3
- 766 0245 00000000 		.4byte	.LC0
- 767 0249 0F       		.uleb128 0xf
- 768 024a 01       		.uleb128 0x1
- 769 024b 52       		.byte	0x52
- 770 024c 02       		.uleb128 0x2
- 771 024d 74       		.byte	0x74
- 772 024e 00       		.sleb128 0
- 773 024f 00       		.byte	0
- 774 0250 10       		.uleb128 0x10
- 775 0251 30000000 		.4byte	.LVL6
- 776 0255 9C060000 		.4byte	0x69c
- 777 0259 0F       		.uleb128 0xf
- 778 025a 01       		.uleb128 0x1
- 779 025b 50       		.byte	0x50
- 780 025c 02       		.uleb128 0x2
- 781 025d 91       		.byte	0x91
- 782 025e 44       		.sleb128 -60
- 783 025f 00       		.byte	0
- 784 0260 00       		.byte	0
- 785 0261 11       		.uleb128 0x11
- 786 0262 0A000000 		.4byte	.LVL0
- 787 0266 A7060000 		.4byte	0x6a7
- 788 026a 11       		.uleb128 0x11
- 789 026b 0E000000 		.4byte	.LVL1
- 790 026f B2060000 		.4byte	0x6b2
- 791 0273 0E       		.uleb128 0xe
- 792 0274 14000000 		.4byte	.LVL2
- 793 0278 BD060000 		.4byte	0x6bd
- 794 027c 86020000 		.4byte	0x286
- 795 0280 0F       		.uleb128 0xf
- 796 0281 01       		.uleb128 0x1
- 797 0282 50       		.byte	0x50
- 798 0283 01       		.uleb128 0x1
- 799 0284 35       		.byte	0x35
- 800 0285 00       		.byte	0
- 801 0286 0E       		.uleb128 0xe
- 802 0287 42000000 		.4byte	.LVL8
- 803 028b C8060000 		.4byte	0x6c8
-ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 21
-
-
- 804 028f A4020000 		.4byte	0x2a4
- 805 0293 0F       		.uleb128 0xf
- 806 0294 01       		.uleb128 0x1
- 807 0295 50       		.byte	0x50
- 808 0296 01       		.uleb128 0x1
- 809 0297 48       		.byte	0x48
- 810 0298 0F       		.uleb128 0xf
- 811 0299 01       		.uleb128 0x1
- 812 029a 51       		.byte	0x51
- 813 029b 01       		.uleb128 0x1
- 814 029c 3F       		.byte	0x3f
- 815 029d 0F       		.uleb128 0xf
- 816 029e 01       		.uleb128 0x1
- 817 029f 52       		.byte	0x52
- 818 02a0 02       		.uleb128 0x2
- 819 02a1 91       		.byte	0x91
- 820 02a2 43       		.sleb128 -61
- 821 02a3 00       		.byte	0
- 822 02a4 0E       		.uleb128 0xe
- 823 02a5 50000000 		.4byte	.LVL10
- 824 02a9 91060000 		.4byte	0x691
- 825 02ad C1020000 		.4byte	0x2c1
- 826 02b1 0F       		.uleb128 0xf
- 827 02b2 01       		.uleb128 0x1
- 828 02b3 50       		.byte	0x50
- 829 02b4 02       		.uleb128 0x2
- 830 02b5 91       		.byte	0x91
- 831 02b6 44       		.sleb128 -60
- 832 02b7 0F       		.uleb128 0xf
- 833 02b8 01       		.uleb128 0x1
- 834 02b9 51       		.byte	0x51
- 835 02ba 05       		.uleb128 0x5
- 836 02bb 03       		.byte	0x3
- 837 02bc 20000000 		.4byte	.LC1
- 838 02c0 00       		.byte	0
- 839 02c1 0E       		.uleb128 0xe
- 840 02c2 56000000 		.4byte	.LVL11
- 841 02c6 9C060000 		.4byte	0x69c
- 842 02ca D5020000 		.4byte	0x2d5
- 843 02ce 0F       		.uleb128 0xf
- 844 02cf 01       		.uleb128 0x1
- 845 02d0 50       		.byte	0x50
- 846 02d1 02       		.uleb128 0x2
- 847 02d2 91       		.byte	0x91
- 848 02d3 44       		.sleb128 -60
- 849 02d4 00       		.byte	0
- 850 02d5 0E       		.uleb128 0xe
- 851 02d6 5E000000 		.4byte	.LVL14
- 852 02da 9C060000 		.4byte	0x69c
- 853 02de EC020000 		.4byte	0x2ec
- 854 02e2 0F       		.uleb128 0xf
- 855 02e3 01       		.uleb128 0x1
- 856 02e4 50       		.byte	0x50
- 857 02e5 05       		.uleb128 0x5
- 858 02e6 03       		.byte	0x3
- 859 02e7 48000000 		.4byte	.LC2
- 860 02eb 00       		.byte	0
-ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 22
-
-
- 861 02ec 0E       		.uleb128 0xe
- 862 02ed 6A000000 		.4byte	.LVL15
- 863 02f1 C8060000 		.4byte	0x6c8
- 864 02f5 0B030000 		.4byte	0x30b
- 865 02f9 0F       		.uleb128 0xf
- 866 02fa 01       		.uleb128 0x1
- 867 02fb 50       		.byte	0x50
- 868 02fc 01       		.uleb128 0x1
- 869 02fd 48       		.byte	0x48
- 870 02fe 0F       		.uleb128 0xf
- 871 02ff 01       		.uleb128 0x1
- 872 0300 51       		.byte	0x51
- 873 0301 02       		.uleb128 0x2
- 874 0302 08       		.byte	0x8
- 875 0303 27       		.byte	0x27
- 876 0304 0F       		.uleb128 0xf
- 877 0305 01       		.uleb128 0x1
- 878 0306 52       		.byte	0x52
- 879 0307 02       		.uleb128 0x2
- 880 0308 91       		.byte	0x91
- 881 0309 42       		.sleb128 -62
- 882 030a 00       		.byte	0
- 883 030b 0E       		.uleb128 0xe
- 884 030c 78000000 		.4byte	.LVL17
- 885 0310 91060000 		.4byte	0x691
- 886 0314 28030000 		.4byte	0x328
- 887 0318 0F       		.uleb128 0xf
- 888 0319 01       		.uleb128 0x1
- 889 031a 50       		.byte	0x50
- 890 031b 02       		.uleb128 0x2
- 891 031c 91       		.byte	0x91
- 892 031d 44       		.sleb128 -60
- 893 031e 0F       		.uleb128 0xf
- 894 031f 01       		.uleb128 0x1
- 895 0320 51       		.byte	0x51
- 896 0321 05       		.uleb128 0x5
- 897 0322 03       		.byte	0x3
- 898 0323 6C000000 		.4byte	.LC3
- 899 0327 00       		.byte	0
- 900 0328 0E       		.uleb128 0xe
- 901 0329 7E000000 		.4byte	.LVL18
- 902 032d 9C060000 		.4byte	0x69c
- 903 0331 3C030000 		.4byte	0x33c
- 904 0335 0F       		.uleb128 0xf
- 905 0336 01       		.uleb128 0x1
- 906 0337 50       		.byte	0x50
- 907 0338 02       		.uleb128 0x2
- 908 0339 91       		.byte	0x91
- 909 033a 44       		.sleb128 -60
- 910 033b 00       		.byte	0
- 911 033c 0E       		.uleb128 0xe
- 912 033d 86000000 		.4byte	.LVL21
- 913 0341 9C060000 		.4byte	0x69c
- 914 0345 53030000 		.4byte	0x353
- 915 0349 0F       		.uleb128 0xf
- 916 034a 01       		.uleb128 0x1
- 917 034b 50       		.byte	0x50
-ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 23
-
-
- 918 034c 05       		.uleb128 0x5
- 919 034d 03       		.byte	0x3
- 920 034e 88000000 		.4byte	.LC4
- 921 0352 00       		.byte	0
- 922 0353 0E       		.uleb128 0xe
- 923 0354 92000000 		.4byte	.LVL22
- 924 0358 C8060000 		.4byte	0x6c8
- 925 035c 72030000 		.4byte	0x372
- 926 0360 0F       		.uleb128 0xf
- 927 0361 01       		.uleb128 0x1
- 928 0362 50       		.byte	0x50
- 929 0363 01       		.uleb128 0x1
- 930 0364 48       		.byte	0x48
- 931 0365 0F       		.uleb128 0xf
- 932 0366 01       		.uleb128 0x1
- 933 0367 51       		.byte	0x51
- 934 0368 02       		.uleb128 0x2
- 935 0369 08       		.byte	0x8
- 936 036a 20       		.byte	0x20
- 937 036b 0F       		.uleb128 0xf
- 938 036c 01       		.uleb128 0x1
- 939 036d 52       		.byte	0x52
- 940 036e 02       		.uleb128 0x2
- 941 036f 91       		.byte	0x91
- 942 0370 41       		.sleb128 -63
- 943 0371 00       		.byte	0
- 944 0372 0E       		.uleb128 0xe
- 945 0373 A0000000 		.4byte	.LVL24
- 946 0377 91060000 		.4byte	0x691
- 947 037b 8F030000 		.4byte	0x38f
- 948 037f 0F       		.uleb128 0xf
- 949 0380 01       		.uleb128 0x1
- 950 0381 50       		.byte	0x50
- 951 0382 02       		.uleb128 0x2
- 952 0383 91       		.byte	0x91
- 953 0384 44       		.sleb128 -60
- 954 0385 0F       		.uleb128 0xf
- 955 0386 01       		.uleb128 0x1
- 956 0387 51       		.byte	0x51
- 957 0388 05       		.uleb128 0x5
- 958 0389 03       		.byte	0x3
- 959 038a C4000000 		.4byte	.LC5
- 960 038e 00       		.byte	0
- 961 038f 0E       		.uleb128 0xe
- 962 0390 A6000000 		.4byte	.LVL25
- 963 0394 9C060000 		.4byte	0x69c
- 964 0398 A3030000 		.4byte	0x3a3
- 965 039c 0F       		.uleb128 0xf
- 966 039d 01       		.uleb128 0x1
- 967 039e 50       		.byte	0x50
- 968 039f 02       		.uleb128 0x2
- 969 03a0 91       		.byte	0x91
- 970 03a1 44       		.sleb128 -60
- 971 03a2 00       		.byte	0
- 972 03a3 0E       		.uleb128 0xe
- 973 03a4 AE000000 		.4byte	.LVL28
- 974 03a8 9C060000 		.4byte	0x69c
-ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 24
-
-
- 975 03ac BA030000 		.4byte	0x3ba
- 976 03b0 0F       		.uleb128 0xf
- 977 03b1 01       		.uleb128 0x1
- 978 03b2 50       		.byte	0x50
- 979 03b3 05       		.uleb128 0x5
- 980 03b4 03       		.byte	0x3
- 981 03b5 E4000000 		.4byte	.LC6
- 982 03b9 00       		.byte	0
- 983 03ba 0E       		.uleb128 0xe
- 984 03bb B4000000 		.4byte	.LVL29
- 985 03bf 9C060000 		.4byte	0x69c
- 986 03c3 D1030000 		.4byte	0x3d1
- 987 03c7 0F       		.uleb128 0xf
- 988 03c8 01       		.uleb128 0x1
- 989 03c9 50       		.byte	0x50
- 990 03ca 05       		.uleb128 0x5
- 991 03cb 03       		.byte	0x3
- 992 03cc 20010000 		.4byte	.LC7
- 993 03d0 00       		.byte	0
- 994 03d1 0E       		.uleb128 0xe
- 995 03d2 CA000000 		.4byte	.LVL30
- 996 03d6 D3060000 		.4byte	0x6d3
- 997 03da F0030000 		.4byte	0x3f0
- 998 03de 0F       		.uleb128 0xf
- 999 03df 01       		.uleb128 0x1
- 1000 03e0 50       		.byte	0x50
- 1001 03e1 01       		.uleb128 0x1
- 1002 03e2 48       		.byte	0x48
- 1003 03e3 0F       		.uleb128 0xf
- 1004 03e4 01       		.uleb128 0x1
- 1005 03e5 51       		.byte	0x51
- 1006 03e6 02       		.uleb128 0x2
- 1007 03e7 08       		.byte	0x8
- 1008 03e8 20       		.byte	0x20
- 1009 03e9 0F       		.uleb128 0xf
- 1010 03ea 01       		.uleb128 0x1
- 1011 03eb 52       		.byte	0x52
- 1012 03ec 02       		.uleb128 0x2
- 1013 03ed 08       		.byte	0x8
- 1014 03ee 57       		.byte	0x57
- 1015 03ef 00       		.byte	0
- 1016 03f0 0E       		.uleb128 0xe
- 1017 03f1 D8000000 		.4byte	.LVL32
- 1018 03f5 91060000 		.4byte	0x691
- 1019 03f9 0D040000 		.4byte	0x40d
- 1020 03fd 0F       		.uleb128 0xf
- 1021 03fe 01       		.uleb128 0x1
- 1022 03ff 50       		.byte	0x50
- 1023 0400 02       		.uleb128 0x2
- 1024 0401 91       		.byte	0x91
- 1025 0402 44       		.sleb128 -60
- 1026 0403 0F       		.uleb128 0xf
- 1027 0404 01       		.uleb128 0x1
- 1028 0405 51       		.byte	0x51
- 1029 0406 05       		.uleb128 0x5
- 1030 0407 03       		.byte	0x3
- 1031 0408 3C010000 		.4byte	.LC8
-ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 25
-
-
- 1032 040c 00       		.byte	0
- 1033 040d 0E       		.uleb128 0xe
- 1034 040e DE000000 		.4byte	.LVL33
- 1035 0412 9C060000 		.4byte	0x69c
- 1036 0416 21040000 		.4byte	0x421
- 1037 041a 0F       		.uleb128 0xf
- 1038 041b 01       		.uleb128 0x1
- 1039 041c 50       		.byte	0x50
- 1040 041d 02       		.uleb128 0x2
- 1041 041e 91       		.byte	0x91
- 1042 041f 44       		.sleb128 -60
- 1043 0420 00       		.byte	0
- 1044 0421 0E       		.uleb128 0xe
- 1045 0422 E6000000 		.4byte	.LVL36
- 1046 0426 9C060000 		.4byte	0x69c
- 1047 042a 38040000 		.4byte	0x438
- 1048 042e 0F       		.uleb128 0xf
- 1049 042f 01       		.uleb128 0x1
- 1050 0430 50       		.byte	0x50
- 1051 0431 05       		.uleb128 0x5
- 1052 0432 03       		.byte	0x3
- 1053 0433 74010000 		.4byte	.LC9
- 1054 0437 00       		.byte	0
- 1055 0438 0E       		.uleb128 0xe
- 1056 0439 F2000000 		.4byte	.LVL37
- 1057 043d C8060000 		.4byte	0x6c8
- 1058 0441 57040000 		.4byte	0x457
- 1059 0445 0F       		.uleb128 0xf
- 1060 0446 01       		.uleb128 0x1
- 1061 0447 50       		.byte	0x50
- 1062 0448 01       		.uleb128 0x1
- 1063 0449 48       		.byte	0x48
- 1064 044a 0F       		.uleb128 0xf
- 1065 044b 01       		.uleb128 0x1
- 1066 044c 51       		.byte	0x51
- 1067 044d 02       		.uleb128 0x2
- 1068 044e 08       		.byte	0x8
- 1069 044f 20       		.byte	0x20
- 1070 0450 0F       		.uleb128 0xf
- 1071 0451 01       		.uleb128 0x1
- 1072 0452 52       		.byte	0x52
- 1073 0453 02       		.uleb128 0x2
- 1074 0454 91       		.byte	0x91
- 1075 0455 41       		.sleb128 -63
- 1076 0456 00       		.byte	0
- 1077 0457 0E       		.uleb128 0xe
- 1078 0458 00010000 		.4byte	.LVL39
- 1079 045c 91060000 		.4byte	0x691
- 1080 0460 74040000 		.4byte	0x474
- 1081 0464 0F       		.uleb128 0xf
- 1082 0465 01       		.uleb128 0x1
- 1083 0466 50       		.byte	0x50
- 1084 0467 02       		.uleb128 0x2
- 1085 0468 91       		.byte	0x91
- 1086 0469 44       		.sleb128 -60
- 1087 046a 0F       		.uleb128 0xf
- 1088 046b 01       		.uleb128 0x1
-ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 26
-
-
- 1089 046c 51       		.byte	0x51
- 1090 046d 05       		.uleb128 0x5
- 1091 046e 03       		.byte	0x3
- 1092 046f B0010000 		.4byte	.LC10
- 1093 0473 00       		.byte	0
- 1094 0474 0E       		.uleb128 0xe
- 1095 0475 06010000 		.4byte	.LVL40
- 1096 0479 9C060000 		.4byte	0x69c
- 1097 047d 88040000 		.4byte	0x488
- 1098 0481 0F       		.uleb128 0xf
- 1099 0482 01       		.uleb128 0x1
- 1100 0483 50       		.byte	0x50
- 1101 0484 02       		.uleb128 0x2
- 1102 0485 91       		.byte	0x91
- 1103 0486 44       		.sleb128 -60
- 1104 0487 00       		.byte	0
- 1105 0488 0E       		.uleb128 0xe
- 1106 0489 0E010000 		.4byte	.LVL43
- 1107 048d 9C060000 		.4byte	0x69c
- 1108 0491 9F040000 		.4byte	0x49f
- 1109 0495 0F       		.uleb128 0xf
- 1110 0496 01       		.uleb128 0x1
- 1111 0497 50       		.byte	0x50
- 1112 0498 05       		.uleb128 0x5
- 1113 0499 03       		.byte	0x3
- 1114 049a E4000000 		.4byte	.LC6
- 1115 049e 00       		.byte	0
- 1116 049f 0E       		.uleb128 0xe
- 1117 04a0 18010000 		.4byte	.LVL44
- 1118 04a4 C8060000 		.4byte	0x6c8
- 1119 04a8 BE040000 		.4byte	0x4be
- 1120 04ac 0F       		.uleb128 0xf
- 1121 04ad 01       		.uleb128 0x1
- 1122 04ae 50       		.byte	0x50
- 1123 04af 01       		.uleb128 0x1
- 1124 04b0 48       		.byte	0x48
- 1125 04b1 0F       		.uleb128 0xf
- 1126 04b2 01       		.uleb128 0x1
- 1127 04b3 51       		.byte	0x51
- 1128 04b4 02       		.uleb128 0x2
- 1129 04b5 08       		.byte	0x8
- 1130 04b6 23       		.byte	0x23
- 1131 04b7 0F       		.uleb128 0xf
- 1132 04b8 01       		.uleb128 0x1
- 1133 04b9 52       		.byte	0x52
- 1134 04ba 02       		.uleb128 0x2
- 1135 04bb 91       		.byte	0x91
- 1136 04bc 40       		.sleb128 -64
- 1137 04bd 00       		.byte	0
- 1138 04be 0E       		.uleb128 0xe
- 1139 04bf 26010000 		.4byte	.LVL46
- 1140 04c3 91060000 		.4byte	0x691
- 1141 04c7 DB040000 		.4byte	0x4db
- 1142 04cb 0F       		.uleb128 0xf
- 1143 04cc 01       		.uleb128 0x1
- 1144 04cd 50       		.byte	0x50
- 1145 04ce 02       		.uleb128 0x2
-ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 27
-
-
- 1146 04cf 91       		.byte	0x91
- 1147 04d0 44       		.sleb128 -60
- 1148 04d1 0F       		.uleb128 0xf
- 1149 04d2 01       		.uleb128 0x1
- 1150 04d3 51       		.byte	0x51
- 1151 04d4 05       		.uleb128 0x5
- 1152 04d5 03       		.byte	0x3
- 1153 04d6 E8010000 		.4byte	.LC11
- 1154 04da 00       		.byte	0
- 1155 04db 0E       		.uleb128 0xe
- 1156 04dc 2C010000 		.4byte	.LVL47
- 1157 04e0 9C060000 		.4byte	0x69c
- 1158 04e4 EF040000 		.4byte	0x4ef
- 1159 04e8 0F       		.uleb128 0xf
- 1160 04e9 01       		.uleb128 0x1
- 1161 04ea 50       		.byte	0x50
- 1162 04eb 02       		.uleb128 0x2
- 1163 04ec 91       		.byte	0x91
- 1164 04ed 44       		.sleb128 -60
- 1165 04ee 00       		.byte	0
- 1166 04ef 0E       		.uleb128 0xe
- 1167 04f0 34010000 		.4byte	.LVL50
- 1168 04f4 9C060000 		.4byte	0x69c
- 1169 04f8 06050000 		.4byte	0x506
- 1170 04fc 0F       		.uleb128 0xf
- 1171 04fd 01       		.uleb128 0x1
- 1172 04fe 50       		.byte	0x50
- 1173 04ff 05       		.uleb128 0x5
- 1174 0500 03       		.byte	0x3
- 1175 0501 08020000 		.4byte	.LC12
- 1176 0505 00       		.byte	0
- 1177 0506 0E       		.uleb128 0xe
- 1178 0507 44010000 		.4byte	.LVL52
- 1179 050b D3060000 		.4byte	0x6d3
- 1180 050f 25050000 		.4byte	0x525
- 1181 0513 0F       		.uleb128 0xf
- 1182 0514 01       		.uleb128 0x1
- 1183 0515 50       		.byte	0x50
- 1184 0516 01       		.uleb128 0x1
- 1185 0517 48       		.byte	0x48
- 1186 0518 0F       		.uleb128 0xf
- 1187 0519 01       		.uleb128 0x1
- 1188 051a 51       		.byte	0x51
- 1189 051b 02       		.uleb128 0x2
- 1190 051c 08       		.byte	0x8
- 1191 051d 23       		.byte	0x23
- 1192 051e 0F       		.uleb128 0xf
- 1193 051f 01       		.uleb128 0x1
- 1194 0520 52       		.byte	0x52
- 1195 0521 02       		.uleb128 0x2
- 1196 0522 09       		.byte	0x9
- 1197 0523 80       		.byte	0x80
- 1198 0524 00       		.byte	0
- 1199 0525 0E       		.uleb128 0xe
- 1200 0526 4E010000 		.4byte	.LVL53
- 1201 052a C8060000 		.4byte	0x6c8
- 1202 052e 44050000 		.4byte	0x544
-ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 28
-
-
- 1203 0532 0F       		.uleb128 0xf
- 1204 0533 01       		.uleb128 0x1
- 1205 0534 50       		.byte	0x50
- 1206 0535 01       		.uleb128 0x1
- 1207 0536 48       		.byte	0x48
- 1208 0537 0F       		.uleb128 0xf
- 1209 0538 01       		.uleb128 0x1
- 1210 0539 51       		.byte	0x51
- 1211 053a 02       		.uleb128 0x2
- 1212 053b 08       		.byte	0x8
- 1213 053c 23       		.byte	0x23
- 1214 053d 0F       		.uleb128 0xf
- 1215 053e 01       		.uleb128 0x1
- 1216 053f 52       		.byte	0x52
- 1217 0540 02       		.uleb128 0x2
- 1218 0541 74       		.byte	0x74
- 1219 0542 00       		.sleb128 0
- 1220 0543 00       		.byte	0
- 1221 0544 0E       		.uleb128 0xe
- 1222 0545 5C010000 		.4byte	.LVL55
- 1223 0549 91060000 		.4byte	0x691
- 1224 054d 61050000 		.4byte	0x561
- 1225 0551 0F       		.uleb128 0xf
- 1226 0552 01       		.uleb128 0x1
- 1227 0553 50       		.byte	0x50
- 1228 0554 02       		.uleb128 0x2
- 1229 0555 91       		.byte	0x91
- 1230 0556 44       		.sleb128 -60
- 1231 0557 0F       		.uleb128 0xf
- 1232 0558 01       		.uleb128 0x1
- 1233 0559 51       		.byte	0x51
- 1234 055a 05       		.uleb128 0x5
- 1235 055b 03       		.byte	0x3
- 1236 055c 44020000 		.4byte	.LC13
- 1237 0560 00       		.byte	0
- 1238 0561 0E       		.uleb128 0xe
- 1239 0562 62010000 		.4byte	.LVL56
- 1240 0566 9C060000 		.4byte	0x69c
- 1241 056a 75050000 		.4byte	0x575
- 1242 056e 0F       		.uleb128 0xf
- 1243 056f 01       		.uleb128 0x1
- 1244 0570 50       		.byte	0x50
- 1245 0571 02       		.uleb128 0x2
- 1246 0572 91       		.byte	0x91
- 1247 0573 44       		.sleb128 -60
- 1248 0574 00       		.byte	0
- 1249 0575 0E       		.uleb128 0xe
- 1250 0576 6A010000 		.4byte	.LVL59
- 1251 057a 9C060000 		.4byte	0x69c
- 1252 057e 8C050000 		.4byte	0x58c
- 1253 0582 0F       		.uleb128 0xf
- 1254 0583 01       		.uleb128 0x1
- 1255 0584 50       		.byte	0x50
- 1256 0585 05       		.uleb128 0x5
- 1257 0586 03       		.byte	0x3
- 1258 0587 08020000 		.4byte	.LC12
- 1259 058b 00       		.byte	0
-ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 29
-
-
- 1260 058c 0E       		.uleb128 0xe
- 1261 058d 7C010000 		.4byte	.LVL60
- 1262 0591 BD060000 		.4byte	0x6bd
- 1263 0595 9F050000 		.4byte	0x59f
- 1264 0599 0F       		.uleb128 0xf
- 1265 059a 01       		.uleb128 0x1
- 1266 059b 50       		.byte	0x50
- 1267 059c 01       		.uleb128 0x1
- 1268 059d 35       		.byte	0x35
- 1269 059e 00       		.byte	0
- 1270 059f 0E       		.uleb128 0xe
- 1271 05a0 88010000 		.4byte	.LVL61
- 1272 05a4 C8060000 		.4byte	0x6c8
- 1273 05a8 BF050000 		.4byte	0x5bf
- 1274 05ac 0F       		.uleb128 0xf
- 1275 05ad 01       		.uleb128 0x1
- 1276 05ae 50       		.byte	0x50
- 1277 05af 01       		.uleb128 0x1
- 1278 05b0 48       		.byte	0x48
- 1279 05b1 0F       		.uleb128 0xf
- 1280 05b2 01       		.uleb128 0x1
- 1281 05b3 51       		.byte	0x51
- 1282 05b4 02       		.uleb128 0x2
- 1283 05b5 08       		.byte	0x8
- 1284 05b6 27       		.byte	0x27
- 1285 05b7 0F       		.uleb128 0xf
- 1286 05b8 01       		.uleb128 0x1
- 1287 05b9 52       		.byte	0x52
- 1288 05ba 03       		.uleb128 0x3
- 1289 05bb 91       		.byte	0x91
- 1290 05bc AB7F     		.sleb128 -85
- 1291 05be 00       		.byte	0
- 1292 05bf 0E       		.uleb128 0xe
- 1293 05c0 AA010000 		.4byte	.LVL63
- 1294 05c4 DE060000 		.4byte	0x6de
- 1295 05c8 E4050000 		.4byte	0x5e4
- 1296 05cc 0F       		.uleb128 0xf
- 1297 05cd 01       		.uleb128 0x1
- 1298 05ce 50       		.byte	0x50
- 1299 05cf 01       		.uleb128 0x1
- 1300 05d0 48       		.byte	0x48
- 1301 05d1 0F       		.uleb128 0xf
- 1302 05d2 01       		.uleb128 0x1
- 1303 05d3 51       		.byte	0x51
- 1304 05d4 02       		.uleb128 0x2
- 1305 05d5 08       		.byte	0x8
- 1306 05d6 28       		.byte	0x28
- 1307 05d7 0F       		.uleb128 0xf
- 1308 05d8 01       		.uleb128 0x1
- 1309 05d9 52       		.byte	0x52
- 1310 05da 01       		.uleb128 0x1
- 1311 05db 32       		.byte	0x32
- 1312 05dc 0F       		.uleb128 0xf
- 1313 05dd 01       		.uleb128 0x1
- 1314 05de 53       		.byte	0x53
- 1315 05df 03       		.uleb128 0x3
- 1316 05e0 91       		.byte	0x91
-ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 30
-
-
- 1317 05e1 B47F     		.sleb128 -76
- 1318 05e3 00       		.byte	0
- 1319 05e4 0E       		.uleb128 0xe
- 1320 05e5 B6010000 		.4byte	.LVL64
- 1321 05e9 DE060000 		.4byte	0x6de
- 1322 05ed 09060000 		.4byte	0x609
- 1323 05f1 0F       		.uleb128 0xf
- 1324 05f2 01       		.uleb128 0x1
- 1325 05f3 50       		.byte	0x50
- 1326 05f4 01       		.uleb128 0x1
- 1327 05f5 48       		.byte	0x48
- 1328 05f6 0F       		.uleb128 0xf
- 1329 05f7 01       		.uleb128 0x1
- 1330 05f8 51       		.byte	0x51
- 1331 05f9 02       		.uleb128 0x2
- 1332 05fa 08       		.byte	0x8
- 1333 05fb 2A       		.byte	0x2a
- 1334 05fc 0F       		.uleb128 0xf
- 1335 05fd 01       		.uleb128 0x1
- 1336 05fe 52       		.byte	0x52
- 1337 05ff 01       		.uleb128 0x1
- 1338 0600 32       		.byte	0x32
- 1339 0601 0F       		.uleb128 0xf
- 1340 0602 01       		.uleb128 0x1
- 1341 0603 53       		.byte	0x53
- 1342 0604 03       		.uleb128 0x3
- 1343 0605 91       		.byte	0x91
- 1344 0606 B07F     		.sleb128 -80
- 1345 0608 00       		.byte	0
- 1346 0609 0E       		.uleb128 0xe
- 1347 060a C2010000 		.4byte	.LVL65
- 1348 060e DE060000 		.4byte	0x6de
- 1349 0612 2E060000 		.4byte	0x62e
- 1350 0616 0F       		.uleb128 0xf
- 1351 0617 01       		.uleb128 0x1
- 1352 0618 50       		.byte	0x50
- 1353 0619 01       		.uleb128 0x1
- 1354 061a 48       		.byte	0x48
- 1355 061b 0F       		.uleb128 0xf
- 1356 061c 01       		.uleb128 0x1
- 1357 061d 51       		.byte	0x51
- 1358 061e 02       		.uleb128 0x2
- 1359 061f 08       		.byte	0x8
- 1360 0620 2C       		.byte	0x2c
- 1361 0621 0F       		.uleb128 0xf
- 1362 0622 01       		.uleb128 0x1
- 1363 0623 52       		.byte	0x52
- 1364 0624 01       		.uleb128 0x1
- 1365 0625 32       		.byte	0x32
- 1366 0626 0F       		.uleb128 0xf
- 1367 0627 01       		.uleb128 0x1
- 1368 0628 53       		.byte	0x53
- 1369 0629 03       		.uleb128 0x3
- 1370 062a 91       		.byte	0x91
- 1371 062b AC7F     		.sleb128 -84
- 1372 062d 00       		.byte	0
- 1373 062e 10       		.uleb128 0x10
-ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 31
-
-
- 1374 062f 22020000 		.4byte	.LVL75
- 1375 0633 E9060000 		.4byte	0x6e9
- 1376 0637 0F       		.uleb128 0xf
- 1377 0638 01       		.uleb128 0x1
- 1378 0639 50       		.byte	0x50
- 1379 063a 03       		.uleb128 0x3
- 1380 063b 91       		.byte	0x91
- 1381 063c B87F     		.sleb128 -72
- 1382 063e 0F       		.uleb128 0xf
- 1383 063f 01       		.uleb128 0x1
- 1384 0640 51       		.byte	0x51
- 1385 0641 01       		.uleb128 0x1
- 1386 0642 38       		.byte	0x38
- 1387 0643 00       		.byte	0
- 1388 0644 00       		.byte	0
- 1389 0645 12       		.uleb128 0x12
- 1390 0646 C7000000 		.4byte	0xc7
- 1391 064a 55060000 		.4byte	0x655
- 1392 064e 13       		.uleb128 0x13
- 1393 064f F9000000 		.4byte	0xf9
- 1394 0653 31       		.byte	0x31
- 1395 0654 00       		.byte	0
- 1396 0655 12       		.uleb128 0x12
- 1397 0656 8C000000 		.4byte	0x8c
- 1398 065a 65060000 		.4byte	0x665
- 1399 065e 13       		.uleb128 0x13
- 1400 065f F9000000 		.4byte	0xf9
- 1401 0663 07       		.byte	0x7
- 1402 0664 00       		.byte	0
- 1403 0665 12       		.uleb128 0x12
- 1404 0666 8C000000 		.4byte	0x8c
- 1405 066a 75060000 		.4byte	0x675
- 1406 066e 13       		.uleb128 0x13
- 1407 066f F9000000 		.4byte	0xf9
- 1408 0673 01       		.byte	0x1
- 1409 0674 00       		.byte	0
- 1410 0675 14       		.uleb128 0x14
- 1411 0676 5A020000 		.4byte	.LASF54
- 1412 067a 0A       		.byte	0xa
- 1413 067b 1207     		.2byte	0x712
- 1414 067d 81060000 		.4byte	0x681
- 1415 0681 15       		.uleb128 0x15
- 1416 0682 A2000000 		.4byte	0xa2
- 1417 0686 16       		.uleb128 0x16
- 1418 0687 44000000 		.4byte	.LASF40
- 1419 068b 44000000 		.4byte	.LASF40
- 1420 068f 06       		.byte	0x6
- 1421 0690 5D       		.byte	0x5d
- 1422 0691 16       		.uleb128 0x16
- 1423 0692 21030000 		.4byte	.LASF41
- 1424 0696 21030000 		.4byte	.LASF41
- 1425 069a 07       		.byte	0x7
- 1426 069b E7       		.byte	0xe7
- 1427 069c 16       		.uleb128 0x16
- 1428 069d 25000000 		.4byte	.LASF42
- 1429 06a1 25000000 		.4byte	.LASF42
- 1430 06a5 08       		.byte	0x8
-ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 32
-
-
- 1431 06a6 8B       		.byte	0x8b
- 1432 06a7 16       		.uleb128 0x16
- 1433 06a8 31030000 		.4byte	.LASF43
- 1434 06ac 31030000 		.4byte	.LASF43
- 1435 06b0 06       		.byte	0x6
- 1436 06b1 17       		.byte	0x17
- 1437 06b2 16       		.uleb128 0x16
- 1438 06b3 9C020000 		.4byte	.LASF44
- 1439 06b7 9C020000 		.4byte	.LASF44
- 1440 06bb 08       		.byte	0x8
- 1441 06bc 54       		.byte	0x54
- 1442 06bd 16       		.uleb128 0x16
- 1443 06be 29030000 		.4byte	.LASF45
- 1444 06c2 29030000 		.4byte	.LASF45
- 1445 06c6 09       		.byte	0x9
- 1446 06c7 76       		.byte	0x76
- 1447 06c8 16       		.uleb128 0x16
- 1448 06c9 B9020000 		.4byte	.LASF46
- 1449 06cd B9020000 		.4byte	.LASF46
- 1450 06d1 06       		.byte	0x6
- 1451 06d2 28       		.byte	0x28
- 1452 06d3 16       		.uleb128 0x16
- 1453 06d4 A9010000 		.4byte	.LASF47
- 1454 06d8 A9010000 		.4byte	.LASF47
- 1455 06dc 06       		.byte	0x6
- 1456 06dd 43       		.byte	0x43
- 1457 06de 16       		.uleb128 0x16
- 1458 06df 88010000 		.4byte	.LASF48
- 1459 06e3 88010000 		.4byte	.LASF48
- 1460 06e7 06       		.byte	0x6
- 1461 06e8 36       		.byte	0x36
- 1462 06e9 16       		.uleb128 0x16
- 1463 06ea 7F000000 		.4byte	.LASF49
- 1464 06ee 7F000000 		.4byte	.LASF49
- 1465 06f2 08       		.byte	0x8
- 1466 06f3 8C       		.byte	0x8c
- 1467 06f4 00       		.byte	0
- 1468              		.section	.debug_abbrev,"",%progbits
- 1469              	.Ldebug_abbrev0:
- 1470 0000 01       		.uleb128 0x1
- 1471 0001 11       		.uleb128 0x11
- 1472 0002 01       		.byte	0x1
- 1473 0003 25       		.uleb128 0x25
- 1474 0004 0E       		.uleb128 0xe
- 1475 0005 13       		.uleb128 0x13
- 1476 0006 0B       		.uleb128 0xb
- 1477 0007 03       		.uleb128 0x3
- 1478 0008 0E       		.uleb128 0xe
- 1479 0009 1B       		.uleb128 0x1b
- 1480 000a 0E       		.uleb128 0xe
- 1481 000b 55       		.uleb128 0x55
- 1482 000c 17       		.uleb128 0x17
- 1483 000d 11       		.uleb128 0x11
- 1484 000e 01       		.uleb128 0x1
- 1485 000f 10       		.uleb128 0x10
- 1486 0010 17       		.uleb128 0x17
- 1487 0011 00       		.byte	0
-ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 33
-
-
- 1488 0012 00       		.byte	0
- 1489 0013 02       		.uleb128 0x2
- 1490 0014 24       		.uleb128 0x24
- 1491 0015 00       		.byte	0
- 1492 0016 0B       		.uleb128 0xb
- 1493 0017 0B       		.uleb128 0xb
- 1494 0018 3E       		.uleb128 0x3e
- 1495 0019 0B       		.uleb128 0xb
- 1496 001a 03       		.uleb128 0x3
- 1497 001b 0E       		.uleb128 0xe
- 1498 001c 00       		.byte	0
- 1499 001d 00       		.byte	0
- 1500 001e 03       		.uleb128 0x3
- 1501 001f 16       		.uleb128 0x16
- 1502 0020 00       		.byte	0
- 1503 0021 03       		.uleb128 0x3
- 1504 0022 0E       		.uleb128 0xe
- 1505 0023 3A       		.uleb128 0x3a
- 1506 0024 0B       		.uleb128 0xb
- 1507 0025 3B       		.uleb128 0x3b
- 1508 0026 0B       		.uleb128 0xb
- 1509 0027 49       		.uleb128 0x49
- 1510 0028 13       		.uleb128 0x13
- 1511 0029 00       		.byte	0
- 1512 002a 00       		.byte	0
- 1513 002b 04       		.uleb128 0x4
- 1514 002c 24       		.uleb128 0x24
- 1515 002d 00       		.byte	0
- 1516 002e 0B       		.uleb128 0xb
- 1517 002f 0B       		.uleb128 0xb
- 1518 0030 3E       		.uleb128 0x3e
- 1519 0031 0B       		.uleb128 0xb
- 1520 0032 03       		.uleb128 0x3
- 1521 0033 08       		.uleb128 0x8
- 1522 0034 00       		.byte	0
- 1523 0035 00       		.byte	0
- 1524 0036 05       		.uleb128 0x5
- 1525 0037 16       		.uleb128 0x16
- 1526 0038 00       		.byte	0
- 1527 0039 03       		.uleb128 0x3
- 1528 003a 0E       		.uleb128 0xe
- 1529 003b 3A       		.uleb128 0x3a
- 1530 003c 0B       		.uleb128 0xb
- 1531 003d 3B       		.uleb128 0x3b
- 1532 003e 05       		.uleb128 0x5
- 1533 003f 49       		.uleb128 0x49
- 1534 0040 13       		.uleb128 0x13
- 1535 0041 00       		.byte	0
- 1536 0042 00       		.byte	0
- 1537 0043 06       		.uleb128 0x6
- 1538 0044 04       		.uleb128 0x4
- 1539 0045 01       		.byte	0x1
- 1540 0046 0B       		.uleb128 0xb
- 1541 0047 0B       		.uleb128 0xb
- 1542 0048 49       		.uleb128 0x49
- 1543 0049 13       		.uleb128 0x13
- 1544 004a 3A       		.uleb128 0x3a
-ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 34
-
-
- 1545 004b 0B       		.uleb128 0xb
- 1546 004c 3B       		.uleb128 0x3b
- 1547 004d 0B       		.uleb128 0xb
- 1548 004e 01       		.uleb128 0x1
- 1549 004f 13       		.uleb128 0x13
- 1550 0050 00       		.byte	0
- 1551 0051 00       		.byte	0
- 1552 0052 07       		.uleb128 0x7
- 1553 0053 28       		.uleb128 0x28
- 1554 0054 00       		.byte	0
- 1555 0055 03       		.uleb128 0x3
- 1556 0056 0E       		.uleb128 0xe
- 1557 0057 1C       		.uleb128 0x1c
- 1558 0058 0B       		.uleb128 0xb
- 1559 0059 00       		.byte	0
- 1560 005a 00       		.byte	0
- 1561 005b 08       		.uleb128 0x8
- 1562 005c 2E       		.uleb128 0x2e
- 1563 005d 01       		.byte	0x1
- 1564 005e 3F       		.uleb128 0x3f
- 1565 005f 19       		.uleb128 0x19
- 1566 0060 03       		.uleb128 0x3
- 1567 0061 0E       		.uleb128 0xe
- 1568 0062 3A       		.uleb128 0x3a
- 1569 0063 0B       		.uleb128 0xb
- 1570 0064 3B       		.uleb128 0x3b
- 1571 0065 0B       		.uleb128 0xb
- 1572 0066 27       		.uleb128 0x27
- 1573 0067 19       		.uleb128 0x19
- 1574 0068 49       		.uleb128 0x49
- 1575 0069 13       		.uleb128 0x13
- 1576 006a 8701     		.uleb128 0x87
- 1577 006c 19       		.uleb128 0x19
- 1578 006d 11       		.uleb128 0x11
- 1579 006e 01       		.uleb128 0x1
- 1580 006f 12       		.uleb128 0x12
- 1581 0070 06       		.uleb128 0x6
- 1582 0071 40       		.uleb128 0x40
- 1583 0072 18       		.uleb128 0x18
- 1584 0073 9742     		.uleb128 0x2117
- 1585 0075 19       		.uleb128 0x19
- 1586 0076 01       		.uleb128 0x1
- 1587 0077 13       		.uleb128 0x13
- 1588 0078 00       		.byte	0
- 1589 0079 00       		.byte	0
- 1590 007a 09       		.uleb128 0x9
- 1591 007b 34       		.uleb128 0x34
- 1592 007c 00       		.byte	0
- 1593 007d 03       		.uleb128 0x3
- 1594 007e 0E       		.uleb128 0xe
- 1595 007f 3A       		.uleb128 0x3a
- 1596 0080 0B       		.uleb128 0xb
- 1597 0081 3B       		.uleb128 0x3b
- 1598 0082 0B       		.uleb128 0xb
- 1599 0083 49       		.uleb128 0x49
- 1600 0084 13       		.uleb128 0x13
- 1601 0085 02       		.uleb128 0x2
-ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 35
-
-
- 1602 0086 18       		.uleb128 0x18
- 1603 0087 00       		.byte	0
- 1604 0088 00       		.byte	0
- 1605 0089 0A       		.uleb128 0xa
- 1606 008a 34       		.uleb128 0x34
- 1607 008b 00       		.byte	0
- 1608 008c 03       		.uleb128 0x3
- 1609 008d 0E       		.uleb128 0xe
- 1610 008e 3A       		.uleb128 0x3a
- 1611 008f 0B       		.uleb128 0xb
- 1612 0090 3B       		.uleb128 0x3b
- 1613 0091 0B       		.uleb128 0xb
- 1614 0092 49       		.uleb128 0x49
- 1615 0093 13       		.uleb128 0x13
- 1616 0094 02       		.uleb128 0x2
- 1617 0095 17       		.uleb128 0x17
- 1618 0096 00       		.byte	0
- 1619 0097 00       		.byte	0
- 1620 0098 0B       		.uleb128 0xb
- 1621 0099 34       		.uleb128 0x34
- 1622 009a 00       		.byte	0
- 1623 009b 03       		.uleb128 0x3
- 1624 009c 0E       		.uleb128 0xe
- 1625 009d 3A       		.uleb128 0x3a
- 1626 009e 0B       		.uleb128 0xb
- 1627 009f 3B       		.uleb128 0x3b
- 1628 00a0 0B       		.uleb128 0xb
- 1629 00a1 49       		.uleb128 0x49
- 1630 00a2 13       		.uleb128 0x13
- 1631 00a3 1C       		.uleb128 0x1c
- 1632 00a4 0D       		.uleb128 0xd
- 1633 00a5 00       		.byte	0
- 1634 00a6 00       		.byte	0
- 1635 00a7 0C       		.uleb128 0xc
- 1636 00a8 0B       		.uleb128 0xb
- 1637 00a9 01       		.byte	0x1
- 1638 00aa 11       		.uleb128 0x11
- 1639 00ab 01       		.uleb128 0x1
- 1640 00ac 12       		.uleb128 0x12
- 1641 00ad 06       		.uleb128 0x6
- 1642 00ae 01       		.uleb128 0x1
- 1643 00af 13       		.uleb128 0x13
- 1644 00b0 00       		.byte	0
- 1645 00b1 00       		.byte	0
- 1646 00b2 0D       		.uleb128 0xd
- 1647 00b3 34       		.uleb128 0x34
- 1648 00b4 00       		.byte	0
- 1649 00b5 03       		.uleb128 0x3
- 1650 00b6 08       		.uleb128 0x8
- 1651 00b7 3A       		.uleb128 0x3a
- 1652 00b8 0B       		.uleb128 0xb
- 1653 00b9 3B       		.uleb128 0x3b
- 1654 00ba 0B       		.uleb128 0xb
- 1655 00bb 49       		.uleb128 0x49
- 1656 00bc 13       		.uleb128 0x13
- 1657 00bd 02       		.uleb128 0x2
- 1658 00be 17       		.uleb128 0x17
-ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 36
-
-
- 1659 00bf 00       		.byte	0
- 1660 00c0 00       		.byte	0
- 1661 00c1 0E       		.uleb128 0xe
- 1662 00c2 898201   		.uleb128 0x4109
- 1663 00c5 01       		.byte	0x1
- 1664 00c6 11       		.uleb128 0x11
- 1665 00c7 01       		.uleb128 0x1
- 1666 00c8 31       		.uleb128 0x31
- 1667 00c9 13       		.uleb128 0x13
- 1668 00ca 01       		.uleb128 0x1
- 1669 00cb 13       		.uleb128 0x13
- 1670 00cc 00       		.byte	0
- 1671 00cd 00       		.byte	0
- 1672 00ce 0F       		.uleb128 0xf
- 1673 00cf 8A8201   		.uleb128 0x410a
- 1674 00d2 00       		.byte	0
- 1675 00d3 02       		.uleb128 0x2
- 1676 00d4 18       		.uleb128 0x18
- 1677 00d5 9142     		.uleb128 0x2111
- 1678 00d7 18       		.uleb128 0x18
- 1679 00d8 00       		.byte	0
- 1680 00d9 00       		.byte	0
- 1681 00da 10       		.uleb128 0x10
- 1682 00db 898201   		.uleb128 0x4109
- 1683 00de 01       		.byte	0x1
- 1684 00df 11       		.uleb128 0x11
- 1685 00e0 01       		.uleb128 0x1
- 1686 00e1 31       		.uleb128 0x31
- 1687 00e2 13       		.uleb128 0x13
- 1688 00e3 00       		.byte	0
- 1689 00e4 00       		.byte	0
- 1690 00e5 11       		.uleb128 0x11
- 1691 00e6 898201   		.uleb128 0x4109
- 1692 00e9 00       		.byte	0
- 1693 00ea 11       		.uleb128 0x11
- 1694 00eb 01       		.uleb128 0x1
- 1695 00ec 31       		.uleb128 0x31
- 1696 00ed 13       		.uleb128 0x13
- 1697 00ee 00       		.byte	0
- 1698 00ef 00       		.byte	0
- 1699 00f0 12       		.uleb128 0x12
- 1700 00f1 01       		.uleb128 0x1
- 1701 00f2 01       		.byte	0x1
- 1702 00f3 49       		.uleb128 0x49
- 1703 00f4 13       		.uleb128 0x13
- 1704 00f5 01       		.uleb128 0x1
- 1705 00f6 13       		.uleb128 0x13
- 1706 00f7 00       		.byte	0
- 1707 00f8 00       		.byte	0
- 1708 00f9 13       		.uleb128 0x13
- 1709 00fa 21       		.uleb128 0x21
- 1710 00fb 00       		.byte	0
- 1711 00fc 49       		.uleb128 0x49
- 1712 00fd 13       		.uleb128 0x13
- 1713 00fe 2F       		.uleb128 0x2f
- 1714 00ff 0B       		.uleb128 0xb
- 1715 0100 00       		.byte	0
-ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 37
-
-
- 1716 0101 00       		.byte	0
- 1717 0102 14       		.uleb128 0x14
- 1718 0103 34       		.uleb128 0x34
- 1719 0104 00       		.byte	0
- 1720 0105 03       		.uleb128 0x3
- 1721 0106 0E       		.uleb128 0xe
- 1722 0107 3A       		.uleb128 0x3a
- 1723 0108 0B       		.uleb128 0xb
- 1724 0109 3B       		.uleb128 0x3b
- 1725 010a 05       		.uleb128 0x5
- 1726 010b 49       		.uleb128 0x49
- 1727 010c 13       		.uleb128 0x13
- 1728 010d 3F       		.uleb128 0x3f
- 1729 010e 19       		.uleb128 0x19
- 1730 010f 3C       		.uleb128 0x3c
- 1731 0110 19       		.uleb128 0x19
- 1732 0111 00       		.byte	0
- 1733 0112 00       		.byte	0
- 1734 0113 15       		.uleb128 0x15
- 1735 0114 35       		.uleb128 0x35
- 1736 0115 00       		.byte	0
- 1737 0116 49       		.uleb128 0x49
- 1738 0117 13       		.uleb128 0x13
- 1739 0118 00       		.byte	0
- 1740 0119 00       		.byte	0
- 1741 011a 16       		.uleb128 0x16
- 1742 011b 2E       		.uleb128 0x2e
- 1743 011c 00       		.byte	0
- 1744 011d 3F       		.uleb128 0x3f
- 1745 011e 19       		.uleb128 0x19
- 1746 011f 3C       		.uleb128 0x3c
- 1747 0120 19       		.uleb128 0x19
- 1748 0121 6E       		.uleb128 0x6e
- 1749 0122 0E       		.uleb128 0xe
- 1750 0123 03       		.uleb128 0x3
- 1751 0124 0E       		.uleb128 0xe
- 1752 0125 3A       		.uleb128 0x3a
- 1753 0126 0B       		.uleb128 0xb
- 1754 0127 3B       		.uleb128 0x3b
- 1755 0128 0B       		.uleb128 0xb
- 1756 0129 00       		.byte	0
- 1757 012a 00       		.byte	0
- 1758 012b 00       		.byte	0
- 1759              		.section	.debug_loc,"",%progbits
- 1760              	.Ldebug_loc0:
- 1761              	.LLST0:
- 1762 0000 42000000 		.4byte	.LVL8
- 1763 0004 4C000000 		.4byte	.LVL9
- 1764 0008 0100     		.2byte	0x1
- 1765 000a 50       		.byte	0x50
- 1766 000b 58000000 		.4byte	.LVL12
- 1767 000f 5A000000 		.4byte	.LVL13
- 1768 0013 0100     		.2byte	0x1
- 1769 0015 50       		.byte	0x50
- 1770 0016 6A000000 		.4byte	.LVL15
- 1771 001a 74000000 		.4byte	.LVL16
- 1772 001e 0100     		.2byte	0x1
-ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 38
-
-
- 1773 0020 50       		.byte	0x50
- 1774 0021 80000000 		.4byte	.LVL19
- 1775 0025 82000000 		.4byte	.LVL20
- 1776 0029 0100     		.2byte	0x1
- 1777 002b 50       		.byte	0x50
- 1778 002c 92000000 		.4byte	.LVL22
- 1779 0030 9C000000 		.4byte	.LVL23
- 1780 0034 0100     		.2byte	0x1
- 1781 0036 50       		.byte	0x50
- 1782 0037 A8000000 		.4byte	.LVL26
- 1783 003b AA000000 		.4byte	.LVL27
- 1784 003f 0100     		.2byte	0x1
- 1785 0041 50       		.byte	0x50
- 1786 0042 CA000000 		.4byte	.LVL30
- 1787 0046 D4000000 		.4byte	.LVL31
- 1788 004a 0100     		.2byte	0x1
- 1789 004c 50       		.byte	0x50
- 1790 004d E0000000 		.4byte	.LVL34
- 1791 0051 E2000000 		.4byte	.LVL35
- 1792 0055 0100     		.2byte	0x1
- 1793 0057 50       		.byte	0x50
- 1794 0058 F2000000 		.4byte	.LVL37
- 1795 005c FC000000 		.4byte	.LVL38
- 1796 0060 0100     		.2byte	0x1
- 1797 0062 50       		.byte	0x50
- 1798 0063 08010000 		.4byte	.LVL41
- 1799 0067 0A010000 		.4byte	.LVL42
- 1800 006b 0100     		.2byte	0x1
- 1801 006d 50       		.byte	0x50
- 1802 006e 18010000 		.4byte	.LVL44
- 1803 0072 22010000 		.4byte	.LVL45
- 1804 0076 0100     		.2byte	0x1
- 1805 0078 50       		.byte	0x50
- 1806 0079 2E010000 		.4byte	.LVL48
- 1807 007d 30010000 		.4byte	.LVL49
- 1808 0081 0100     		.2byte	0x1
- 1809 0083 50       		.byte	0x50
- 1810 0084 4E010000 		.4byte	.LVL53
- 1811 0088 58010000 		.4byte	.LVL54
- 1812 008c 0100     		.2byte	0x1
- 1813 008e 50       		.byte	0x50
- 1814 008f 64010000 		.4byte	.LVL57
- 1815 0093 66010000 		.4byte	.LVL58
- 1816 0097 0100     		.2byte	0x1
- 1817 0099 50       		.byte	0x50
- 1818 009a 88010000 		.4byte	.LVL61
- 1819 009e A6010000 		.4byte	.LVL62
- 1820 00a2 0100     		.2byte	0x1
- 1821 00a4 50       		.byte	0x50
- 1822 00a5 C2010000 		.4byte	.LVL65
- 1823 00a9 1E020000 		.4byte	.LVL74
- 1824 00ad 0100     		.2byte	0x1
- 1825 00af 50       		.byte	0x50
- 1826 00b0 00000000 		.4byte	0
- 1827 00b4 00000000 		.4byte	0
- 1828              	.LLST1:
- 1829 00b8 D6010000 		.4byte	.LVL66
-ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 39
-
-
- 1830 00bc DE010000 		.4byte	.LVL67
- 1831 00c0 0100     		.2byte	0x1
- 1832 00c2 53       		.byte	0x53
- 1833 00c3 DE010000 		.4byte	.LVL67
- 1834 00c7 EA010000 		.4byte	.LVL68
- 1835 00cb 1400     		.2byte	0x14
- 1836 00cd 72       		.byte	0x72
- 1837 00ce 00       		.sleb128 0
- 1838 00cf 38       		.byte	0x38
- 1839 00d0 24       		.byte	0x24
- 1840 00d1 91       		.byte	0x91
- 1841 00d2 B47F     		.sleb128 -76
- 1842 00d4 94       		.byte	0x94
- 1843 00d5 01       		.byte	0x1
- 1844 00d6 08       		.byte	0x8
- 1845 00d7 FF       		.byte	0xff
- 1846 00d8 1A       		.byte	0x1a
- 1847 00d9 21       		.byte	0x21
- 1848 00da 09       		.byte	0x9
- 1849 00db F4       		.byte	0xf4
- 1850 00dc 24       		.byte	0x24
- 1851 00dd 09       		.byte	0x9
- 1852 00de FA       		.byte	0xfa
- 1853 00df 26       		.byte	0x26
- 1854 00e0 9F       		.byte	0x9f
- 1855 00e1 EA010000 		.4byte	.LVL68
- 1856 00e5 21020000 		.4byte	.LVL75-1
- 1857 00e9 1A00     		.2byte	0x1a
- 1858 00eb 91       		.byte	0x91
- 1859 00ec B57F     		.sleb128 -75
- 1860 00ee 94       		.byte	0x94
- 1861 00ef 01       		.byte	0x1
- 1862 00f0 08       		.byte	0x8
- 1863 00f1 FF       		.byte	0xff
- 1864 00f2 1A       		.byte	0x1a
- 1865 00f3 38       		.byte	0x38
- 1866 00f4 24       		.byte	0x24
- 1867 00f5 91       		.byte	0x91
- 1868 00f6 B47F     		.sleb128 -76
- 1869 00f8 94       		.byte	0x94
- 1870 00f9 01       		.byte	0x1
- 1871 00fa 08       		.byte	0x8
- 1872 00fb FF       		.byte	0xff
- 1873 00fc 1A       		.byte	0x1a
- 1874 00fd 21       		.byte	0x21
- 1875 00fe 09       		.byte	0x9
- 1876 00ff F4       		.byte	0xf4
- 1877 0100 24       		.byte	0x24
- 1878 0101 09       		.byte	0x9
- 1879 0102 FA       		.byte	0xfa
- 1880 0103 26       		.byte	0x26
- 1881 0104 9F       		.byte	0x9f
- 1882 0105 00000000 		.4byte	0
- 1883 0109 00000000 		.4byte	0
- 1884              	.LLST2:
- 1885 010d F2010000 		.4byte	.LVL69
- 1886 0111 FA010000 		.4byte	.LVL70
-ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 40
-
-
- 1887 0115 0100     		.2byte	0x1
- 1888 0117 53       		.byte	0x53
- 1889 0118 FA010000 		.4byte	.LVL70
- 1890 011c 06020000 		.4byte	.LVL71
- 1891 0120 1400     		.2byte	0x14
- 1892 0122 72       		.byte	0x72
- 1893 0123 00       		.sleb128 0
- 1894 0124 38       		.byte	0x38
- 1895 0125 24       		.byte	0x24
- 1896 0126 91       		.byte	0x91
- 1897 0127 B07F     		.sleb128 -80
- 1898 0129 94       		.byte	0x94
- 1899 012a 01       		.byte	0x1
- 1900 012b 08       		.byte	0x8
- 1901 012c FF       		.byte	0xff
- 1902 012d 1A       		.byte	0x1a
- 1903 012e 21       		.byte	0x21
- 1904 012f 09       		.byte	0x9
- 1905 0130 F4       		.byte	0xf4
- 1906 0131 24       		.byte	0x24
- 1907 0132 09       		.byte	0x9
- 1908 0133 FA       		.byte	0xfa
- 1909 0134 26       		.byte	0x26
- 1910 0135 9F       		.byte	0x9f
- 1911 0136 06020000 		.4byte	.LVL71
- 1912 013a 21020000 		.4byte	.LVL75-1
- 1913 013e 1A00     		.2byte	0x1a
- 1914 0140 91       		.byte	0x91
- 1915 0141 B17F     		.sleb128 -79
- 1916 0143 94       		.byte	0x94
- 1917 0144 01       		.byte	0x1
- 1918 0145 08       		.byte	0x8
- 1919 0146 FF       		.byte	0xff
- 1920 0147 1A       		.byte	0x1a
- 1921 0148 38       		.byte	0x38
- 1922 0149 24       		.byte	0x24
- 1923 014a 91       		.byte	0x91
- 1924 014b B07F     		.sleb128 -80
- 1925 014d 94       		.byte	0x94
- 1926 014e 01       		.byte	0x1
- 1927 014f 08       		.byte	0x8
- 1928 0150 FF       		.byte	0xff
- 1929 0151 1A       		.byte	0x1a
- 1930 0152 21       		.byte	0x21
- 1931 0153 09       		.byte	0x9
- 1932 0154 F4       		.byte	0xf4
- 1933 0155 24       		.byte	0x24
- 1934 0156 09       		.byte	0x9
- 1935 0157 FA       		.byte	0xfa
- 1936 0158 26       		.byte	0x26
- 1937 0159 9F       		.byte	0x9f
- 1938 015a 00000000 		.4byte	0
- 1939 015e 00000000 		.4byte	0
- 1940              	.LLST3:
- 1941 0162 0E020000 		.4byte	.LVL72
- 1942 0166 16020000 		.4byte	.LVL73
- 1943 016a 0100     		.2byte	0x1
-ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 41
-
-
- 1944 016c 53       		.byte	0x53
- 1945 016d 16020000 		.4byte	.LVL73
- 1946 0171 21020000 		.4byte	.LVL75-1
- 1947 0175 1400     		.2byte	0x14
- 1948 0177 72       		.byte	0x72
- 1949 0178 00       		.sleb128 0
- 1950 0179 38       		.byte	0x38
- 1951 017a 24       		.byte	0x24
- 1952 017b 91       		.byte	0x91
- 1953 017c AC7F     		.sleb128 -84
- 1954 017e 94       		.byte	0x94
- 1955 017f 01       		.byte	0x1
- 1956 0180 08       		.byte	0x8
- 1957 0181 FF       		.byte	0xff
- 1958 0182 1A       		.byte	0x1a
- 1959 0183 21       		.byte	0x21
- 1960 0184 09       		.byte	0x9
- 1961 0185 F4       		.byte	0xf4
- 1962 0186 24       		.byte	0x24
- 1963 0187 09       		.byte	0x9
- 1964 0188 FA       		.byte	0xfa
- 1965 0189 26       		.byte	0x26
- 1966 018a 9F       		.byte	0x9f
- 1967 018b 00000000 		.4byte	0
- 1968 018f 00000000 		.4byte	0
- 1969              	.LLST4:
- 1970 0193 14000000 		.4byte	.LVL2
- 1971 0197 18000000 		.4byte	.LVL3
- 1972 019b 0200     		.2byte	0x2
- 1973 019d 30       		.byte	0x30
- 1974 019e 9F       		.byte	0x9f
- 1975 019f 18000000 		.4byte	.LVL3
- 1976 01a3 38010000 		.4byte	.LVL51
- 1977 01a7 0100     		.2byte	0x1
- 1978 01a9 54       		.byte	0x54
- 1979 01aa 00000000 		.4byte	0
- 1980 01ae 00000000 		.4byte	0
- 1981              		.section	.debug_aranges,"",%progbits
- 1982 0000 1C000000 		.4byte	0x1c
- 1983 0004 0200     		.2byte	0x2
- 1984 0006 00000000 		.4byte	.Ldebug_info0
- 1985 000a 04       		.byte	0x4
- 1986 000b 00       		.byte	0
- 1987 000c 0000     		.2byte	0
- 1988 000e 0000     		.2byte	0
- 1989 0010 00000000 		.4byte	.LFB64
- 1990 0014 5C020000 		.4byte	.LFE64-.LFB64
- 1991 0018 00000000 		.4byte	0
- 1992 001c 00000000 		.4byte	0
- 1993              		.section	.debug_ranges,"",%progbits
- 1994              	.Ldebug_ranges0:
- 1995 0000 00000000 		.4byte	.LFB64
- 1996 0004 5C020000 		.4byte	.LFE64
- 1997 0008 00000000 		.4byte	0
- 1998 000c 00000000 		.4byte	0
- 1999              		.section	.debug_line,"",%progbits
- 2000              	.Ldebug_line0:
-ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 42
-
-
- 2001 0000 6C020000 		.section	.debug_str,"MS",%progbits,1
- 2001      0200FD01 
- 2001      00000201 
- 2001      FB0E0D00 
- 2001      01010101 
- 2002              	.LASF24:
- 2003 0000 6D657373 		.ascii	"message\000"
- 2003      61676500 
- 2004              	.LASF30:
- 2005 0008 4F75745F 		.ascii	"Out_X\000"
- 2005      5800
- 2006              	.LASF31:
- 2007 000e 4F75745F 		.ascii	"Out_Y\000"
- 2007      5900
- 2008              	.LASF32:
- 2009 0014 4F75745F 		.ascii	"Out_Z\000"
- 2009      5A00
- 2010              	.LASF39:
- 2011 001a 73746174 		.ascii	"status_reg\000"
- 2011      75735F72 
- 2011      656700
- 2012              	.LASF42:
- 2013 0025 55415254 		.ascii	"UART_Debug_PutString\000"
- 2013      5F446562 
- 2013      75675F50 
- 2013      75745374 
- 2013      72696E67 
- 2014              	.LASF2:
- 2015 003a 5F5F7569 		.ascii	"__uint8_t\000"
- 2015      6E74385F 
- 2015      7400
- 2016              	.LASF40:
- 2017 0044 4932435F 		.ascii	"I2C_Peripheral_IsDeviceConnected\000"
- 2017      50657269 
- 2017      70686572 
- 2017      616C5F49 
- 2017      73446576 
- 2018              	.LASF36:
- 2019 0065 585F4461 		.ascii	"X_Data\000"
- 2019      746100
- 2020              	.LASF6:
- 2021 006c 5F5F696E 		.ascii	"__int32_t\000"
- 2021      7433325F 
- 2021      7400
- 2022              	.LASF7:
- 2023 0076 6C6F6E67 		.ascii	"long int\000"
- 2023      20696E74 
- 2023      00
- 2024              	.LASF49:
- 2025 007f 55415254 		.ascii	"UART_Debug_PutArray\000"
- 2025      5F446562 
- 2025      75675F50 
- 2025      75744172 
- 2025      72617900 
- 2026              	.LASF21:
- 2027 0093 4572726F 		.ascii	"ErrorCode\000"
- 2027      72436F64 
-ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 43
-
-
- 2027      6500
- 2028              	.LASF17:
- 2029 009d 646F7562 		.ascii	"double\000"
- 2029      6C6500
- 2030              	.LASF16:
- 2031 00a4 666C6F61 		.ascii	"float\000"
- 2031      7400
- 2032              	.LASF35:
- 2033 00aa 4F757441 		.ascii	"OutArray\000"
- 2033      72726179 
- 2033      00
- 2034              	.LASF1:
- 2035 00b3 756E7369 		.ascii	"unsigned char\000"
- 2035      676E6564 
- 2035      20636861 
- 2035      7200
- 2036              	.LASF50:
- 2037 00c1 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
- 2037      43313120 
- 2037      352E342E 
- 2037      31203230 
- 2037      31363036 
- 2038 00f4 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
- 2038      20726576 
- 2038      6973696F 
- 2038      6E203233 
- 2038      37373135 
- 2039 0127 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 2039      66756E63 
- 2039      74696F6E 
- 2039      2D736563 
- 2039      74696F6E 
- 2040              	.LASF15:
- 2041 014f 696E7431 		.ascii	"int16\000"
- 2041      3600
- 2042              	.LASF8:
- 2043 0155 6C6F6E67 		.ascii	"long unsigned int\000"
- 2043      20756E73 
- 2043      69676E65 
- 2043      6420696E 
- 2043      7400
- 2044              	.LASF5:
- 2045 0167 73686F72 		.ascii	"short unsigned int\000"
- 2045      7420756E 
- 2045      7369676E 
- 2045      65642069 
- 2045      6E7400
- 2046              	.LASF34:
- 2047 017a 666F6F74 		.ascii	"footer\000"
- 2047      657200
- 2048              	.LASF37:
- 2049 0181 595F4461 		.ascii	"Y_Data\000"
- 2049      746100
- 2050              	.LASF48:
- 2051 0188 4932435F 		.ascii	"I2C_Peripheral_ReadRegisterMulti\000"
- 2051      50657269 
- 2051      70686572 
-ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 44
-
-
- 2051      616C5F52 
- 2051      65616452 
- 2052              	.LASF47:
- 2053 01a9 4932435F 		.ascii	"I2C_Peripheral_WriteRegister\000"
- 2053      50657269 
- 2053      70686572 
- 2053      616C5F57 
- 2053      72697465 
- 2054              	.LASF53:
- 2055 01c6 6D61696E 		.ascii	"main\000"
- 2055      00
- 2056              	.LASF3:
- 2057 01cb 5F5F696E 		.ascii	"__int16_t\000"
- 2057      7431365F 
- 2057      7400
- 2058              	.LASF28:
- 2059 01d5 6374726C 		.ascii	"ctrl_reg1\000"
- 2059      5F726567 
- 2059      3100
- 2060              	.LASF52:
- 2061 01df 433A5C55 		.ascii	"C:\\Users\\Simone\\Desktop\\PSoC_03\\AY1920_II_HW_0"
- 2061      73657273 
- 2061      5C53696D 
- 2061      6F6E655C 
- 2061      4465736B 
- 2062 020d 355F5052 		.ascii	"5_PROJ_2.cydsn\000"
- 2062      4F4A5F32 
- 2062      2E637964 
- 2062      736E00
- 2063              	.LASF29:
- 2064 021c 6374726C 		.ascii	"ctrl_reg4\000"
- 2064      5F726567 
- 2064      3400
- 2065              	.LASF11:
- 2066 0226 756E7369 		.ascii	"unsigned int\000"
- 2066      676E6564 
- 2066      20696E74 
- 2066      00
- 2067              	.LASF10:
- 2068 0233 6C6F6E67 		.ascii	"long long unsigned int\000"
- 2068      206C6F6E 
- 2068      6720756E 
- 2068      7369676E 
- 2068      65642069 
- 2069              	.LASF12:
- 2070 024a 75696E74 		.ascii	"uint8_t\000"
- 2070      385F7400 
- 2071              	.LASF13:
- 2072 0252 696E7431 		.ascii	"int16_t\000"
- 2072      365F7400 
- 2073              	.LASF54:
- 2074 025a 49544D5F 		.ascii	"ITM_RxBuffer\000"
- 2074      52784275 
- 2074      66666572 
- 2074      00
- 2075              	.LASF27:
- 2076 0267 73746174 		.ascii	"status_register\000"
-ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 45
-
-
- 2076      75735F72 
- 2076      65676973 
- 2076      74657200 
- 2077              	.LASF14:
- 2078 0277 696E7433 		.ascii	"int32_t\000"
- 2078      325F7400 
- 2079              	.LASF23:
- 2080 027f 73697A65 		.ascii	"sizetype\000"
- 2080      74797065 
- 2080      00
- 2081              	.LASF26:
- 2082 0288 6572726F 		.ascii	"error\000"
- 2082      7200
- 2083              	.LASF9:
- 2084 028e 6C6F6E67 		.ascii	"long long int\000"
- 2084      206C6F6E 
- 2084      6720696E 
- 2084      7400
- 2085              	.LASF44:
- 2086 029c 55415254 		.ascii	"UART_Debug_Start\000"
- 2086      5F446562 
- 2086      75675F53 
- 2086      74617274 
- 2086      00
- 2087              	.LASF51:
- 2088 02ad 6D61696E 		.ascii	"main.c\000"
- 2088      2E6300
- 2089              	.LASF18:
- 2090 02b4 63686172 		.ascii	"char\000"
- 2090      00
- 2091              	.LASF46:
- 2092 02b9 4932435F 		.ascii	"I2C_Peripheral_ReadRegister\000"
- 2092      50657269 
- 2092      70686572 
- 2092      616C5F52 
- 2092      65616452 
- 2093              	.LASF4:
- 2094 02d5 73686F72 		.ascii	"short int\000"
- 2094      7420696E 
- 2094      7400
- 2095              	.LASF38:
- 2096 02df 5A5F4461 		.ascii	"Z_Data\000"
- 2096      746100
- 2097              	.LASF19:
- 2098 02e6 4E4F5F45 		.ascii	"NO_ERROR\000"
- 2098      52524F52 
- 2098      00
- 2099              	.LASF33:
- 2100 02ef 68656164 		.ascii	"header\000"
- 2100      657200
- 2101              	.LASF20:
- 2102 02f6 4552524F 		.ascii	"ERROR\000"
- 2102      5200
- 2103              	.LASF22:
- 2104 02fc 6C6F6E67 		.ascii	"long double\000"
- 2104      20646F75 
- 2104      626C6500 
-ARM GAS  C:\Users\Simone\AppData\Local\Temp\cc0GX0Vw.s 			page 46
-
-
- 2105              	.LASF0:
- 2106 0308 7369676E 		.ascii	"signed char\000"
- 2106      65642063 
- 2106      68617200 
- 2107              	.LASF25:
- 2108 0314 77686F5F 		.ascii	"who_am_i_reg\000"
- 2108      616D5F69 
- 2108      5F726567 
- 2108      00
- 2109              	.LASF41:
- 2110 0321 73707269 		.ascii	"sprintf\000"
- 2110      6E746600 
- 2111              	.LASF45:
- 2112 0329 43794465 		.ascii	"CyDelay\000"
- 2112      6C617900 
- 2113              	.LASF43:
- 2114 0331 4932435F 		.ascii	"I2C_Peripheral_Start\000"
- 2114      50657269 
- 2114      70686572 
- 2114      616C5F53 
- 2114      74617274 
- 2115              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ 265:main.c        ****                Out_X_mg= Out_X*4;//out_x in mg (12 bits needed [-2048;+2048])
+ 359              		.loc 1 265 0
+ 360 01d6 9B00     		lsls	r3, r3, #2
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccqukMtG.s 			page 12
+
+
+ 361              	.LVL67:
+ 362 01d8 9BB2     		uxth	r3, r3
+ 363              	.LVL68:
+ 266:main.c        ****                OutArray[1] = (uint8_t)(Out_X_mg & 0xFF);
+ 364              		.loc 1 266 0
+ 365 01da 8DF81130 		strb	r3, [sp, #17]
+ 267:main.c        ****                OutArray[2] = (uint8_t)(Out_X_mg >> 8);
+ 366              		.loc 1 267 0
+ 367 01de 1B0A     		lsrs	r3, r3, #8
+ 368              	.LVL69:
+ 369 01e0 8DF81230 		strb	r3, [sp, #18]
+ 268:main.c        ****                
+ 269:main.c        ****                Out_Y = (int16)((Y_Data[0] | (Y_Data[1]<<8)))>>6;//out_y in digit (10bit)
+ 370              		.loc 1 269 0
+ 371 01e4 9DF80830 		ldrb	r3, [sp, #8]	@ zero_extendqisi2
+ 372 01e8 9DF80920 		ldrb	r2, [sp, #9]	@ zero_extendqisi2
+ 373              	.LVL70:
+ 374 01ec 43EA0223 		orr	r3, r3, r2, lsl #8
+ 375 01f0 43F38913 		sbfx	r3, r3, #6, #10
+ 376              	.LVL71:
+ 270:main.c        ****                Out_Y_mg= Out_Y*4;//out_y in mg (12 bits needed)
+ 377              		.loc 1 270 0
+ 378 01f4 9B00     		lsls	r3, r3, #2
+ 379              	.LVL72:
+ 380 01f6 9BB2     		uxth	r3, r3
+ 381              	.LVL73:
+ 271:main.c        ****                OutArray[3] = (uint8_t)(Out_Y_mg & 0xFF);
+ 382              		.loc 1 271 0
+ 383 01f8 8DF81330 		strb	r3, [sp, #19]
+ 272:main.c        ****                OutArray[4] = (uint8_t)(Out_Y_mg >> 8);
+ 384              		.loc 1 272 0
+ 385 01fc 1B0A     		lsrs	r3, r3, #8
+ 386              	.LVL74:
+ 387 01fe 8DF81430 		strb	r3, [sp, #20]
+ 273:main.c        ****             
+ 274:main.c        ****                Out_Z = (int16)((Z_Data[0] | (Z_Data[1]<<8)))>>6;//out_z in digit (10bit)
+ 388              		.loc 1 274 0
+ 389 0202 9DF80430 		ldrb	r3, [sp, #4]	@ zero_extendqisi2
+ 390 0206 9DF80520 		ldrb	r2, [sp, #5]	@ zero_extendqisi2
+ 391              	.LVL75:
+ 392 020a 43EA0223 		orr	r3, r3, r2, lsl #8
+ 393 020e 43F38913 		sbfx	r3, r3, #6, #10
+ 394              	.LVL76:
+ 275:main.c        ****                Out_Z_mg= Out_Z*4;//out_z in mg (12 bits needed)
+ 395              		.loc 1 275 0
+ 396 0212 9B00     		lsls	r3, r3, #2
+ 397              	.LVL77:
+ 398 0214 9BB2     		uxth	r3, r3
+ 399              	.LVL78:
+ 276:main.c        ****                OutArray[5] = (uint8_t)(Out_Z_mg & 0xFF);
+ 400              		.loc 1 276 0
+ 401 0216 8DF81530 		strb	r3, [sp, #21]
+ 277:main.c        ****                OutArray[6] = (uint8_t)(Out_Z_mg>> 8);
+ 402              		.loc 1 277 0
+ 403 021a 1B0A     		lsrs	r3, r3, #8
+ 404              	.LVL79:
+ 405 021c 8DF81630 		strb	r3, [sp, #22]
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccqukMtG.s 			page 13
+
+
+ 278:main.c        ****                //sprintf(message, "OUT_Z: %d\r\n OUT_Z_MG: %d\r\n",Out_Z, Out_Z_mg);
+ 279:main.c        ****                //UART_Debug_PutString(message);
+ 280:main.c        ****                UART_Debug_PutArray(OutArray, 8);
+ 406              		.loc 1 280 0
+ 407 0220 0821     		movs	r1, #8
+ 408 0222 04A8     		add	r0, sp, #16
+ 409              	.LVL80:
+ 410 0224 FFF7FEFF 		bl	UART_Debug_PutArray
+ 411              	.LVL81:
+ 412 0228 A5E7     		b	.L19
+ 413              	.L25:
+ 414 022a 00BF     		.align	2
+ 415              	.L24:
+ 416 022c 00000000 		.word	.LC0
+ 417 0230 20000000 		.word	.LC1
+ 418 0234 48000000 		.word	.LC2
+ 419 0238 6C000000 		.word	.LC3
+ 420 023c 88000000 		.word	.LC4
+ 421 0240 C4000000 		.word	.LC5
+ 422 0244 E4000000 		.word	.LC6
+ 423 0248 20010000 		.word	.LC7
+ 424 024c 3C010000 		.word	.LC8
+ 425 0250 74010000 		.word	.LC9
+ 426 0254 B0010000 		.word	.LC10
+ 427 0258 E8010000 		.word	.LC11
+ 428 025c 08020000 		.word	.LC12
+ 429 0260 44020000 		.word	.LC13
+ 430              		.cfi_endproc
+ 431              	.LFE64:
+ 432              		.size	main, .-main
+ 433              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 434              		.align	2
+ 435              	.LC0:
+ 436 0000 44657669 		.ascii	"Device 0x%02X is connected\015\012\000"
+ 436      63652030 
+ 436      78253032 
+ 436      58206973 
+ 436      20636F6E 
+ 437 001d 000000   		.space	3
+ 438              	.LC1:
+ 439 0020 57484F20 		.ascii	"WHO AM I REG: 0x%02X [Expected: 0x33]\015\012\000"
+ 439      414D2049 
+ 439      20524547 
+ 439      3A203078 
+ 439      25303258 
+ 440              	.LC2:
+ 441 0048 4572726F 		.ascii	"Error occurred during I2C comm\015\012\000"
+ 441      72206F63 
+ 441      63757272 
+ 441      65642064 
+ 441      7572696E 
+ 442 0069 000000   		.space	3
+ 443              	.LC3:
+ 444 006c 53544154 		.ascii	"STATUS REGISTER: 0x%02X\015\012\000"
+ 444      55532052 
+ 444      45474953 
+ 444      5445523A 
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccqukMtG.s 			page 14
+
+
+ 444      20307825 
+ 445 0086 0000     		.space	2
+ 446              	.LC4:
+ 447 0088 4572726F 		.ascii	"Error occurred during I2C comm to read status regis"
+ 447      72206F63 
+ 447      63757272 
+ 447      65642064 
+ 447      7572696E 
+ 448 00bb 7465720D 		.ascii	"ter\015\012\000"
+ 448      0A00
+ 449 00c1 000000   		.space	3
+ 450              	.LC5:
+ 451 00c4 434F4E54 		.ascii	"CONTROL REGISTER 1: 0x%02X\015\012\000"
+ 451      524F4C20 
+ 451      52454749 
+ 451      53544552 
+ 451      20313A20 
+ 452 00e1 000000   		.space	3
+ 453              	.LC6:
+ 454 00e4 4572726F 		.ascii	"Error occurred during I2C comm to read control regi"
+ 454      72206F63 
+ 454      63757272 
+ 454      65642064 
+ 454      7572696E 
+ 455 0117 73746572 		.ascii	"ster 1\015\012\000"
+ 455      20310D0A 
+ 455      00
+ 456              	.LC7:
+ 457 0120 0D0A5772 		.ascii	"\015\012Writing new values..\015\012\000"
+ 457      6974696E 
+ 457      67206E65 
+ 457      77207661 
+ 457      6C756573 
+ 458 0139 000000   		.space	3
+ 459              	.LC8:
+ 460 013c 434F4E54 		.ascii	"CONTROL REGISTER 1 successfully written as: 0x%02X\015"
+ 460      524F4C20 
+ 460      52454749 
+ 460      53544552 
+ 460      20312073 
+ 461 016f 0A00     		.ascii	"\012\000"
+ 462 0171 000000   		.space	3
+ 463              	.LC9:
+ 464 0174 4572726F 		.ascii	"Error occurred during I2C comm to set control regis"
+ 464      72206F63 
+ 464      63757272 
+ 464      65642064 
+ 464      7572696E 
+ 465 01a7 74657220 		.ascii	"ter 1\015\012\000"
+ 465      310D0A00 
+ 466 01af 00       		.space	1
+ 467              	.LC10:
+ 468 01b0 434F4E54 		.ascii	"CONTROL REGISTER 1 after overwrite operation: 0x%02"
+ 468      524F4C20 
+ 468      52454749 
+ 468      53544552 
+ 468      20312061 
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccqukMtG.s 			page 15
+
+
+ 469 01e3 580D0A00 		.ascii	"X\015\012\000"
+ 470 01e7 00       		.space	1
+ 471              	.LC11:
+ 472 01e8 434F4E54 		.ascii	"CONTROL REGISTER 4: 0x%02X\015\012\000"
+ 472      524F4C20 
+ 472      52454749 
+ 472      53544552 
+ 472      20343A20 
+ 473 0205 000000   		.space	3
+ 474              	.LC12:
+ 475 0208 4572726F 		.ascii	"Error occurred during I2C comm to read control regi"
+ 475      72206F63 
+ 475      63757272 
+ 475      65642064 
+ 475      7572696E 
+ 476 023b 73746572 		.ascii	"ster4\015\012\000"
+ 476      340D0A00 
+ 477 0243 00       		.space	1
+ 478              	.LC13:
+ 479 0244 434F4E54 		.ascii	"CONTROL REGISTER 4 after being updated: 0x%02X\015\012"
+ 479      524F4C20 
+ 479      52454749 
+ 479      53544552 
+ 479      20342061 
+ 480 0274 00       		.ascii	"\000"
+ 481              		.text
+ 482              	.Letext0:
+ 483              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
+ 484              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
+ 485              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 486              		.file 5 "ErrorCodes.h"
+ 487              		.file 6 "I2C_Interface.h"
+ 488              		.file 7 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
+ 489              		.file 8 "Generated_Source\\PSoC5/UART_Debug.h"
+ 490              		.file 9 "Generated_Source\\PSoC5/CyLib.h"
+ 491              		.file 10 "Generated_Source\\PSoC5/core_cm3.h"
+ 492              		.section	.debug_info,"",%progbits
+ 493              	.Ldebug_info0:
+ 494 0000 1E070000 		.4byte	0x71e
+ 495 0004 0400     		.2byte	0x4
+ 496 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 497 000a 04       		.byte	0x4
+ 498 000b 01       		.uleb128 0x1
+ 499 000c CA000000 		.4byte	.LASF53
+ 500 0010 0C       		.byte	0xc
+ 501 0011 BF020000 		.4byte	.LASF54
+ 502 0015 E8010000 		.4byte	.LASF55
+ 503 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 504 001d 00000000 		.4byte	0
+ 505 0021 00000000 		.4byte	.Ldebug_line0
+ 506 0025 02       		.uleb128 0x2
+ 507 0026 01       		.byte	0x1
+ 508 0027 06       		.byte	0x6
+ 509 0028 23030000 		.4byte	.LASF0
+ 510 002c 03       		.uleb128 0x3
+ 511 002d 3A000000 		.4byte	.LASF2
+ 512 0031 02       		.byte	0x2
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccqukMtG.s 			page 16
+
+
+ 513 0032 1D       		.byte	0x1d
+ 514 0033 37000000 		.4byte	0x37
+ 515 0037 02       		.uleb128 0x2
+ 516 0038 01       		.byte	0x1
+ 517 0039 08       		.byte	0x8
+ 518 003a BC000000 		.4byte	.LASF1
+ 519 003e 03       		.uleb128 0x3
+ 520 003f D4010000 		.4byte	.LASF3
+ 521 0043 02       		.byte	0x2
+ 522 0044 29       		.byte	0x29
+ 523 0045 49000000 		.4byte	0x49
+ 524 0049 02       		.uleb128 0x2
+ 525 004a 02       		.byte	0x2
+ 526 004b 05       		.byte	0x5
+ 527 004c F0020000 		.4byte	.LASF4
+ 528 0050 02       		.uleb128 0x2
+ 529 0051 02       		.byte	0x2
+ 530 0052 07       		.byte	0x7
+ 531 0053 70010000 		.4byte	.LASF5
+ 532 0057 03       		.uleb128 0x3
+ 533 0058 6C000000 		.4byte	.LASF6
+ 534 005c 02       		.byte	0x2
+ 535 005d 3F       		.byte	0x3f
+ 536 005e 62000000 		.4byte	0x62
+ 537 0062 02       		.uleb128 0x2
+ 538 0063 04       		.byte	0x4
+ 539 0064 05       		.byte	0x5
+ 540 0065 76000000 		.4byte	.LASF7
+ 541 0069 02       		.uleb128 0x2
+ 542 006a 04       		.byte	0x4
+ 543 006b 07       		.byte	0x7
+ 544 006c 5E010000 		.4byte	.LASF8
+ 545 0070 02       		.uleb128 0x2
+ 546 0071 08       		.byte	0x8
+ 547 0072 05       		.byte	0x5
+ 548 0073 A0020000 		.4byte	.LASF9
+ 549 0077 02       		.uleb128 0x2
+ 550 0078 08       		.byte	0x8
+ 551 0079 07       		.byte	0x7
+ 552 007a 45020000 		.4byte	.LASF10
+ 553 007e 04       		.uleb128 0x4
+ 554 007f 04       		.byte	0x4
+ 555 0080 05       		.byte	0x5
+ 556 0081 696E7400 		.ascii	"int\000"
+ 557 0085 02       		.uleb128 0x2
+ 558 0086 04       		.byte	0x4
+ 559 0087 07       		.byte	0x7
+ 560 0088 2F020000 		.4byte	.LASF11
+ 561 008c 03       		.uleb128 0x3
+ 562 008d 5C020000 		.4byte	.LASF12
+ 563 0091 03       		.byte	0x3
+ 564 0092 18       		.byte	0x18
+ 565 0093 2C000000 		.4byte	0x2c
+ 566 0097 03       		.uleb128 0x3
+ 567 0098 64020000 		.4byte	.LASF13
+ 568 009c 03       		.byte	0x3
+ 569 009d 20       		.byte	0x20
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccqukMtG.s 			page 17
+
+
+ 570 009e 3E000000 		.4byte	0x3e
+ 571 00a2 03       		.uleb128 0x3
+ 572 00a3 89020000 		.4byte	.LASF14
+ 573 00a7 03       		.byte	0x3
+ 574 00a8 2C       		.byte	0x2c
+ 575 00a9 57000000 		.4byte	0x57
+ 576 00ad 05       		.uleb128 0x5
+ 577 00ae 58010000 		.4byte	.LASF15
+ 578 00b2 04       		.byte	0x4
+ 579 00b3 E801     		.2byte	0x1e8
+ 580 00b5 49000000 		.4byte	0x49
+ 581 00b9 02       		.uleb128 0x2
+ 582 00ba 04       		.byte	0x4
+ 583 00bb 04       		.byte	0x4
+ 584 00bc A4000000 		.4byte	.LASF16
+ 585 00c0 02       		.uleb128 0x2
+ 586 00c1 08       		.byte	0x8
+ 587 00c2 04       		.byte	0x4
+ 588 00c3 9D000000 		.4byte	.LASF17
+ 589 00c7 02       		.uleb128 0x2
+ 590 00c8 01       		.byte	0x1
+ 591 00c9 08       		.byte	0x8
+ 592 00ca C6020000 		.4byte	.LASF18
+ 593 00ce 06       		.uleb128 0x6
+ 594 00cf 01       		.byte	0x1
+ 595 00d0 37000000 		.4byte	0x37
+ 596 00d4 05       		.byte	0x5
+ 597 00d5 15       		.byte	0x15
+ 598 00d6 E7000000 		.4byte	0xe7
+ 599 00da 07       		.uleb128 0x7
+ 600 00db 01030000 		.4byte	.LASF19
+ 601 00df 00       		.byte	0
+ 602 00e0 07       		.uleb128 0x7
+ 603 00e1 11030000 		.4byte	.LASF20
+ 604 00e5 01       		.byte	0x1
+ 605 00e6 00       		.byte	0
+ 606 00e7 03       		.uleb128 0x3
+ 607 00e8 93000000 		.4byte	.LASF21
+ 608 00ec 05       		.byte	0x5
+ 609 00ed 18       		.byte	0x18
+ 610 00ee CE000000 		.4byte	0xce
+ 611 00f2 02       		.uleb128 0x2
+ 612 00f3 08       		.byte	0x8
+ 613 00f4 04       		.byte	0x4
+ 614 00f5 17030000 		.4byte	.LASF22
+ 615 00f9 02       		.uleb128 0x2
+ 616 00fa 04       		.byte	0x4
+ 617 00fb 07       		.byte	0x7
+ 618 00fc 91020000 		.4byte	.LASF23
+ 619 0100 08       		.uleb128 0x8
+ 620 0101 CF010000 		.4byte	.LASF56
+ 621 0105 01       		.byte	0x1
+ 622 0106 30       		.byte	0x30
+ 623 0107 7E000000 		.4byte	0x7e
+ 624 010b 00000000 		.4byte	.LFB64
+ 625 010f 64020000 		.4byte	.LFE64-.LFB64
+ 626 0113 01       		.uleb128 0x1
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccqukMtG.s 			page 18
+
+
+ 627 0114 9C       		.byte	0x9c
+ 628 0115 72060000 		.4byte	0x672
+ 629 0119 09       		.uleb128 0x9
+ 630 011a 00000000 		.4byte	.LASF24
+ 631 011e 01       		.byte	0x1
+ 632 011f 3B       		.byte	0x3b
+ 633 0120 72060000 		.4byte	0x672
+ 634 0124 02       		.uleb128 0x2
+ 635 0125 91       		.byte	0x91
+ 636 0126 44       		.sleb128 -60
+ 637 0127 09       		.uleb128 0x9
+ 638 0128 2F030000 		.4byte	.LASF25
+ 639 012c 01       		.byte	0x1
+ 640 012d 4E       		.byte	0x4e
+ 641 012e 8C000000 		.4byte	0x8c
+ 642 0132 02       		.uleb128 0x2
+ 643 0133 91       		.byte	0x91
+ 644 0134 43       		.sleb128 -61
+ 645 0135 0A       		.uleb128 0xa
+ 646 0136 9A020000 		.4byte	.LASF26
+ 647 013a 01       		.byte	0x1
+ 648 013b 4F       		.byte	0x4f
+ 649 013c E7000000 		.4byte	0xe7
+ 650 0140 00000000 		.4byte	.LLST0
+ 651 0144 09       		.uleb128 0x9
+ 652 0145 79020000 		.4byte	.LASF27
+ 653 0149 01       		.byte	0x1
+ 654 014a 5E       		.byte	0x5e
+ 655 014b 8C000000 		.4byte	0x8c
+ 656 014f 02       		.uleb128 0x2
+ 657 0150 91       		.byte	0x91
+ 658 0151 42       		.sleb128 -62
+ 659 0152 09       		.uleb128 0x9
+ 660 0153 DE010000 		.4byte	.LASF28
+ 661 0157 01       		.byte	0x1
+ 662 0158 70       		.byte	0x70
+ 663 0159 8C000000 		.4byte	0x8c
+ 664 015d 02       		.uleb128 0x2
+ 665 015e 91       		.byte	0x91
+ 666 015f 41       		.sleb128 -63
+ 667 0160 09       		.uleb128 0x9
+ 668 0161 25020000 		.4byte	.LASF29
+ 669 0165 01       		.byte	0x1
+ 670 0166 B1       		.byte	0xb1
+ 671 0167 8C000000 		.4byte	0x8c
+ 672 016b 02       		.uleb128 0x2
+ 673 016c 91       		.byte	0x91
+ 674 016d 40       		.sleb128 -64
+ 675 016e 0A       		.uleb128 0xa
+ 676 016f 08000000 		.4byte	.LASF30
+ 677 0173 01       		.byte	0x1
+ 678 0174 D7       		.byte	0xd7
+ 679 0175 97000000 		.4byte	0x97
+ 680 0179 B8000000 		.4byte	.LLST1
+ 681 017d 0A       		.uleb128 0xa
+ 682 017e 0E000000 		.4byte	.LASF31
+ 683 0182 01       		.byte	0x1
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccqukMtG.s 			page 19
+
+
+ 684 0183 D8       		.byte	0xd8
+ 685 0184 97000000 		.4byte	0x97
+ 686 0188 0D010000 		.4byte	.LLST2
+ 687 018c 0A       		.uleb128 0xa
+ 688 018d 14000000 		.4byte	.LASF32
+ 689 0191 01       		.byte	0x1
+ 690 0192 D9       		.byte	0xd9
+ 691 0193 97000000 		.4byte	0x97
+ 692 0197 62010000 		.4byte	.LLST3
+ 693 019b 0A       		.uleb128 0xa
+ 694 019c 3C020000 		.4byte	.LASF33
+ 695 01a0 01       		.byte	0x1
+ 696 01a1 DA       		.byte	0xda
+ 697 01a2 97000000 		.4byte	0x97
+ 698 01a6 93010000 		.4byte	.LLST4
+ 699 01aa 0A       		.uleb128 0xa
+ 700 01ab E7020000 		.4byte	.LASF34
+ 701 01af 01       		.byte	0x1
+ 702 01b0 DB       		.byte	0xdb
+ 703 01b1 97000000 		.4byte	0x97
+ 704 01b5 EC010000 		.4byte	.LLST5
+ 705 01b9 0A       		.uleb128 0xa
+ 706 01ba AA000000 		.4byte	.LASF35
+ 707 01be 01       		.byte	0x1
+ 708 01bf DC       		.byte	0xdc
+ 709 01c0 97000000 		.4byte	0x97
+ 710 01c4 45020000 		.4byte	.LLST6
+ 711 01c8 0B       		.uleb128 0xb
+ 712 01c9 0A030000 		.4byte	.LASF36
+ 713 01cd 01       		.byte	0x1
+ 714 01ce DD       		.byte	0xdd
+ 715 01cf 8C000000 		.4byte	0x8c
+ 716 01d3 A07F     		.sleb128 -96
+ 717 01d5 0B       		.uleb128 0xb
+ 718 01d6 83010000 		.4byte	.LASF37
+ 719 01da 01       		.byte	0x1
+ 720 01db DE       		.byte	0xde
+ 721 01dc 8C000000 		.4byte	0x8c
+ 722 01e0 40       		.sleb128 -64
+ 723 01e1 09       		.uleb128 0x9
+ 724 01e2 B3000000 		.4byte	.LASF38
+ 725 01e6 01       		.byte	0x1
+ 726 01e7 DF       		.byte	0xdf
+ 727 01e8 82060000 		.4byte	0x682
+ 728 01ec 03       		.uleb128 0x3
+ 729 01ed 91       		.byte	0x91
+ 730 01ee B87F     		.sleb128 -72
+ 731 01f0 09       		.uleb128 0x9
+ 732 01f1 65000000 		.4byte	.LASF39
+ 733 01f5 01       		.byte	0x1
+ 734 01f6 E0       		.byte	0xe0
+ 735 01f7 92060000 		.4byte	0x692
+ 736 01fb 03       		.uleb128 0x3
+ 737 01fc 91       		.byte	0x91
+ 738 01fd B47F     		.sleb128 -76
+ 739 01ff 09       		.uleb128 0x9
+ 740 0200 8A010000 		.4byte	.LASF40
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccqukMtG.s 			page 20
+
+
+ 741 0204 01       		.byte	0x1
+ 742 0205 E1       		.byte	0xe1
+ 743 0206 92060000 		.4byte	0x692
+ 744 020a 03       		.uleb128 0x3
+ 745 020b 91       		.byte	0x91
+ 746 020c B07F     		.sleb128 -80
+ 747 020e 09       		.uleb128 0x9
+ 748 020f FA020000 		.4byte	.LASF41
+ 749 0213 01       		.byte	0x1
+ 750 0214 E2       		.byte	0xe2
+ 751 0215 92060000 		.4byte	0x692
+ 752 0219 03       		.uleb128 0x3
+ 753 021a 91       		.byte	0x91
+ 754 021b AC7F     		.sleb128 -84
+ 755 021d 09       		.uleb128 0x9
+ 756 021e 1A000000 		.4byte	.LASF42
+ 757 0222 01       		.byte	0x1
+ 758 0223 E3       		.byte	0xe3
+ 759 0224 8C000000 		.4byte	0x8c
+ 760 0228 03       		.uleb128 0x3
+ 761 0229 91       		.byte	0x91
+ 762 022a AB7F     		.sleb128 -85
+ 763 022c 0C       		.uleb128 0xc
+ 764 022d 14000000 		.4byte	.LBB2
+ 765 0231 22000000 		.4byte	.LBE2-.LBB2
+ 766 0235 8E020000 		.4byte	0x28e
+ 767 0239 0D       		.uleb128 0xd
+ 768 023a 6900     		.ascii	"i\000"
+ 769 023c 01       		.byte	0x1
+ 770 023d 3E       		.byte	0x3e
+ 771 023e 7E000000 		.4byte	0x7e
+ 772 0242 78020000 		.4byte	.LLST7
+ 773 0246 0E       		.uleb128 0xe
+ 774 0247 1E000000 		.4byte	.LVL4
+ 775 024b B3060000 		.4byte	0x6b3
+ 776 024f 5A020000 		.4byte	0x25a
+ 777 0253 0F       		.uleb128 0xf
+ 778 0254 01       		.uleb128 0x1
+ 779 0255 50       		.byte	0x50
+ 780 0256 02       		.uleb128 0x2
+ 781 0257 74       		.byte	0x74
+ 782 0258 00       		.sleb128 0
+ 783 0259 00       		.byte	0
+ 784 025a 0E       		.uleb128 0xe
+ 785 025b 2A000000 		.4byte	.LVL5
+ 786 025f BE060000 		.4byte	0x6be
+ 787 0263 7D020000 		.4byte	0x27d
+ 788 0267 0F       		.uleb128 0xf
+ 789 0268 01       		.uleb128 0x1
+ 790 0269 50       		.byte	0x50
+ 791 026a 02       		.uleb128 0x2
+ 792 026b 91       		.byte	0x91
+ 793 026c 44       		.sleb128 -60
+ 794 026d 0F       		.uleb128 0xf
+ 795 026e 01       		.uleb128 0x1
+ 796 026f 51       		.byte	0x51
+ 797 0270 05       		.uleb128 0x5
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccqukMtG.s 			page 21
+
+
+ 798 0271 03       		.byte	0x3
+ 799 0272 00000000 		.4byte	.LC0
+ 800 0276 0F       		.uleb128 0xf
+ 801 0277 01       		.uleb128 0x1
+ 802 0278 52       		.byte	0x52
+ 803 0279 02       		.uleb128 0x2
+ 804 027a 74       		.byte	0x74
+ 805 027b 00       		.sleb128 0
+ 806 027c 00       		.byte	0
+ 807 027d 10       		.uleb128 0x10
+ 808 027e 30000000 		.4byte	.LVL6
+ 809 0282 C9060000 		.4byte	0x6c9
+ 810 0286 0F       		.uleb128 0xf
+ 811 0287 01       		.uleb128 0x1
+ 812 0288 50       		.byte	0x50
+ 813 0289 02       		.uleb128 0x2
+ 814 028a 91       		.byte	0x91
+ 815 028b 44       		.sleb128 -60
+ 816 028c 00       		.byte	0
+ 817 028d 00       		.byte	0
+ 818 028e 11       		.uleb128 0x11
+ 819 028f 0A000000 		.4byte	.LVL0
+ 820 0293 D4060000 		.4byte	0x6d4
+ 821 0297 11       		.uleb128 0x11
+ 822 0298 0E000000 		.4byte	.LVL1
+ 823 029c DF060000 		.4byte	0x6df
+ 824 02a0 0E       		.uleb128 0xe
+ 825 02a1 14000000 		.4byte	.LVL2
+ 826 02a5 EA060000 		.4byte	0x6ea
+ 827 02a9 B3020000 		.4byte	0x2b3
+ 828 02ad 0F       		.uleb128 0xf
+ 829 02ae 01       		.uleb128 0x1
+ 830 02af 50       		.byte	0x50
+ 831 02b0 01       		.uleb128 0x1
+ 832 02b1 35       		.byte	0x35
+ 833 02b2 00       		.byte	0
+ 834 02b3 0E       		.uleb128 0xe
+ 835 02b4 42000000 		.4byte	.LVL8
+ 836 02b8 F5060000 		.4byte	0x6f5
+ 837 02bc D1020000 		.4byte	0x2d1
+ 838 02c0 0F       		.uleb128 0xf
+ 839 02c1 01       		.uleb128 0x1
+ 840 02c2 50       		.byte	0x50
+ 841 02c3 01       		.uleb128 0x1
+ 842 02c4 48       		.byte	0x48
+ 843 02c5 0F       		.uleb128 0xf
+ 844 02c6 01       		.uleb128 0x1
+ 845 02c7 51       		.byte	0x51
+ 846 02c8 01       		.uleb128 0x1
+ 847 02c9 3F       		.byte	0x3f
+ 848 02ca 0F       		.uleb128 0xf
+ 849 02cb 01       		.uleb128 0x1
+ 850 02cc 52       		.byte	0x52
+ 851 02cd 02       		.uleb128 0x2
+ 852 02ce 91       		.byte	0x91
+ 853 02cf 43       		.sleb128 -61
+ 854 02d0 00       		.byte	0
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccqukMtG.s 			page 22
+
+
+ 855 02d1 0E       		.uleb128 0xe
+ 856 02d2 50000000 		.4byte	.LVL10
+ 857 02d6 BE060000 		.4byte	0x6be
+ 858 02da EE020000 		.4byte	0x2ee
+ 859 02de 0F       		.uleb128 0xf
+ 860 02df 01       		.uleb128 0x1
+ 861 02e0 50       		.byte	0x50
+ 862 02e1 02       		.uleb128 0x2
+ 863 02e2 91       		.byte	0x91
+ 864 02e3 44       		.sleb128 -60
+ 865 02e4 0F       		.uleb128 0xf
+ 866 02e5 01       		.uleb128 0x1
+ 867 02e6 51       		.byte	0x51
+ 868 02e7 05       		.uleb128 0x5
+ 869 02e8 03       		.byte	0x3
+ 870 02e9 20000000 		.4byte	.LC1
+ 871 02ed 00       		.byte	0
+ 872 02ee 0E       		.uleb128 0xe
+ 873 02ef 56000000 		.4byte	.LVL11
+ 874 02f3 C9060000 		.4byte	0x6c9
+ 875 02f7 02030000 		.4byte	0x302
+ 876 02fb 0F       		.uleb128 0xf
+ 877 02fc 01       		.uleb128 0x1
+ 878 02fd 50       		.byte	0x50
+ 879 02fe 02       		.uleb128 0x2
+ 880 02ff 91       		.byte	0x91
+ 881 0300 44       		.sleb128 -60
+ 882 0301 00       		.byte	0
+ 883 0302 0E       		.uleb128 0xe
+ 884 0303 5E000000 		.4byte	.LVL14
+ 885 0307 C9060000 		.4byte	0x6c9
+ 886 030b 19030000 		.4byte	0x319
+ 887 030f 0F       		.uleb128 0xf
+ 888 0310 01       		.uleb128 0x1
+ 889 0311 50       		.byte	0x50
+ 890 0312 05       		.uleb128 0x5
+ 891 0313 03       		.byte	0x3
+ 892 0314 48000000 		.4byte	.LC2
+ 893 0318 00       		.byte	0
+ 894 0319 0E       		.uleb128 0xe
+ 895 031a 6A000000 		.4byte	.LVL15
+ 896 031e F5060000 		.4byte	0x6f5
+ 897 0322 38030000 		.4byte	0x338
+ 898 0326 0F       		.uleb128 0xf
+ 899 0327 01       		.uleb128 0x1
+ 900 0328 50       		.byte	0x50
+ 901 0329 01       		.uleb128 0x1
+ 902 032a 48       		.byte	0x48
+ 903 032b 0F       		.uleb128 0xf
+ 904 032c 01       		.uleb128 0x1
+ 905 032d 51       		.byte	0x51
+ 906 032e 02       		.uleb128 0x2
+ 907 032f 08       		.byte	0x8
+ 908 0330 27       		.byte	0x27
+ 909 0331 0F       		.uleb128 0xf
+ 910 0332 01       		.uleb128 0x1
+ 911 0333 52       		.byte	0x52
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccqukMtG.s 			page 23
+
+
+ 912 0334 02       		.uleb128 0x2
+ 913 0335 91       		.byte	0x91
+ 914 0336 42       		.sleb128 -62
+ 915 0337 00       		.byte	0
+ 916 0338 0E       		.uleb128 0xe
+ 917 0339 78000000 		.4byte	.LVL17
+ 918 033d BE060000 		.4byte	0x6be
+ 919 0341 55030000 		.4byte	0x355
+ 920 0345 0F       		.uleb128 0xf
+ 921 0346 01       		.uleb128 0x1
+ 922 0347 50       		.byte	0x50
+ 923 0348 02       		.uleb128 0x2
+ 924 0349 91       		.byte	0x91
+ 925 034a 44       		.sleb128 -60
+ 926 034b 0F       		.uleb128 0xf
+ 927 034c 01       		.uleb128 0x1
+ 928 034d 51       		.byte	0x51
+ 929 034e 05       		.uleb128 0x5
+ 930 034f 03       		.byte	0x3
+ 931 0350 6C000000 		.4byte	.LC3
+ 932 0354 00       		.byte	0
+ 933 0355 0E       		.uleb128 0xe
+ 934 0356 7E000000 		.4byte	.LVL18
+ 935 035a C9060000 		.4byte	0x6c9
+ 936 035e 69030000 		.4byte	0x369
+ 937 0362 0F       		.uleb128 0xf
+ 938 0363 01       		.uleb128 0x1
+ 939 0364 50       		.byte	0x50
+ 940 0365 02       		.uleb128 0x2
+ 941 0366 91       		.byte	0x91
+ 942 0367 44       		.sleb128 -60
+ 943 0368 00       		.byte	0
+ 944 0369 0E       		.uleb128 0xe
+ 945 036a 86000000 		.4byte	.LVL21
+ 946 036e C9060000 		.4byte	0x6c9
+ 947 0372 80030000 		.4byte	0x380
+ 948 0376 0F       		.uleb128 0xf
+ 949 0377 01       		.uleb128 0x1
+ 950 0378 50       		.byte	0x50
+ 951 0379 05       		.uleb128 0x5
+ 952 037a 03       		.byte	0x3
+ 953 037b 88000000 		.4byte	.LC4
+ 954 037f 00       		.byte	0
+ 955 0380 0E       		.uleb128 0xe
+ 956 0381 92000000 		.4byte	.LVL22
+ 957 0385 F5060000 		.4byte	0x6f5
+ 958 0389 9F030000 		.4byte	0x39f
+ 959 038d 0F       		.uleb128 0xf
+ 960 038e 01       		.uleb128 0x1
+ 961 038f 50       		.byte	0x50
+ 962 0390 01       		.uleb128 0x1
+ 963 0391 48       		.byte	0x48
+ 964 0392 0F       		.uleb128 0xf
+ 965 0393 01       		.uleb128 0x1
+ 966 0394 51       		.byte	0x51
+ 967 0395 02       		.uleb128 0x2
+ 968 0396 08       		.byte	0x8
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccqukMtG.s 			page 24
+
+
+ 969 0397 20       		.byte	0x20
+ 970 0398 0F       		.uleb128 0xf
+ 971 0399 01       		.uleb128 0x1
+ 972 039a 52       		.byte	0x52
+ 973 039b 02       		.uleb128 0x2
+ 974 039c 91       		.byte	0x91
+ 975 039d 41       		.sleb128 -63
+ 976 039e 00       		.byte	0
+ 977 039f 0E       		.uleb128 0xe
+ 978 03a0 A0000000 		.4byte	.LVL24
+ 979 03a4 BE060000 		.4byte	0x6be
+ 980 03a8 BC030000 		.4byte	0x3bc
+ 981 03ac 0F       		.uleb128 0xf
+ 982 03ad 01       		.uleb128 0x1
+ 983 03ae 50       		.byte	0x50
+ 984 03af 02       		.uleb128 0x2
+ 985 03b0 91       		.byte	0x91
+ 986 03b1 44       		.sleb128 -60
+ 987 03b2 0F       		.uleb128 0xf
+ 988 03b3 01       		.uleb128 0x1
+ 989 03b4 51       		.byte	0x51
+ 990 03b5 05       		.uleb128 0x5
+ 991 03b6 03       		.byte	0x3
+ 992 03b7 C4000000 		.4byte	.LC5
+ 993 03bb 00       		.byte	0
+ 994 03bc 0E       		.uleb128 0xe
+ 995 03bd A6000000 		.4byte	.LVL25
+ 996 03c1 C9060000 		.4byte	0x6c9
+ 997 03c5 D0030000 		.4byte	0x3d0
+ 998 03c9 0F       		.uleb128 0xf
+ 999 03ca 01       		.uleb128 0x1
+ 1000 03cb 50       		.byte	0x50
+ 1001 03cc 02       		.uleb128 0x2
+ 1002 03cd 91       		.byte	0x91
+ 1003 03ce 44       		.sleb128 -60
+ 1004 03cf 00       		.byte	0
+ 1005 03d0 0E       		.uleb128 0xe
+ 1006 03d1 AE000000 		.4byte	.LVL28
+ 1007 03d5 C9060000 		.4byte	0x6c9
+ 1008 03d9 E7030000 		.4byte	0x3e7
+ 1009 03dd 0F       		.uleb128 0xf
+ 1010 03de 01       		.uleb128 0x1
+ 1011 03df 50       		.byte	0x50
+ 1012 03e0 05       		.uleb128 0x5
+ 1013 03e1 03       		.byte	0x3
+ 1014 03e2 E4000000 		.4byte	.LC6
+ 1015 03e6 00       		.byte	0
+ 1016 03e7 0E       		.uleb128 0xe
+ 1017 03e8 B4000000 		.4byte	.LVL29
+ 1018 03ec C9060000 		.4byte	0x6c9
+ 1019 03f0 FE030000 		.4byte	0x3fe
+ 1020 03f4 0F       		.uleb128 0xf
+ 1021 03f5 01       		.uleb128 0x1
+ 1022 03f6 50       		.byte	0x50
+ 1023 03f7 05       		.uleb128 0x5
+ 1024 03f8 03       		.byte	0x3
+ 1025 03f9 20010000 		.4byte	.LC7
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccqukMtG.s 			page 25
+
+
+ 1026 03fd 00       		.byte	0
+ 1027 03fe 0E       		.uleb128 0xe
+ 1028 03ff CA000000 		.4byte	.LVL30
+ 1029 0403 00070000 		.4byte	0x700
+ 1030 0407 1D040000 		.4byte	0x41d
+ 1031 040b 0F       		.uleb128 0xf
+ 1032 040c 01       		.uleb128 0x1
+ 1033 040d 50       		.byte	0x50
+ 1034 040e 01       		.uleb128 0x1
+ 1035 040f 48       		.byte	0x48
+ 1036 0410 0F       		.uleb128 0xf
+ 1037 0411 01       		.uleb128 0x1
+ 1038 0412 51       		.byte	0x51
+ 1039 0413 02       		.uleb128 0x2
+ 1040 0414 08       		.byte	0x8
+ 1041 0415 20       		.byte	0x20
+ 1042 0416 0F       		.uleb128 0xf
+ 1043 0417 01       		.uleb128 0x1
+ 1044 0418 52       		.byte	0x52
+ 1045 0419 02       		.uleb128 0x2
+ 1046 041a 08       		.byte	0x8
+ 1047 041b 57       		.byte	0x57
+ 1048 041c 00       		.byte	0
+ 1049 041d 0E       		.uleb128 0xe
+ 1050 041e D8000000 		.4byte	.LVL32
+ 1051 0422 BE060000 		.4byte	0x6be
+ 1052 0426 3A040000 		.4byte	0x43a
+ 1053 042a 0F       		.uleb128 0xf
+ 1054 042b 01       		.uleb128 0x1
+ 1055 042c 50       		.byte	0x50
+ 1056 042d 02       		.uleb128 0x2
+ 1057 042e 91       		.byte	0x91
+ 1058 042f 44       		.sleb128 -60
+ 1059 0430 0F       		.uleb128 0xf
+ 1060 0431 01       		.uleb128 0x1
+ 1061 0432 51       		.byte	0x51
+ 1062 0433 05       		.uleb128 0x5
+ 1063 0434 03       		.byte	0x3
+ 1064 0435 3C010000 		.4byte	.LC8
+ 1065 0439 00       		.byte	0
+ 1066 043a 0E       		.uleb128 0xe
+ 1067 043b DE000000 		.4byte	.LVL33
+ 1068 043f C9060000 		.4byte	0x6c9
+ 1069 0443 4E040000 		.4byte	0x44e
+ 1070 0447 0F       		.uleb128 0xf
+ 1071 0448 01       		.uleb128 0x1
+ 1072 0449 50       		.byte	0x50
+ 1073 044a 02       		.uleb128 0x2
+ 1074 044b 91       		.byte	0x91
+ 1075 044c 44       		.sleb128 -60
+ 1076 044d 00       		.byte	0
+ 1077 044e 0E       		.uleb128 0xe
+ 1078 044f E6000000 		.4byte	.LVL36
+ 1079 0453 C9060000 		.4byte	0x6c9
+ 1080 0457 65040000 		.4byte	0x465
+ 1081 045b 0F       		.uleb128 0xf
+ 1082 045c 01       		.uleb128 0x1
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccqukMtG.s 			page 26
+
+
+ 1083 045d 50       		.byte	0x50
+ 1084 045e 05       		.uleb128 0x5
+ 1085 045f 03       		.byte	0x3
+ 1086 0460 74010000 		.4byte	.LC9
+ 1087 0464 00       		.byte	0
+ 1088 0465 0E       		.uleb128 0xe
+ 1089 0466 F2000000 		.4byte	.LVL37
+ 1090 046a F5060000 		.4byte	0x6f5
+ 1091 046e 84040000 		.4byte	0x484
+ 1092 0472 0F       		.uleb128 0xf
+ 1093 0473 01       		.uleb128 0x1
+ 1094 0474 50       		.byte	0x50
+ 1095 0475 01       		.uleb128 0x1
+ 1096 0476 48       		.byte	0x48
+ 1097 0477 0F       		.uleb128 0xf
+ 1098 0478 01       		.uleb128 0x1
+ 1099 0479 51       		.byte	0x51
+ 1100 047a 02       		.uleb128 0x2
+ 1101 047b 08       		.byte	0x8
+ 1102 047c 20       		.byte	0x20
+ 1103 047d 0F       		.uleb128 0xf
+ 1104 047e 01       		.uleb128 0x1
+ 1105 047f 52       		.byte	0x52
+ 1106 0480 02       		.uleb128 0x2
+ 1107 0481 91       		.byte	0x91
+ 1108 0482 41       		.sleb128 -63
+ 1109 0483 00       		.byte	0
+ 1110 0484 0E       		.uleb128 0xe
+ 1111 0485 00010000 		.4byte	.LVL39
+ 1112 0489 BE060000 		.4byte	0x6be
+ 1113 048d A1040000 		.4byte	0x4a1
+ 1114 0491 0F       		.uleb128 0xf
+ 1115 0492 01       		.uleb128 0x1
+ 1116 0493 50       		.byte	0x50
+ 1117 0494 02       		.uleb128 0x2
+ 1118 0495 91       		.byte	0x91
+ 1119 0496 44       		.sleb128 -60
+ 1120 0497 0F       		.uleb128 0xf
+ 1121 0498 01       		.uleb128 0x1
+ 1122 0499 51       		.byte	0x51
+ 1123 049a 05       		.uleb128 0x5
+ 1124 049b 03       		.byte	0x3
+ 1125 049c B0010000 		.4byte	.LC10
+ 1126 04a0 00       		.byte	0
+ 1127 04a1 0E       		.uleb128 0xe
+ 1128 04a2 06010000 		.4byte	.LVL40
+ 1129 04a6 C9060000 		.4byte	0x6c9
+ 1130 04aa B5040000 		.4byte	0x4b5
+ 1131 04ae 0F       		.uleb128 0xf
+ 1132 04af 01       		.uleb128 0x1
+ 1133 04b0 50       		.byte	0x50
+ 1134 04b1 02       		.uleb128 0x2
+ 1135 04b2 91       		.byte	0x91
+ 1136 04b3 44       		.sleb128 -60
+ 1137 04b4 00       		.byte	0
+ 1138 04b5 0E       		.uleb128 0xe
+ 1139 04b6 0E010000 		.4byte	.LVL43
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccqukMtG.s 			page 27
+
+
+ 1140 04ba C9060000 		.4byte	0x6c9
+ 1141 04be CC040000 		.4byte	0x4cc
+ 1142 04c2 0F       		.uleb128 0xf
+ 1143 04c3 01       		.uleb128 0x1
+ 1144 04c4 50       		.byte	0x50
+ 1145 04c5 05       		.uleb128 0x5
+ 1146 04c6 03       		.byte	0x3
+ 1147 04c7 E4000000 		.4byte	.LC6
+ 1148 04cb 00       		.byte	0
+ 1149 04cc 0E       		.uleb128 0xe
+ 1150 04cd 18010000 		.4byte	.LVL44
+ 1151 04d1 F5060000 		.4byte	0x6f5
+ 1152 04d5 EB040000 		.4byte	0x4eb
+ 1153 04d9 0F       		.uleb128 0xf
+ 1154 04da 01       		.uleb128 0x1
+ 1155 04db 50       		.byte	0x50
+ 1156 04dc 01       		.uleb128 0x1
+ 1157 04dd 48       		.byte	0x48
+ 1158 04de 0F       		.uleb128 0xf
+ 1159 04df 01       		.uleb128 0x1
+ 1160 04e0 51       		.byte	0x51
+ 1161 04e1 02       		.uleb128 0x2
+ 1162 04e2 08       		.byte	0x8
+ 1163 04e3 23       		.byte	0x23
+ 1164 04e4 0F       		.uleb128 0xf
+ 1165 04e5 01       		.uleb128 0x1
+ 1166 04e6 52       		.byte	0x52
+ 1167 04e7 02       		.uleb128 0x2
+ 1168 04e8 91       		.byte	0x91
+ 1169 04e9 40       		.sleb128 -64
+ 1170 04ea 00       		.byte	0
+ 1171 04eb 0E       		.uleb128 0xe
+ 1172 04ec 26010000 		.4byte	.LVL46
+ 1173 04f0 BE060000 		.4byte	0x6be
+ 1174 04f4 08050000 		.4byte	0x508
+ 1175 04f8 0F       		.uleb128 0xf
+ 1176 04f9 01       		.uleb128 0x1
+ 1177 04fa 50       		.byte	0x50
+ 1178 04fb 02       		.uleb128 0x2
+ 1179 04fc 91       		.byte	0x91
+ 1180 04fd 44       		.sleb128 -60
+ 1181 04fe 0F       		.uleb128 0xf
+ 1182 04ff 01       		.uleb128 0x1
+ 1183 0500 51       		.byte	0x51
+ 1184 0501 05       		.uleb128 0x5
+ 1185 0502 03       		.byte	0x3
+ 1186 0503 E8010000 		.4byte	.LC11
+ 1187 0507 00       		.byte	0
+ 1188 0508 0E       		.uleb128 0xe
+ 1189 0509 2C010000 		.4byte	.LVL47
+ 1190 050d C9060000 		.4byte	0x6c9
+ 1191 0511 1C050000 		.4byte	0x51c
+ 1192 0515 0F       		.uleb128 0xf
+ 1193 0516 01       		.uleb128 0x1
+ 1194 0517 50       		.byte	0x50
+ 1195 0518 02       		.uleb128 0x2
+ 1196 0519 91       		.byte	0x91
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccqukMtG.s 			page 28
+
+
+ 1197 051a 44       		.sleb128 -60
+ 1198 051b 00       		.byte	0
+ 1199 051c 0E       		.uleb128 0xe
+ 1200 051d 34010000 		.4byte	.LVL50
+ 1201 0521 C9060000 		.4byte	0x6c9
+ 1202 0525 33050000 		.4byte	0x533
+ 1203 0529 0F       		.uleb128 0xf
+ 1204 052a 01       		.uleb128 0x1
+ 1205 052b 50       		.byte	0x50
+ 1206 052c 05       		.uleb128 0x5
+ 1207 052d 03       		.byte	0x3
+ 1208 052e 08020000 		.4byte	.LC12
+ 1209 0532 00       		.byte	0
+ 1210 0533 0E       		.uleb128 0xe
+ 1211 0534 44010000 		.4byte	.LVL52
+ 1212 0538 00070000 		.4byte	0x700
+ 1213 053c 52050000 		.4byte	0x552
+ 1214 0540 0F       		.uleb128 0xf
+ 1215 0541 01       		.uleb128 0x1
+ 1216 0542 50       		.byte	0x50
+ 1217 0543 01       		.uleb128 0x1
+ 1218 0544 48       		.byte	0x48
+ 1219 0545 0F       		.uleb128 0xf
+ 1220 0546 01       		.uleb128 0x1
+ 1221 0547 51       		.byte	0x51
+ 1222 0548 02       		.uleb128 0x2
+ 1223 0549 08       		.byte	0x8
+ 1224 054a 23       		.byte	0x23
+ 1225 054b 0F       		.uleb128 0xf
+ 1226 054c 01       		.uleb128 0x1
+ 1227 054d 52       		.byte	0x52
+ 1228 054e 02       		.uleb128 0x2
+ 1229 054f 09       		.byte	0x9
+ 1230 0550 80       		.byte	0x80
+ 1231 0551 00       		.byte	0
+ 1232 0552 0E       		.uleb128 0xe
+ 1233 0553 4E010000 		.4byte	.LVL53
+ 1234 0557 F5060000 		.4byte	0x6f5
+ 1235 055b 71050000 		.4byte	0x571
+ 1236 055f 0F       		.uleb128 0xf
+ 1237 0560 01       		.uleb128 0x1
+ 1238 0561 50       		.byte	0x50
+ 1239 0562 01       		.uleb128 0x1
+ 1240 0563 48       		.byte	0x48
+ 1241 0564 0F       		.uleb128 0xf
+ 1242 0565 01       		.uleb128 0x1
+ 1243 0566 51       		.byte	0x51
+ 1244 0567 02       		.uleb128 0x2
+ 1245 0568 08       		.byte	0x8
+ 1246 0569 23       		.byte	0x23
+ 1247 056a 0F       		.uleb128 0xf
+ 1248 056b 01       		.uleb128 0x1
+ 1249 056c 52       		.byte	0x52
+ 1250 056d 02       		.uleb128 0x2
+ 1251 056e 74       		.byte	0x74
+ 1252 056f 00       		.sleb128 0
+ 1253 0570 00       		.byte	0
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccqukMtG.s 			page 29
+
+
+ 1254 0571 0E       		.uleb128 0xe
+ 1255 0572 5C010000 		.4byte	.LVL55
+ 1256 0576 BE060000 		.4byte	0x6be
+ 1257 057a 8E050000 		.4byte	0x58e
+ 1258 057e 0F       		.uleb128 0xf
+ 1259 057f 01       		.uleb128 0x1
+ 1260 0580 50       		.byte	0x50
+ 1261 0581 02       		.uleb128 0x2
+ 1262 0582 91       		.byte	0x91
+ 1263 0583 44       		.sleb128 -60
+ 1264 0584 0F       		.uleb128 0xf
+ 1265 0585 01       		.uleb128 0x1
+ 1266 0586 51       		.byte	0x51
+ 1267 0587 05       		.uleb128 0x5
+ 1268 0588 03       		.byte	0x3
+ 1269 0589 44020000 		.4byte	.LC13
+ 1270 058d 00       		.byte	0
+ 1271 058e 0E       		.uleb128 0xe
+ 1272 058f 62010000 		.4byte	.LVL56
+ 1273 0593 C9060000 		.4byte	0x6c9
+ 1274 0597 A2050000 		.4byte	0x5a2
+ 1275 059b 0F       		.uleb128 0xf
+ 1276 059c 01       		.uleb128 0x1
+ 1277 059d 50       		.byte	0x50
+ 1278 059e 02       		.uleb128 0x2
+ 1279 059f 91       		.byte	0x91
+ 1280 05a0 44       		.sleb128 -60
+ 1281 05a1 00       		.byte	0
+ 1282 05a2 0E       		.uleb128 0xe
+ 1283 05a3 6A010000 		.4byte	.LVL59
+ 1284 05a7 C9060000 		.4byte	0x6c9
+ 1285 05ab B9050000 		.4byte	0x5b9
+ 1286 05af 0F       		.uleb128 0xf
+ 1287 05b0 01       		.uleb128 0x1
+ 1288 05b1 50       		.byte	0x50
+ 1289 05b2 05       		.uleb128 0x5
+ 1290 05b3 03       		.byte	0x3
+ 1291 05b4 08020000 		.4byte	.LC12
+ 1292 05b8 00       		.byte	0
+ 1293 05b9 0E       		.uleb128 0xe
+ 1294 05ba 7C010000 		.4byte	.LVL60
+ 1295 05be EA060000 		.4byte	0x6ea
+ 1296 05c2 CC050000 		.4byte	0x5cc
+ 1297 05c6 0F       		.uleb128 0xf
+ 1298 05c7 01       		.uleb128 0x1
+ 1299 05c8 50       		.byte	0x50
+ 1300 05c9 01       		.uleb128 0x1
+ 1301 05ca 35       		.byte	0x35
+ 1302 05cb 00       		.byte	0
+ 1303 05cc 0E       		.uleb128 0xe
+ 1304 05cd 88010000 		.4byte	.LVL61
+ 1305 05d1 F5060000 		.4byte	0x6f5
+ 1306 05d5 EC050000 		.4byte	0x5ec
+ 1307 05d9 0F       		.uleb128 0xf
+ 1308 05da 01       		.uleb128 0x1
+ 1309 05db 50       		.byte	0x50
+ 1310 05dc 01       		.uleb128 0x1
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccqukMtG.s 			page 30
+
+
+ 1311 05dd 48       		.byte	0x48
+ 1312 05de 0F       		.uleb128 0xf
+ 1313 05df 01       		.uleb128 0x1
+ 1314 05e0 51       		.byte	0x51
+ 1315 05e1 02       		.uleb128 0x2
+ 1316 05e2 08       		.byte	0x8
+ 1317 05e3 27       		.byte	0x27
+ 1318 05e4 0F       		.uleb128 0xf
+ 1319 05e5 01       		.uleb128 0x1
+ 1320 05e6 52       		.byte	0x52
+ 1321 05e7 03       		.uleb128 0x3
+ 1322 05e8 91       		.byte	0x91
+ 1323 05e9 AB7F     		.sleb128 -85
+ 1324 05eb 00       		.byte	0
+ 1325 05ec 0E       		.uleb128 0xe
+ 1326 05ed AA010000 		.4byte	.LVL63
+ 1327 05f1 0B070000 		.4byte	0x70b
+ 1328 05f5 11060000 		.4byte	0x611
+ 1329 05f9 0F       		.uleb128 0xf
+ 1330 05fa 01       		.uleb128 0x1
+ 1331 05fb 50       		.byte	0x50
+ 1332 05fc 01       		.uleb128 0x1
+ 1333 05fd 48       		.byte	0x48
+ 1334 05fe 0F       		.uleb128 0xf
+ 1335 05ff 01       		.uleb128 0x1
+ 1336 0600 51       		.byte	0x51
+ 1337 0601 02       		.uleb128 0x2
+ 1338 0602 08       		.byte	0x8
+ 1339 0603 28       		.byte	0x28
+ 1340 0604 0F       		.uleb128 0xf
+ 1341 0605 01       		.uleb128 0x1
+ 1342 0606 52       		.byte	0x52
+ 1343 0607 01       		.uleb128 0x1
+ 1344 0608 32       		.byte	0x32
+ 1345 0609 0F       		.uleb128 0xf
+ 1346 060a 01       		.uleb128 0x1
+ 1347 060b 53       		.byte	0x53
+ 1348 060c 03       		.uleb128 0x3
+ 1349 060d 91       		.byte	0x91
+ 1350 060e B47F     		.sleb128 -76
+ 1351 0610 00       		.byte	0
+ 1352 0611 0E       		.uleb128 0xe
+ 1353 0612 B6010000 		.4byte	.LVL64
+ 1354 0616 0B070000 		.4byte	0x70b
+ 1355 061a 36060000 		.4byte	0x636
+ 1356 061e 0F       		.uleb128 0xf
+ 1357 061f 01       		.uleb128 0x1
+ 1358 0620 50       		.byte	0x50
+ 1359 0621 01       		.uleb128 0x1
+ 1360 0622 48       		.byte	0x48
+ 1361 0623 0F       		.uleb128 0xf
+ 1362 0624 01       		.uleb128 0x1
+ 1363 0625 51       		.byte	0x51
+ 1364 0626 02       		.uleb128 0x2
+ 1365 0627 08       		.byte	0x8
+ 1366 0628 2A       		.byte	0x2a
+ 1367 0629 0F       		.uleb128 0xf
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccqukMtG.s 			page 31
+
+
+ 1368 062a 01       		.uleb128 0x1
+ 1369 062b 52       		.byte	0x52
+ 1370 062c 01       		.uleb128 0x1
+ 1371 062d 32       		.byte	0x32
+ 1372 062e 0F       		.uleb128 0xf
+ 1373 062f 01       		.uleb128 0x1
+ 1374 0630 53       		.byte	0x53
+ 1375 0631 03       		.uleb128 0x3
+ 1376 0632 91       		.byte	0x91
+ 1377 0633 B07F     		.sleb128 -80
+ 1378 0635 00       		.byte	0
+ 1379 0636 0E       		.uleb128 0xe
+ 1380 0637 C2010000 		.4byte	.LVL65
+ 1381 063b 0B070000 		.4byte	0x70b
+ 1382 063f 5B060000 		.4byte	0x65b
+ 1383 0643 0F       		.uleb128 0xf
+ 1384 0644 01       		.uleb128 0x1
+ 1385 0645 50       		.byte	0x50
+ 1386 0646 01       		.uleb128 0x1
+ 1387 0647 48       		.byte	0x48
+ 1388 0648 0F       		.uleb128 0xf
+ 1389 0649 01       		.uleb128 0x1
+ 1390 064a 51       		.byte	0x51
+ 1391 064b 02       		.uleb128 0x2
+ 1392 064c 08       		.byte	0x8
+ 1393 064d 2C       		.byte	0x2c
+ 1394 064e 0F       		.uleb128 0xf
+ 1395 064f 01       		.uleb128 0x1
+ 1396 0650 52       		.byte	0x52
+ 1397 0651 01       		.uleb128 0x1
+ 1398 0652 32       		.byte	0x32
+ 1399 0653 0F       		.uleb128 0xf
+ 1400 0654 01       		.uleb128 0x1
+ 1401 0655 53       		.byte	0x53
+ 1402 0656 03       		.uleb128 0x3
+ 1403 0657 91       		.byte	0x91
+ 1404 0658 AC7F     		.sleb128 -84
+ 1405 065a 00       		.byte	0
+ 1406 065b 10       		.uleb128 0x10
+ 1407 065c 28020000 		.4byte	.LVL81
+ 1408 0660 16070000 		.4byte	0x716
+ 1409 0664 0F       		.uleb128 0xf
+ 1410 0665 01       		.uleb128 0x1
+ 1411 0666 50       		.byte	0x50
+ 1412 0667 03       		.uleb128 0x3
+ 1413 0668 91       		.byte	0x91
+ 1414 0669 B87F     		.sleb128 -72
+ 1415 066b 0F       		.uleb128 0xf
+ 1416 066c 01       		.uleb128 0x1
+ 1417 066d 51       		.byte	0x51
+ 1418 066e 01       		.uleb128 0x1
+ 1419 066f 38       		.byte	0x38
+ 1420 0670 00       		.byte	0
+ 1421 0671 00       		.byte	0
+ 1422 0672 12       		.uleb128 0x12
+ 1423 0673 C7000000 		.4byte	0xc7
+ 1424 0677 82060000 		.4byte	0x682
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccqukMtG.s 			page 32
+
+
+ 1425 067b 13       		.uleb128 0x13
+ 1426 067c F9000000 		.4byte	0xf9
+ 1427 0680 31       		.byte	0x31
+ 1428 0681 00       		.byte	0
+ 1429 0682 12       		.uleb128 0x12
+ 1430 0683 8C000000 		.4byte	0x8c
+ 1431 0687 92060000 		.4byte	0x692
+ 1432 068b 13       		.uleb128 0x13
+ 1433 068c F9000000 		.4byte	0xf9
+ 1434 0690 07       		.byte	0x7
+ 1435 0691 00       		.byte	0
+ 1436 0692 12       		.uleb128 0x12
+ 1437 0693 8C000000 		.4byte	0x8c
+ 1438 0697 A2060000 		.4byte	0x6a2
+ 1439 069b 13       		.uleb128 0x13
+ 1440 069c F9000000 		.4byte	0xf9
+ 1441 06a0 01       		.byte	0x1
+ 1442 06a1 00       		.byte	0
+ 1443 06a2 14       		.uleb128 0x14
+ 1444 06a3 6C020000 		.4byte	.LASF57
+ 1445 06a7 0A       		.byte	0xa
+ 1446 06a8 1207     		.2byte	0x712
+ 1447 06aa AE060000 		.4byte	0x6ae
+ 1448 06ae 15       		.uleb128 0x15
+ 1449 06af A2000000 		.4byte	0xa2
+ 1450 06b3 16       		.uleb128 0x16
+ 1451 06b4 44000000 		.4byte	.LASF43
+ 1452 06b8 44000000 		.4byte	.LASF43
+ 1453 06bc 06       		.byte	0x6
+ 1454 06bd 5D       		.byte	0x5d
+ 1455 06be 16       		.uleb128 0x16
+ 1456 06bf 3C030000 		.4byte	.LASF44
+ 1457 06c3 3C030000 		.4byte	.LASF44
+ 1458 06c7 07       		.byte	0x7
+ 1459 06c8 E7       		.byte	0xe7
+ 1460 06c9 16       		.uleb128 0x16
+ 1461 06ca 25000000 		.4byte	.LASF45
+ 1462 06ce 25000000 		.4byte	.LASF45
+ 1463 06d2 08       		.byte	0x8
+ 1464 06d3 8B       		.byte	0x8b
+ 1465 06d4 16       		.uleb128 0x16
+ 1466 06d5 4C030000 		.4byte	.LASF46
+ 1467 06d9 4C030000 		.4byte	.LASF46
+ 1468 06dd 06       		.byte	0x6
+ 1469 06de 17       		.byte	0x17
+ 1470 06df 16       		.uleb128 0x16
+ 1471 06e0 AE020000 		.4byte	.LASF47
+ 1472 06e4 AE020000 		.4byte	.LASF47
+ 1473 06e8 08       		.byte	0x8
+ 1474 06e9 54       		.byte	0x54
+ 1475 06ea 16       		.uleb128 0x16
+ 1476 06eb 44030000 		.4byte	.LASF48
+ 1477 06ef 44030000 		.4byte	.LASF48
+ 1478 06f3 09       		.byte	0x9
+ 1479 06f4 76       		.byte	0x76
+ 1480 06f5 16       		.uleb128 0x16
+ 1481 06f6 CB020000 		.4byte	.LASF49
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccqukMtG.s 			page 33
+
+
+ 1482 06fa CB020000 		.4byte	.LASF49
+ 1483 06fe 06       		.byte	0x6
+ 1484 06ff 28       		.byte	0x28
+ 1485 0700 16       		.uleb128 0x16
+ 1486 0701 B2010000 		.4byte	.LASF50
+ 1487 0705 B2010000 		.4byte	.LASF50
+ 1488 0709 06       		.byte	0x6
+ 1489 070a 43       		.byte	0x43
+ 1490 070b 16       		.uleb128 0x16
+ 1491 070c 91010000 		.4byte	.LASF51
+ 1492 0710 91010000 		.4byte	.LASF51
+ 1493 0714 06       		.byte	0x6
+ 1494 0715 36       		.byte	0x36
+ 1495 0716 16       		.uleb128 0x16
+ 1496 0717 7F000000 		.4byte	.LASF52
+ 1497 071b 7F000000 		.4byte	.LASF52
+ 1498 071f 08       		.byte	0x8
+ 1499 0720 8C       		.byte	0x8c
+ 1500 0721 00       		.byte	0
+ 1501              		.section	.debug_abbrev,"",%progbits
+ 1502              	.Ldebug_abbrev0:
+ 1503 0000 01       		.uleb128 0x1
+ 1504 0001 11       		.uleb128 0x11
+ 1505 0002 01       		.byte	0x1
+ 1506 0003 25       		.uleb128 0x25
+ 1507 0004 0E       		.uleb128 0xe
+ 1508 0005 13       		.uleb128 0x13
+ 1509 0006 0B       		.uleb128 0xb
+ 1510 0007 03       		.uleb128 0x3
+ 1511 0008 0E       		.uleb128 0xe
+ 1512 0009 1B       		.uleb128 0x1b
+ 1513 000a 0E       		.uleb128 0xe
+ 1514 000b 55       		.uleb128 0x55
+ 1515 000c 17       		.uleb128 0x17
+ 1516 000d 11       		.uleb128 0x11
+ 1517 000e 01       		.uleb128 0x1
+ 1518 000f 10       		.uleb128 0x10
+ 1519 0010 17       		.uleb128 0x17
+ 1520 0011 00       		.byte	0
+ 1521 0012 00       		.byte	0
+ 1522 0013 02       		.uleb128 0x2
+ 1523 0014 24       		.uleb128 0x24
+ 1524 0015 00       		.byte	0
+ 1525 0016 0B       		.uleb128 0xb
+ 1526 0017 0B       		.uleb128 0xb
+ 1527 0018 3E       		.uleb128 0x3e
+ 1528 0019 0B       		.uleb128 0xb
+ 1529 001a 03       		.uleb128 0x3
+ 1530 001b 0E       		.uleb128 0xe
+ 1531 001c 00       		.byte	0
+ 1532 001d 00       		.byte	0
+ 1533 001e 03       		.uleb128 0x3
+ 1534 001f 16       		.uleb128 0x16
+ 1535 0020 00       		.byte	0
+ 1536 0021 03       		.uleb128 0x3
+ 1537 0022 0E       		.uleb128 0xe
+ 1538 0023 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccqukMtG.s 			page 34
+
+
+ 1539 0024 0B       		.uleb128 0xb
+ 1540 0025 3B       		.uleb128 0x3b
+ 1541 0026 0B       		.uleb128 0xb
+ 1542 0027 49       		.uleb128 0x49
+ 1543 0028 13       		.uleb128 0x13
+ 1544 0029 00       		.byte	0
+ 1545 002a 00       		.byte	0
+ 1546 002b 04       		.uleb128 0x4
+ 1547 002c 24       		.uleb128 0x24
+ 1548 002d 00       		.byte	0
+ 1549 002e 0B       		.uleb128 0xb
+ 1550 002f 0B       		.uleb128 0xb
+ 1551 0030 3E       		.uleb128 0x3e
+ 1552 0031 0B       		.uleb128 0xb
+ 1553 0032 03       		.uleb128 0x3
+ 1554 0033 08       		.uleb128 0x8
+ 1555 0034 00       		.byte	0
+ 1556 0035 00       		.byte	0
+ 1557 0036 05       		.uleb128 0x5
+ 1558 0037 16       		.uleb128 0x16
+ 1559 0038 00       		.byte	0
+ 1560 0039 03       		.uleb128 0x3
+ 1561 003a 0E       		.uleb128 0xe
+ 1562 003b 3A       		.uleb128 0x3a
+ 1563 003c 0B       		.uleb128 0xb
+ 1564 003d 3B       		.uleb128 0x3b
+ 1565 003e 05       		.uleb128 0x5
+ 1566 003f 49       		.uleb128 0x49
+ 1567 0040 13       		.uleb128 0x13
+ 1568 0041 00       		.byte	0
+ 1569 0042 00       		.byte	0
+ 1570 0043 06       		.uleb128 0x6
+ 1571 0044 04       		.uleb128 0x4
+ 1572 0045 01       		.byte	0x1
+ 1573 0046 0B       		.uleb128 0xb
+ 1574 0047 0B       		.uleb128 0xb
+ 1575 0048 49       		.uleb128 0x49
+ 1576 0049 13       		.uleb128 0x13
+ 1577 004a 3A       		.uleb128 0x3a
+ 1578 004b 0B       		.uleb128 0xb
+ 1579 004c 3B       		.uleb128 0x3b
+ 1580 004d 0B       		.uleb128 0xb
+ 1581 004e 01       		.uleb128 0x1
+ 1582 004f 13       		.uleb128 0x13
+ 1583 0050 00       		.byte	0
+ 1584 0051 00       		.byte	0
+ 1585 0052 07       		.uleb128 0x7
+ 1586 0053 28       		.uleb128 0x28
+ 1587 0054 00       		.byte	0
+ 1588 0055 03       		.uleb128 0x3
+ 1589 0056 0E       		.uleb128 0xe
+ 1590 0057 1C       		.uleb128 0x1c
+ 1591 0058 0B       		.uleb128 0xb
+ 1592 0059 00       		.byte	0
+ 1593 005a 00       		.byte	0
+ 1594 005b 08       		.uleb128 0x8
+ 1595 005c 2E       		.uleb128 0x2e
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccqukMtG.s 			page 35
+
+
+ 1596 005d 01       		.byte	0x1
+ 1597 005e 3F       		.uleb128 0x3f
+ 1598 005f 19       		.uleb128 0x19
+ 1599 0060 03       		.uleb128 0x3
+ 1600 0061 0E       		.uleb128 0xe
+ 1601 0062 3A       		.uleb128 0x3a
+ 1602 0063 0B       		.uleb128 0xb
+ 1603 0064 3B       		.uleb128 0x3b
+ 1604 0065 0B       		.uleb128 0xb
+ 1605 0066 27       		.uleb128 0x27
+ 1606 0067 19       		.uleb128 0x19
+ 1607 0068 49       		.uleb128 0x49
+ 1608 0069 13       		.uleb128 0x13
+ 1609 006a 8701     		.uleb128 0x87
+ 1610 006c 19       		.uleb128 0x19
+ 1611 006d 11       		.uleb128 0x11
+ 1612 006e 01       		.uleb128 0x1
+ 1613 006f 12       		.uleb128 0x12
+ 1614 0070 06       		.uleb128 0x6
+ 1615 0071 40       		.uleb128 0x40
+ 1616 0072 18       		.uleb128 0x18
+ 1617 0073 9742     		.uleb128 0x2117
+ 1618 0075 19       		.uleb128 0x19
+ 1619 0076 01       		.uleb128 0x1
+ 1620 0077 13       		.uleb128 0x13
+ 1621 0078 00       		.byte	0
+ 1622 0079 00       		.byte	0
+ 1623 007a 09       		.uleb128 0x9
+ 1624 007b 34       		.uleb128 0x34
+ 1625 007c 00       		.byte	0
+ 1626 007d 03       		.uleb128 0x3
+ 1627 007e 0E       		.uleb128 0xe
+ 1628 007f 3A       		.uleb128 0x3a
+ 1629 0080 0B       		.uleb128 0xb
+ 1630 0081 3B       		.uleb128 0x3b
+ 1631 0082 0B       		.uleb128 0xb
+ 1632 0083 49       		.uleb128 0x49
+ 1633 0084 13       		.uleb128 0x13
+ 1634 0085 02       		.uleb128 0x2
+ 1635 0086 18       		.uleb128 0x18
+ 1636 0087 00       		.byte	0
+ 1637 0088 00       		.byte	0
+ 1638 0089 0A       		.uleb128 0xa
+ 1639 008a 34       		.uleb128 0x34
+ 1640 008b 00       		.byte	0
+ 1641 008c 03       		.uleb128 0x3
+ 1642 008d 0E       		.uleb128 0xe
+ 1643 008e 3A       		.uleb128 0x3a
+ 1644 008f 0B       		.uleb128 0xb
+ 1645 0090 3B       		.uleb128 0x3b
+ 1646 0091 0B       		.uleb128 0xb
+ 1647 0092 49       		.uleb128 0x49
+ 1648 0093 13       		.uleb128 0x13
+ 1649 0094 02       		.uleb128 0x2
+ 1650 0095 17       		.uleb128 0x17
+ 1651 0096 00       		.byte	0
+ 1652 0097 00       		.byte	0
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccqukMtG.s 			page 36
+
+
+ 1653 0098 0B       		.uleb128 0xb
+ 1654 0099 34       		.uleb128 0x34
+ 1655 009a 00       		.byte	0
+ 1656 009b 03       		.uleb128 0x3
+ 1657 009c 0E       		.uleb128 0xe
+ 1658 009d 3A       		.uleb128 0x3a
+ 1659 009e 0B       		.uleb128 0xb
+ 1660 009f 3B       		.uleb128 0x3b
+ 1661 00a0 0B       		.uleb128 0xb
+ 1662 00a1 49       		.uleb128 0x49
+ 1663 00a2 13       		.uleb128 0x13
+ 1664 00a3 1C       		.uleb128 0x1c
+ 1665 00a4 0D       		.uleb128 0xd
+ 1666 00a5 00       		.byte	0
+ 1667 00a6 00       		.byte	0
+ 1668 00a7 0C       		.uleb128 0xc
+ 1669 00a8 0B       		.uleb128 0xb
+ 1670 00a9 01       		.byte	0x1
+ 1671 00aa 11       		.uleb128 0x11
+ 1672 00ab 01       		.uleb128 0x1
+ 1673 00ac 12       		.uleb128 0x12
+ 1674 00ad 06       		.uleb128 0x6
+ 1675 00ae 01       		.uleb128 0x1
+ 1676 00af 13       		.uleb128 0x13
+ 1677 00b0 00       		.byte	0
+ 1678 00b1 00       		.byte	0
+ 1679 00b2 0D       		.uleb128 0xd
+ 1680 00b3 34       		.uleb128 0x34
+ 1681 00b4 00       		.byte	0
+ 1682 00b5 03       		.uleb128 0x3
+ 1683 00b6 08       		.uleb128 0x8
+ 1684 00b7 3A       		.uleb128 0x3a
+ 1685 00b8 0B       		.uleb128 0xb
+ 1686 00b9 3B       		.uleb128 0x3b
+ 1687 00ba 0B       		.uleb128 0xb
+ 1688 00bb 49       		.uleb128 0x49
+ 1689 00bc 13       		.uleb128 0x13
+ 1690 00bd 02       		.uleb128 0x2
+ 1691 00be 17       		.uleb128 0x17
+ 1692 00bf 00       		.byte	0
+ 1693 00c0 00       		.byte	0
+ 1694 00c1 0E       		.uleb128 0xe
+ 1695 00c2 898201   		.uleb128 0x4109
+ 1696 00c5 01       		.byte	0x1
+ 1697 00c6 11       		.uleb128 0x11
+ 1698 00c7 01       		.uleb128 0x1
+ 1699 00c8 31       		.uleb128 0x31
+ 1700 00c9 13       		.uleb128 0x13
+ 1701 00ca 01       		.uleb128 0x1
+ 1702 00cb 13       		.uleb128 0x13
+ 1703 00cc 00       		.byte	0
+ 1704 00cd 00       		.byte	0
+ 1705 00ce 0F       		.uleb128 0xf
+ 1706 00cf 8A8201   		.uleb128 0x410a
+ 1707 00d2 00       		.byte	0
+ 1708 00d3 02       		.uleb128 0x2
+ 1709 00d4 18       		.uleb128 0x18
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccqukMtG.s 			page 37
+
+
+ 1710 00d5 9142     		.uleb128 0x2111
+ 1711 00d7 18       		.uleb128 0x18
+ 1712 00d8 00       		.byte	0
+ 1713 00d9 00       		.byte	0
+ 1714 00da 10       		.uleb128 0x10
+ 1715 00db 898201   		.uleb128 0x4109
+ 1716 00de 01       		.byte	0x1
+ 1717 00df 11       		.uleb128 0x11
+ 1718 00e0 01       		.uleb128 0x1
+ 1719 00e1 31       		.uleb128 0x31
+ 1720 00e2 13       		.uleb128 0x13
+ 1721 00e3 00       		.byte	0
+ 1722 00e4 00       		.byte	0
+ 1723 00e5 11       		.uleb128 0x11
+ 1724 00e6 898201   		.uleb128 0x4109
+ 1725 00e9 00       		.byte	0
+ 1726 00ea 11       		.uleb128 0x11
+ 1727 00eb 01       		.uleb128 0x1
+ 1728 00ec 31       		.uleb128 0x31
+ 1729 00ed 13       		.uleb128 0x13
+ 1730 00ee 00       		.byte	0
+ 1731 00ef 00       		.byte	0
+ 1732 00f0 12       		.uleb128 0x12
+ 1733 00f1 01       		.uleb128 0x1
+ 1734 00f2 01       		.byte	0x1
+ 1735 00f3 49       		.uleb128 0x49
+ 1736 00f4 13       		.uleb128 0x13
+ 1737 00f5 01       		.uleb128 0x1
+ 1738 00f6 13       		.uleb128 0x13
+ 1739 00f7 00       		.byte	0
+ 1740 00f8 00       		.byte	0
+ 1741 00f9 13       		.uleb128 0x13
+ 1742 00fa 21       		.uleb128 0x21
+ 1743 00fb 00       		.byte	0
+ 1744 00fc 49       		.uleb128 0x49
+ 1745 00fd 13       		.uleb128 0x13
+ 1746 00fe 2F       		.uleb128 0x2f
+ 1747 00ff 0B       		.uleb128 0xb
+ 1748 0100 00       		.byte	0
+ 1749 0101 00       		.byte	0
+ 1750 0102 14       		.uleb128 0x14
+ 1751 0103 34       		.uleb128 0x34
+ 1752 0104 00       		.byte	0
+ 1753 0105 03       		.uleb128 0x3
+ 1754 0106 0E       		.uleb128 0xe
+ 1755 0107 3A       		.uleb128 0x3a
+ 1756 0108 0B       		.uleb128 0xb
+ 1757 0109 3B       		.uleb128 0x3b
+ 1758 010a 05       		.uleb128 0x5
+ 1759 010b 49       		.uleb128 0x49
+ 1760 010c 13       		.uleb128 0x13
+ 1761 010d 3F       		.uleb128 0x3f
+ 1762 010e 19       		.uleb128 0x19
+ 1763 010f 3C       		.uleb128 0x3c
+ 1764 0110 19       		.uleb128 0x19
+ 1765 0111 00       		.byte	0
+ 1766 0112 00       		.byte	0
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccqukMtG.s 			page 38
+
+
+ 1767 0113 15       		.uleb128 0x15
+ 1768 0114 35       		.uleb128 0x35
+ 1769 0115 00       		.byte	0
+ 1770 0116 49       		.uleb128 0x49
+ 1771 0117 13       		.uleb128 0x13
+ 1772 0118 00       		.byte	0
+ 1773 0119 00       		.byte	0
+ 1774 011a 16       		.uleb128 0x16
+ 1775 011b 2E       		.uleb128 0x2e
+ 1776 011c 00       		.byte	0
+ 1777 011d 3F       		.uleb128 0x3f
+ 1778 011e 19       		.uleb128 0x19
+ 1779 011f 3C       		.uleb128 0x3c
+ 1780 0120 19       		.uleb128 0x19
+ 1781 0121 6E       		.uleb128 0x6e
+ 1782 0122 0E       		.uleb128 0xe
+ 1783 0123 03       		.uleb128 0x3
+ 1784 0124 0E       		.uleb128 0xe
+ 1785 0125 3A       		.uleb128 0x3a
+ 1786 0126 0B       		.uleb128 0xb
+ 1787 0127 3B       		.uleb128 0x3b
+ 1788 0128 0B       		.uleb128 0xb
+ 1789 0129 00       		.byte	0
+ 1790 012a 00       		.byte	0
+ 1791 012b 00       		.byte	0
+ 1792              		.section	.debug_loc,"",%progbits
+ 1793              	.Ldebug_loc0:
+ 1794              	.LLST0:
+ 1795 0000 42000000 		.4byte	.LVL8
+ 1796 0004 4C000000 		.4byte	.LVL9
+ 1797 0008 0100     		.2byte	0x1
+ 1798 000a 50       		.byte	0x50
+ 1799 000b 58000000 		.4byte	.LVL12
+ 1800 000f 5A000000 		.4byte	.LVL13
+ 1801 0013 0100     		.2byte	0x1
+ 1802 0015 50       		.byte	0x50
+ 1803 0016 6A000000 		.4byte	.LVL15
+ 1804 001a 74000000 		.4byte	.LVL16
+ 1805 001e 0100     		.2byte	0x1
+ 1806 0020 50       		.byte	0x50
+ 1807 0021 80000000 		.4byte	.LVL19
+ 1808 0025 82000000 		.4byte	.LVL20
+ 1809 0029 0100     		.2byte	0x1
+ 1810 002b 50       		.byte	0x50
+ 1811 002c 92000000 		.4byte	.LVL22
+ 1812 0030 9C000000 		.4byte	.LVL23
+ 1813 0034 0100     		.2byte	0x1
+ 1814 0036 50       		.byte	0x50
+ 1815 0037 A8000000 		.4byte	.LVL26
+ 1816 003b AA000000 		.4byte	.LVL27
+ 1817 003f 0100     		.2byte	0x1
+ 1818 0041 50       		.byte	0x50
+ 1819 0042 CA000000 		.4byte	.LVL30
+ 1820 0046 D4000000 		.4byte	.LVL31
+ 1821 004a 0100     		.2byte	0x1
+ 1822 004c 50       		.byte	0x50
+ 1823 004d E0000000 		.4byte	.LVL34
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccqukMtG.s 			page 39
+
+
+ 1824 0051 E2000000 		.4byte	.LVL35
+ 1825 0055 0100     		.2byte	0x1
+ 1826 0057 50       		.byte	0x50
+ 1827 0058 F2000000 		.4byte	.LVL37
+ 1828 005c FC000000 		.4byte	.LVL38
+ 1829 0060 0100     		.2byte	0x1
+ 1830 0062 50       		.byte	0x50
+ 1831 0063 08010000 		.4byte	.LVL41
+ 1832 0067 0A010000 		.4byte	.LVL42
+ 1833 006b 0100     		.2byte	0x1
+ 1834 006d 50       		.byte	0x50
+ 1835 006e 18010000 		.4byte	.LVL44
+ 1836 0072 22010000 		.4byte	.LVL45
+ 1837 0076 0100     		.2byte	0x1
+ 1838 0078 50       		.byte	0x50
+ 1839 0079 2E010000 		.4byte	.LVL48
+ 1840 007d 30010000 		.4byte	.LVL49
+ 1841 0081 0100     		.2byte	0x1
+ 1842 0083 50       		.byte	0x50
+ 1843 0084 4E010000 		.4byte	.LVL53
+ 1844 0088 58010000 		.4byte	.LVL54
+ 1845 008c 0100     		.2byte	0x1
+ 1846 008e 50       		.byte	0x50
+ 1847 008f 64010000 		.4byte	.LVL57
+ 1848 0093 66010000 		.4byte	.LVL58
+ 1849 0097 0100     		.2byte	0x1
+ 1850 0099 50       		.byte	0x50
+ 1851 009a 88010000 		.4byte	.LVL61
+ 1852 009e A6010000 		.4byte	.LVL62
+ 1853 00a2 0100     		.2byte	0x1
+ 1854 00a4 50       		.byte	0x50
+ 1855 00a5 C2010000 		.4byte	.LVL65
+ 1856 00a9 24020000 		.4byte	.LVL80
+ 1857 00ad 0100     		.2byte	0x1
+ 1858 00af 50       		.byte	0x50
+ 1859 00b0 00000000 		.4byte	0
+ 1860 00b4 00000000 		.4byte	0
+ 1861              	.LLST1:
+ 1862 00b8 D6010000 		.4byte	.LVL66
+ 1863 00bc D8010000 		.4byte	.LVL67
+ 1864 00c0 0100     		.2byte	0x1
+ 1865 00c2 53       		.byte	0x53
+ 1866 00c3 D8010000 		.4byte	.LVL67
+ 1867 00c7 EC010000 		.4byte	.LVL70
+ 1868 00cb 1400     		.2byte	0x14
+ 1869 00cd 72       		.byte	0x72
+ 1870 00ce 00       		.sleb128 0
+ 1871 00cf 38       		.byte	0x38
+ 1872 00d0 24       		.byte	0x24
+ 1873 00d1 91       		.byte	0x91
+ 1874 00d2 B47F     		.sleb128 -76
+ 1875 00d4 94       		.byte	0x94
+ 1876 00d5 01       		.byte	0x1
+ 1877 00d6 08       		.byte	0x8
+ 1878 00d7 FF       		.byte	0xff
+ 1879 00d8 1A       		.byte	0x1a
+ 1880 00d9 21       		.byte	0x21
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccqukMtG.s 			page 40
+
+
+ 1881 00da 09       		.byte	0x9
+ 1882 00db F4       		.byte	0xf4
+ 1883 00dc 24       		.byte	0x24
+ 1884 00dd 09       		.byte	0x9
+ 1885 00de FA       		.byte	0xfa
+ 1886 00df 26       		.byte	0x26
+ 1887 00e0 9F       		.byte	0x9f
+ 1888 00e1 EC010000 		.4byte	.LVL70
+ 1889 00e5 27020000 		.4byte	.LVL81-1
+ 1890 00e9 1A00     		.2byte	0x1a
+ 1891 00eb 91       		.byte	0x91
+ 1892 00ec B57F     		.sleb128 -75
+ 1893 00ee 94       		.byte	0x94
+ 1894 00ef 01       		.byte	0x1
+ 1895 00f0 08       		.byte	0x8
+ 1896 00f1 FF       		.byte	0xff
+ 1897 00f2 1A       		.byte	0x1a
+ 1898 00f3 38       		.byte	0x38
+ 1899 00f4 24       		.byte	0x24
+ 1900 00f5 91       		.byte	0x91
+ 1901 00f6 B47F     		.sleb128 -76
+ 1902 00f8 94       		.byte	0x94
+ 1903 00f9 01       		.byte	0x1
+ 1904 00fa 08       		.byte	0x8
+ 1905 00fb FF       		.byte	0xff
+ 1906 00fc 1A       		.byte	0x1a
+ 1907 00fd 21       		.byte	0x21
+ 1908 00fe 09       		.byte	0x9
+ 1909 00ff F4       		.byte	0xf4
+ 1910 0100 24       		.byte	0x24
+ 1911 0101 09       		.byte	0x9
+ 1912 0102 FA       		.byte	0xfa
+ 1913 0103 26       		.byte	0x26
+ 1914 0104 9F       		.byte	0x9f
+ 1915 0105 00000000 		.4byte	0
+ 1916 0109 00000000 		.4byte	0
+ 1917              	.LLST2:
+ 1918 010d F4010000 		.4byte	.LVL71
+ 1919 0111 F6010000 		.4byte	.LVL72
+ 1920 0115 0100     		.2byte	0x1
+ 1921 0117 53       		.byte	0x53
+ 1922 0118 F6010000 		.4byte	.LVL72
+ 1923 011c 0A020000 		.4byte	.LVL75
+ 1924 0120 1400     		.2byte	0x14
+ 1925 0122 72       		.byte	0x72
+ 1926 0123 00       		.sleb128 0
+ 1927 0124 38       		.byte	0x38
+ 1928 0125 24       		.byte	0x24
+ 1929 0126 91       		.byte	0x91
+ 1930 0127 B07F     		.sleb128 -80
+ 1931 0129 94       		.byte	0x94
+ 1932 012a 01       		.byte	0x1
+ 1933 012b 08       		.byte	0x8
+ 1934 012c FF       		.byte	0xff
+ 1935 012d 1A       		.byte	0x1a
+ 1936 012e 21       		.byte	0x21
+ 1937 012f 09       		.byte	0x9
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccqukMtG.s 			page 41
+
+
+ 1938 0130 F4       		.byte	0xf4
+ 1939 0131 24       		.byte	0x24
+ 1940 0132 09       		.byte	0x9
+ 1941 0133 FA       		.byte	0xfa
+ 1942 0134 26       		.byte	0x26
+ 1943 0135 9F       		.byte	0x9f
+ 1944 0136 0A020000 		.4byte	.LVL75
+ 1945 013a 27020000 		.4byte	.LVL81-1
+ 1946 013e 1A00     		.2byte	0x1a
+ 1947 0140 91       		.byte	0x91
+ 1948 0141 B17F     		.sleb128 -79
+ 1949 0143 94       		.byte	0x94
+ 1950 0144 01       		.byte	0x1
+ 1951 0145 08       		.byte	0x8
+ 1952 0146 FF       		.byte	0xff
+ 1953 0147 1A       		.byte	0x1a
+ 1954 0148 38       		.byte	0x38
+ 1955 0149 24       		.byte	0x24
+ 1956 014a 91       		.byte	0x91
+ 1957 014b B07F     		.sleb128 -80
+ 1958 014d 94       		.byte	0x94
+ 1959 014e 01       		.byte	0x1
+ 1960 014f 08       		.byte	0x8
+ 1961 0150 FF       		.byte	0xff
+ 1962 0151 1A       		.byte	0x1a
+ 1963 0152 21       		.byte	0x21
+ 1964 0153 09       		.byte	0x9
+ 1965 0154 F4       		.byte	0xf4
+ 1966 0155 24       		.byte	0x24
+ 1967 0156 09       		.byte	0x9
+ 1968 0157 FA       		.byte	0xfa
+ 1969 0158 26       		.byte	0x26
+ 1970 0159 9F       		.byte	0x9f
+ 1971 015a 00000000 		.4byte	0
+ 1972 015e 00000000 		.4byte	0
+ 1973              	.LLST3:
+ 1974 0162 12020000 		.4byte	.LVL76
+ 1975 0166 14020000 		.4byte	.LVL77
+ 1976 016a 0100     		.2byte	0x1
+ 1977 016c 53       		.byte	0x53
+ 1978 016d 14020000 		.4byte	.LVL77
+ 1979 0171 27020000 		.4byte	.LVL81-1
+ 1980 0175 1400     		.2byte	0x14
+ 1981 0177 72       		.byte	0x72
+ 1982 0178 00       		.sleb128 0
+ 1983 0179 38       		.byte	0x38
+ 1984 017a 24       		.byte	0x24
+ 1985 017b 91       		.byte	0x91
+ 1986 017c AC7F     		.sleb128 -84
+ 1987 017e 94       		.byte	0x94
+ 1988 017f 01       		.byte	0x1
+ 1989 0180 08       		.byte	0x8
+ 1990 0181 FF       		.byte	0xff
+ 1991 0182 1A       		.byte	0x1a
+ 1992 0183 21       		.byte	0x21
+ 1993 0184 09       		.byte	0x9
+ 1994 0185 F4       		.byte	0xf4
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccqukMtG.s 			page 42
+
+
+ 1995 0186 24       		.byte	0x24
+ 1996 0187 09       		.byte	0x9
+ 1997 0188 FA       		.byte	0xfa
+ 1998 0189 26       		.byte	0x26
+ 1999 018a 9F       		.byte	0x9f
+ 2000 018b 00000000 		.4byte	0
+ 2001 018f 00000000 		.4byte	0
+ 2002              	.LLST4:
+ 2003 0193 DA010000 		.4byte	.LVL68
+ 2004 0197 E0010000 		.4byte	.LVL69
+ 2005 019b 0100     		.2byte	0x1
+ 2006 019d 53       		.byte	0x53
+ 2007 019e E0010000 		.4byte	.LVL69
+ 2008 01a2 EC010000 		.4byte	.LVL70
+ 2009 01a6 1600     		.2byte	0x16
+ 2010 01a8 72       		.byte	0x72
+ 2011 01a9 00       		.sleb128 0
+ 2012 01aa 38       		.byte	0x38
+ 2013 01ab 24       		.byte	0x24
+ 2014 01ac 91       		.byte	0x91
+ 2015 01ad B47F     		.sleb128 -76
+ 2016 01af 94       		.byte	0x94
+ 2017 01b0 01       		.byte	0x1
+ 2018 01b1 08       		.byte	0x8
+ 2019 01b2 FF       		.byte	0xff
+ 2020 01b3 1A       		.byte	0x1a
+ 2021 01b4 21       		.byte	0x21
+ 2022 01b5 09       		.byte	0x9
+ 2023 01b6 F4       		.byte	0xf4
+ 2024 01b7 24       		.byte	0x24
+ 2025 01b8 09       		.byte	0x9
+ 2026 01b9 FA       		.byte	0xfa
+ 2027 01ba 26       		.byte	0x26
+ 2028 01bb 32       		.byte	0x32
+ 2029 01bc 24       		.byte	0x24
+ 2030 01bd 9F       		.byte	0x9f
+ 2031 01be EC010000 		.4byte	.LVL70
+ 2032 01c2 27020000 		.4byte	.LVL81-1
+ 2033 01c6 1C00     		.2byte	0x1c
+ 2034 01c8 91       		.byte	0x91
+ 2035 01c9 B57F     		.sleb128 -75
+ 2036 01cb 94       		.byte	0x94
+ 2037 01cc 01       		.byte	0x1
+ 2038 01cd 08       		.byte	0x8
+ 2039 01ce FF       		.byte	0xff
+ 2040 01cf 1A       		.byte	0x1a
+ 2041 01d0 38       		.byte	0x38
+ 2042 01d1 24       		.byte	0x24
+ 2043 01d2 91       		.byte	0x91
+ 2044 01d3 B47F     		.sleb128 -76
+ 2045 01d5 94       		.byte	0x94
+ 2046 01d6 01       		.byte	0x1
+ 2047 01d7 08       		.byte	0x8
+ 2048 01d8 FF       		.byte	0xff
+ 2049 01d9 1A       		.byte	0x1a
+ 2050 01da 21       		.byte	0x21
+ 2051 01db 09       		.byte	0x9
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccqukMtG.s 			page 43
+
+
+ 2052 01dc F4       		.byte	0xf4
+ 2053 01dd 24       		.byte	0x24
+ 2054 01de 09       		.byte	0x9
+ 2055 01df FA       		.byte	0xfa
+ 2056 01e0 26       		.byte	0x26
+ 2057 01e1 32       		.byte	0x32
+ 2058 01e2 24       		.byte	0x24
+ 2059 01e3 9F       		.byte	0x9f
+ 2060 01e4 00000000 		.4byte	0
+ 2061 01e8 00000000 		.4byte	0
+ 2062              	.LLST5:
+ 2063 01ec F8010000 		.4byte	.LVL73
+ 2064 01f0 FE010000 		.4byte	.LVL74
+ 2065 01f4 0100     		.2byte	0x1
+ 2066 01f6 53       		.byte	0x53
+ 2067 01f7 FE010000 		.4byte	.LVL74
+ 2068 01fb 0A020000 		.4byte	.LVL75
+ 2069 01ff 1600     		.2byte	0x16
+ 2070 0201 72       		.byte	0x72
+ 2071 0202 00       		.sleb128 0
+ 2072 0203 38       		.byte	0x38
+ 2073 0204 24       		.byte	0x24
+ 2074 0205 91       		.byte	0x91
+ 2075 0206 B07F     		.sleb128 -80
+ 2076 0208 94       		.byte	0x94
+ 2077 0209 01       		.byte	0x1
+ 2078 020a 08       		.byte	0x8
+ 2079 020b FF       		.byte	0xff
+ 2080 020c 1A       		.byte	0x1a
+ 2081 020d 21       		.byte	0x21
+ 2082 020e 09       		.byte	0x9
+ 2083 020f F4       		.byte	0xf4
+ 2084 0210 24       		.byte	0x24
+ 2085 0211 09       		.byte	0x9
+ 2086 0212 FA       		.byte	0xfa
+ 2087 0213 26       		.byte	0x26
+ 2088 0214 32       		.byte	0x32
+ 2089 0215 24       		.byte	0x24
+ 2090 0216 9F       		.byte	0x9f
+ 2091 0217 0A020000 		.4byte	.LVL75
+ 2092 021b 27020000 		.4byte	.LVL81-1
+ 2093 021f 1C00     		.2byte	0x1c
+ 2094 0221 91       		.byte	0x91
+ 2095 0222 B17F     		.sleb128 -79
+ 2096 0224 94       		.byte	0x94
+ 2097 0225 01       		.byte	0x1
+ 2098 0226 08       		.byte	0x8
+ 2099 0227 FF       		.byte	0xff
+ 2100 0228 1A       		.byte	0x1a
+ 2101 0229 38       		.byte	0x38
+ 2102 022a 24       		.byte	0x24
+ 2103 022b 91       		.byte	0x91
+ 2104 022c B07F     		.sleb128 -80
+ 2105 022e 94       		.byte	0x94
+ 2106 022f 01       		.byte	0x1
+ 2107 0230 08       		.byte	0x8
+ 2108 0231 FF       		.byte	0xff
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccqukMtG.s 			page 44
+
+
+ 2109 0232 1A       		.byte	0x1a
+ 2110 0233 21       		.byte	0x21
+ 2111 0234 09       		.byte	0x9
+ 2112 0235 F4       		.byte	0xf4
+ 2113 0236 24       		.byte	0x24
+ 2114 0237 09       		.byte	0x9
+ 2115 0238 FA       		.byte	0xfa
+ 2116 0239 26       		.byte	0x26
+ 2117 023a 32       		.byte	0x32
+ 2118 023b 24       		.byte	0x24
+ 2119 023c 9F       		.byte	0x9f
+ 2120 023d 00000000 		.4byte	0
+ 2121 0241 00000000 		.4byte	0
+ 2122              	.LLST6:
+ 2123 0245 16020000 		.4byte	.LVL78
+ 2124 0249 1C020000 		.4byte	.LVL79
+ 2125 024d 0100     		.2byte	0x1
+ 2126 024f 53       		.byte	0x53
+ 2127 0250 1C020000 		.4byte	.LVL79
+ 2128 0254 27020000 		.4byte	.LVL81-1
+ 2129 0258 1600     		.2byte	0x16
+ 2130 025a 72       		.byte	0x72
+ 2131 025b 00       		.sleb128 0
+ 2132 025c 38       		.byte	0x38
+ 2133 025d 24       		.byte	0x24
+ 2134 025e 91       		.byte	0x91
+ 2135 025f AC7F     		.sleb128 -84
+ 2136 0261 94       		.byte	0x94
+ 2137 0262 01       		.byte	0x1
+ 2138 0263 08       		.byte	0x8
+ 2139 0264 FF       		.byte	0xff
+ 2140 0265 1A       		.byte	0x1a
+ 2141 0266 21       		.byte	0x21
+ 2142 0267 09       		.byte	0x9
+ 2143 0268 F4       		.byte	0xf4
+ 2144 0269 24       		.byte	0x24
+ 2145 026a 09       		.byte	0x9
+ 2146 026b FA       		.byte	0xfa
+ 2147 026c 26       		.byte	0x26
+ 2148 026d 32       		.byte	0x32
+ 2149 026e 24       		.byte	0x24
+ 2150 026f 9F       		.byte	0x9f
+ 2151 0270 00000000 		.4byte	0
+ 2152 0274 00000000 		.4byte	0
+ 2153              	.LLST7:
+ 2154 0278 14000000 		.4byte	.LVL2
+ 2155 027c 18000000 		.4byte	.LVL3
+ 2156 0280 0200     		.2byte	0x2
+ 2157 0282 30       		.byte	0x30
+ 2158 0283 9F       		.byte	0x9f
+ 2159 0284 18000000 		.4byte	.LVL3
+ 2160 0288 38010000 		.4byte	.LVL51
+ 2161 028c 0100     		.2byte	0x1
+ 2162 028e 54       		.byte	0x54
+ 2163 028f 00000000 		.4byte	0
+ 2164 0293 00000000 		.4byte	0
+ 2165              		.section	.debug_aranges,"",%progbits
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccqukMtG.s 			page 45
+
+
+ 2166 0000 1C000000 		.4byte	0x1c
+ 2167 0004 0200     		.2byte	0x2
+ 2168 0006 00000000 		.4byte	.Ldebug_info0
+ 2169 000a 04       		.byte	0x4
+ 2170 000b 00       		.byte	0
+ 2171 000c 0000     		.2byte	0
+ 2172 000e 0000     		.2byte	0
+ 2173 0010 00000000 		.4byte	.LFB64
+ 2174 0014 64020000 		.4byte	.LFE64-.LFB64
+ 2175 0018 00000000 		.4byte	0
+ 2176 001c 00000000 		.4byte	0
+ 2177              		.section	.debug_ranges,"",%progbits
+ 2178              	.Ldebug_ranges0:
+ 2179 0000 00000000 		.4byte	.LFB64
+ 2180 0004 64020000 		.4byte	.LFE64
+ 2181 0008 00000000 		.4byte	0
+ 2182 000c 00000000 		.4byte	0
+ 2183              		.section	.debug_line,"",%progbits
+ 2184              	.Ldebug_line0:
+ 2185 0000 6F020000 		.section	.debug_str,"MS",%progbits,1
+ 2185      0200FD01 
+ 2185      00000201 
+ 2185      FB0E0D00 
+ 2185      01010101 
+ 2186              	.LASF24:
+ 2187 0000 6D657373 		.ascii	"message\000"
+ 2187      61676500 
+ 2188              	.LASF30:
+ 2189 0008 4F75745F 		.ascii	"Out_X\000"
+ 2189      5800
+ 2190              	.LASF31:
+ 2191 000e 4F75745F 		.ascii	"Out_Y\000"
+ 2191      5900
+ 2192              	.LASF32:
+ 2193 0014 4F75745F 		.ascii	"Out_Z\000"
+ 2193      5A00
+ 2194              	.LASF42:
+ 2195 001a 73746174 		.ascii	"status_reg\000"
+ 2195      75735F72 
+ 2195      656700
+ 2196              	.LASF45:
+ 2197 0025 55415254 		.ascii	"UART_Debug_PutString\000"
+ 2197      5F446562 
+ 2197      75675F50 
+ 2197      75745374 
+ 2197      72696E67 
+ 2198              	.LASF2:
+ 2199 003a 5F5F7569 		.ascii	"__uint8_t\000"
+ 2199      6E74385F 
+ 2199      7400
+ 2200              	.LASF43:
+ 2201 0044 4932435F 		.ascii	"I2C_Peripheral_IsDeviceConnected\000"
+ 2201      50657269 
+ 2201      70686572 
+ 2201      616C5F49 
+ 2201      73446576 
+ 2202              	.LASF39:
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccqukMtG.s 			page 46
+
+
+ 2203 0065 585F4461 		.ascii	"X_Data\000"
+ 2203      746100
+ 2204              	.LASF6:
+ 2205 006c 5F5F696E 		.ascii	"__int32_t\000"
+ 2205      7433325F 
+ 2205      7400
+ 2206              	.LASF7:
+ 2207 0076 6C6F6E67 		.ascii	"long int\000"
+ 2207      20696E74 
+ 2207      00
+ 2208              	.LASF52:
+ 2209 007f 55415254 		.ascii	"UART_Debug_PutArray\000"
+ 2209      5F446562 
+ 2209      75675F50 
+ 2209      75744172 
+ 2209      72617900 
+ 2210              	.LASF21:
+ 2211 0093 4572726F 		.ascii	"ErrorCode\000"
+ 2211      72436F64 
+ 2211      6500
+ 2212              	.LASF17:
+ 2213 009d 646F7562 		.ascii	"double\000"
+ 2213      6C6500
+ 2214              	.LASF16:
+ 2215 00a4 666C6F61 		.ascii	"float\000"
+ 2215      7400
+ 2216              	.LASF35:
+ 2217 00aa 4F75745F 		.ascii	"Out_Z_mg\000"
+ 2217      5A5F6D67 
+ 2217      00
+ 2218              	.LASF38:
+ 2219 00b3 4F757441 		.ascii	"OutArray\000"
+ 2219      72726179 
+ 2219      00
+ 2220              	.LASF1:
+ 2221 00bc 756E7369 		.ascii	"unsigned char\000"
+ 2221      676E6564 
+ 2221      20636861 
+ 2221      7200
+ 2222              	.LASF53:
+ 2223 00ca 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 2223      43313120 
+ 2223      352E342E 
+ 2223      31203230 
+ 2223      31363036 
+ 2224 00fd 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 2224      20726576 
+ 2224      6973696F 
+ 2224      6E203233 
+ 2224      37373135 
+ 2225 0130 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 2225      66756E63 
+ 2225      74696F6E 
+ 2225      2D736563 
+ 2225      74696F6E 
+ 2226              	.LASF15:
+ 2227 0158 696E7431 		.ascii	"int16\000"
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccqukMtG.s 			page 47
+
+
+ 2227      3600
+ 2228              	.LASF8:
+ 2229 015e 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2229      20756E73 
+ 2229      69676E65 
+ 2229      6420696E 
+ 2229      7400
+ 2230              	.LASF5:
+ 2231 0170 73686F72 		.ascii	"short unsigned int\000"
+ 2231      7420756E 
+ 2231      7369676E 
+ 2231      65642069 
+ 2231      6E7400
+ 2232              	.LASF37:
+ 2233 0183 666F6F74 		.ascii	"footer\000"
+ 2233      657200
+ 2234              	.LASF40:
+ 2235 018a 595F4461 		.ascii	"Y_Data\000"
+ 2235      746100
+ 2236              	.LASF51:
+ 2237 0191 4932435F 		.ascii	"I2C_Peripheral_ReadRegisterMulti\000"
+ 2237      50657269 
+ 2237      70686572 
+ 2237      616C5F52 
+ 2237      65616452 
+ 2238              	.LASF50:
+ 2239 01b2 4932435F 		.ascii	"I2C_Peripheral_WriteRegister\000"
+ 2239      50657269 
+ 2239      70686572 
+ 2239      616C5F57 
+ 2239      72697465 
+ 2240              	.LASF56:
+ 2241 01cf 6D61696E 		.ascii	"main\000"
+ 2241      00
+ 2242              	.LASF3:
+ 2243 01d4 5F5F696E 		.ascii	"__int16_t\000"
+ 2243      7431365F 
+ 2243      7400
+ 2244              	.LASF28:
+ 2245 01de 6374726C 		.ascii	"ctrl_reg1\000"
+ 2245      5F726567 
+ 2245      3100
+ 2246              	.LASF55:
+ 2247 01e8 433A5C55 		.ascii	"C:\\Users\\Simone\\Desktop\\PSoC_03\\AY1920_II_HW_0"
+ 2247      73657273 
+ 2247      5C53696D 
+ 2247      6F6E655C 
+ 2247      4465736B 
+ 2248 0216 355F5052 		.ascii	"5_PROJ_2.cydsn\000"
+ 2248      4F4A5F32 
+ 2248      2E637964 
+ 2248      736E00
+ 2249              	.LASF29:
+ 2250 0225 6374726C 		.ascii	"ctrl_reg4\000"
+ 2250      5F726567 
+ 2250      3400
+ 2251              	.LASF11:
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccqukMtG.s 			page 48
+
+
+ 2252 022f 756E7369 		.ascii	"unsigned int\000"
+ 2252      676E6564 
+ 2252      20696E74 
+ 2252      00
+ 2253              	.LASF33:
+ 2254 023c 4F75745F 		.ascii	"Out_X_mg\000"
+ 2254      585F6D67 
+ 2254      00
+ 2255              	.LASF10:
+ 2256 0245 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2256      206C6F6E 
+ 2256      6720756E 
+ 2256      7369676E 
+ 2256      65642069 
+ 2257              	.LASF12:
+ 2258 025c 75696E74 		.ascii	"uint8_t\000"
+ 2258      385F7400 
+ 2259              	.LASF13:
+ 2260 0264 696E7431 		.ascii	"int16_t\000"
+ 2260      365F7400 
+ 2261              	.LASF57:
+ 2262 026c 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 2262      52784275 
+ 2262      66666572 
+ 2262      00
+ 2263              	.LASF27:
+ 2264 0279 73746174 		.ascii	"status_register\000"
+ 2264      75735F72 
+ 2264      65676973 
+ 2264      74657200 
+ 2265              	.LASF14:
+ 2266 0289 696E7433 		.ascii	"int32_t\000"
+ 2266      325F7400 
+ 2267              	.LASF23:
+ 2268 0291 73697A65 		.ascii	"sizetype\000"
+ 2268      74797065 
+ 2268      00
+ 2269              	.LASF26:
+ 2270 029a 6572726F 		.ascii	"error\000"
+ 2270      7200
+ 2271              	.LASF9:
+ 2272 02a0 6C6F6E67 		.ascii	"long long int\000"
+ 2272      206C6F6E 
+ 2272      6720696E 
+ 2272      7400
+ 2273              	.LASF47:
+ 2274 02ae 55415254 		.ascii	"UART_Debug_Start\000"
+ 2274      5F446562 
+ 2274      75675F53 
+ 2274      74617274 
+ 2274      00
+ 2275              	.LASF54:
+ 2276 02bf 6D61696E 		.ascii	"main.c\000"
+ 2276      2E6300
+ 2277              	.LASF18:
+ 2278 02c6 63686172 		.ascii	"char\000"
+ 2278      00
+ARM GAS  C:\Users\Simone\AppData\Local\Temp\ccqukMtG.s 			page 49
+
+
+ 2279              	.LASF49:
+ 2280 02cb 4932435F 		.ascii	"I2C_Peripheral_ReadRegister\000"
+ 2280      50657269 
+ 2280      70686572 
+ 2280      616C5F52 
+ 2280      65616452 
+ 2281              	.LASF34:
+ 2282 02e7 4F75745F 		.ascii	"Out_Y_mg\000"
+ 2282      595F6D67 
+ 2282      00
+ 2283              	.LASF4:
+ 2284 02f0 73686F72 		.ascii	"short int\000"
+ 2284      7420696E 
+ 2284      7400
+ 2285              	.LASF41:
+ 2286 02fa 5A5F4461 		.ascii	"Z_Data\000"
+ 2286      746100
+ 2287              	.LASF19:
+ 2288 0301 4E4F5F45 		.ascii	"NO_ERROR\000"
+ 2288      52524F52 
+ 2288      00
+ 2289              	.LASF36:
+ 2290 030a 68656164 		.ascii	"header\000"
+ 2290      657200
+ 2291              	.LASF20:
+ 2292 0311 4552524F 		.ascii	"ERROR\000"
+ 2292      5200
+ 2293              	.LASF22:
+ 2294 0317 6C6F6E67 		.ascii	"long double\000"
+ 2294      20646F75 
+ 2294      626C6500 
+ 2295              	.LASF0:
+ 2296 0323 7369676E 		.ascii	"signed char\000"
+ 2296      65642063 
+ 2296      68617200 
+ 2297              	.LASF25:
+ 2298 032f 77686F5F 		.ascii	"who_am_i_reg\000"
+ 2298      616D5F69 
+ 2298      5F726567 
+ 2298      00
+ 2299              	.LASF44:
+ 2300 033c 73707269 		.ascii	"sprintf\000"
+ 2300      6E746600 
+ 2301              	.LASF48:
+ 2302 0344 43794465 		.ascii	"CyDelay\000"
+ 2302      6C617900 
+ 2303              	.LASF46:
+ 2304 034c 4932435F 		.ascii	"I2C_Peripheral_Start\000"
+ 2304      50657269 
+ 2304      70686572 
+ 2304      616C5F53 
+ 2304      74617274 
+ 2305              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
