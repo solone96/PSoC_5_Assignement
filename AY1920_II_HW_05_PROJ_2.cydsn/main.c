@@ -35,6 +35,16 @@
 //output registers updated after MSB and LSB reading, FSR [-2g;+2g], normal mode
 #define LIS3DH_CTRL_REG4_BDU_ACTIVE 0x80 
 
+//brief Address of the out_x_l register
+#define LIS3DH_OUT_X_L  0x28
+#define LIS3DH_OUT_X_H  0x29
+
+//brief Address of the out_y_l register
+#define LIS3DH_OUT_Y_L  0x2A
+
+//brief Address of the out_z_l register
+#define LIS3DH_OUT_Z_L  0x2C
+
 int main(void)
 {
     CyGlobalIntEnable; /* Enable global interrupts. */
@@ -202,33 +212,69 @@ int main(void)
         UART_Debug_PutString("Error occurred during I2C comm to read control register4\r\n");   
     }
     
-    //int16_t OutTemp;
-    //uint8_t header = 0xA0;
-    //uint8_t footer = 0xC0;
-    //uint8_t OutArray[4]; 
-    //uint8_t TemperatureData[2];
+    int16_t Out_X;
+    int16_t Out_Y;
+    int16_t Out_Z;
+    uint8_t header = 0xA0;
+    uint8_t footer = 0xC0;
+    uint8_t OutArray[8]; 
+    uint8_t X_Data[2];
+    uint8_t Y_Data[2];
+    uint8_t Z_Data[2];
+    uint8_t status_reg;
     
-    //OutArray[0] = header;
-    //OutArray[3] = footer;
+    OutArray[0] = header;
+    OutArray[7] = footer;
     
-    //for(;;)
-    //{
-        //CyDelay(100);
-        //error = I2C_Peripheral_ReadRegister(LIS3DH_DEVICE_ADDRESS,
-          //                                  LIS3DH_OUT_ADC_3L,
-           //                                 &TemperatureData[0]);
-        
-        //error = I2C_Peripheral_ReadRegister(LIS3DH_DEVICE_ADDRESS,
-          //LIS3DH_OUT_ADC_3H,
-            //                                &TemperatureData[1]);
-        //if(error == NO_ERROR)
-        //{
-          //  OutTemp = (int16)((TemperatureData[0] | (TemperatureData[1]<<8)))>>6;
-            //OutArray[1] = (uint8_t)(OutTemp & 0xFF);
-            //OutArray[2] = (uint8_t)(OutTemp >> 8);
-            //UART_Debug_PutArray(OutArray, 4);
-        //}
-    //}
+    for(;;)
+    {
+        CyDelay(5); //output data at 100Hz = data available every 10ms, so the delay must be lower
+        error= I2C_Peripheral_ReadRegister(LIS3DH_DEVICE_ADDRESS,
+                                            LIS3DH_STATUS_REG,
+                                           &status_reg);
+        if (error==NO_ERROR)
+         {if(status_reg &= 0x08)
+            {error = I2C_Peripheral_ReadRegisterMulti(LIS3DH_DEVICE_ADDRESS,
+                                            LIS3DH_OUT_X_L,
+                                            2,
+                                            &X_Data[0]);
+            
+            error = I2C_Peripheral_ReadRegisterMulti(LIS3DH_DEVICE_ADDRESS,
+                                            LIS3DH_OUT_Y_L,
+                                            2,
+                                            &Y_Data[0]);
+            
+            error = I2C_Peripheral_ReadRegisterMulti(LIS3DH_DEVICE_ADDRESS,
+                                            LIS3DH_OUT_Z_L,
+                                            2,
+                                            &Z_Data[0]);
+                
+             
+            /*if (error == NO_ERROR)
+            {sprintf(message, "OUT_X_L: 0x%02X\r\n", X_Data[0]);
+             UART_Debug_PutString(message); 
+             sprintf(message, "OUT_X_H: 0x%02X\r\n", X_Data[1]);
+             UART_Debug_PutString(message); 
+            }*/
+            if(error == NO_ERROR)
+              {
+               Out_X = (int16)((X_Data[0] | (X_Data[1]<<8)))>>6;
+               OutArray[1] = (uint8_t)(Out_X & 0xFF);
+               OutArray[2] = (uint8_t)(Out_X >> 8);
+               
+               Out_Y = (int16)((Y_Data[0] | (Y_Data[1]<<8)))>>6;
+               OutArray[3] = (uint8_t)(Out_Y & 0xFF);
+               OutArray[4] = (uint8_t)(Out_Y >> 8);
+            
+               Out_Z = (int16)((Z_Data[0] | (Z_Data[1]<<8)))>>6;
+               OutArray[5] = (uint8_t)(Out_Z & 0xFF);
+               OutArray[6] = (uint8_t)(Out_Z >> 8);
+               //sprintf(message, "OUT_X: %d\r\n", Out_X);
+             //UART_Debug_PutString(message);
+               UART_Debug_PutArray(OutArray, 8);
+              }
+            }
+         }
+   }
 }
-
 /* [] END OF FILE */
