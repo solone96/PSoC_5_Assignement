@@ -231,13 +231,15 @@ int main(void)
     
     for(;;)
     {
-        CyDelay(5); //output data at 100Hz = data available every 10ms, so the delay must be lower
-        error= I2C_Peripheral_ReadRegister(LIS3DH_DEVICE_ADDRESS,
+        //CyDelay(5); //output data at 100Hz = data available every 10ms, so the delay must be lower
+        while(!(status_reg & 0x08))//check if new data is available on all axes
+        
+        {error= I2C_Peripheral_ReadRegister(LIS3DH_DEVICE_ADDRESS, //read the status regiter until new data is available
                                             LIS3DH_STATUS_REG,
-                                           &status_reg);
+                                           &status_reg);}
         if (error==NO_ERROR)
-         {if(status_reg &= 0x08)//check if new data is available on all axes
-            {error = I2C_Peripheral_ReadRegisterMulti(LIS3DH_DEVICE_ADDRESS,
+         {
+            error = I2C_Peripheral_ReadRegisterMulti(LIS3DH_DEVICE_ADDRESS,
                                             LIS3DH_OUT_X_L,
                                             2,
                                             &X_Data[0]);
@@ -282,5 +284,4 @@ int main(void)
             }
          }
    }
-}
 /* [] END OF FILE */
