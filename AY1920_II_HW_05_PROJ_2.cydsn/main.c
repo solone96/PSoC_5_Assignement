@@ -230,11 +230,13 @@ int main(void)
     OutArray[7] = footer;
     
     for(;;)
-    {
+    {error= I2C_Peripheral_ReadRegister(LIS3DH_DEVICE_ADDRESS, //read the status register
+                                        LIS3DH_STATUS_REG,
+                                        &status_reg);
         //CyDelay(5); //output data at 100Hz = data available every 10ms, so the delay must be lower
         while(!(status_reg & 0x08))//check if new data is available on all axes
         
-        {error= I2C_Peripheral_ReadRegister(LIS3DH_DEVICE_ADDRESS, //read the status regiter until new data is available
+        {error= I2C_Peripheral_ReadRegister(LIS3DH_DEVICE_ADDRESS, //read the status register until new data is available
                                             LIS3DH_STATUS_REG,
                                            &status_reg);}
         if (error==NO_ERROR)
