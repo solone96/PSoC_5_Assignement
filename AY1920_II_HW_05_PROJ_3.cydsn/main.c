@@ -210,7 +210,7 @@ int main(void)
         UART_Debug_PutString("Error occurred during I2C comm to read control register4\r\n");   
     }
     
-    /*int16_t Out_X;
+    int16_t Out_X;
     int16_t Out_Y;
     int16_t Out_Z;
     int16_t Out_X_mg;
@@ -226,8 +226,8 @@ int main(void)
     
     OutArray[0] = header;
     OutArray[7] = footer;
-    */
-    /*for(;;)
+    
+    for(;;)
     {error= I2C_Peripheral_ReadRegister(LIS3DH_DEVICE_ADDRESS, //read the status register
                                         LIS3DH_STATUS_REG,
                                         &status_reg);
@@ -256,32 +256,32 @@ int main(void)
                 
              
             if (error == NO_ERROR)
-            {sprintf(message, "OUT_X_L: 0x%02X\r\n", X_Data[0]);
+            {sprintf(message, "OUT_Z_L: 0x%02X\r\n", Z_Data[0]);
              UART_Debug_PutString(message); 
-             sprintf(message, "OUT_X_H: 0x%02X\r\n", X_Data[1]);
+             sprintf(message, "OUT_Z_H: 0x%02X\r\n", Z_Data[1]);
              UART_Debug_PutString(message); 
             }
             if(error == NO_ERROR)
               {
-               Out_X = (int16)((X_Data[0] | (X_Data[1]<<8)))>>6;//out_x in digit (10bit)
-               Out_X_mg= Out_X*4;//out_x in mg (12 bits needed [-2048;+2048])
+               Out_X = (int16)((X_Data[0] | (X_Data[1]<<8)))>>4;//out_x in digit (12bit)
+               Out_X_mg= Out_X*2;//out_x in mg (13 bits needed [-4096;+4095])
                OutArray[1] = (uint8_t)(Out_X_mg & 0xFF);
                OutArray[2] = (uint8_t)(Out_X_mg >> 8);
                
-               Out_Y = (int16)((Y_Data[0] | (Y_Data[1]<<8)))>>6;//out_y in digit (10bit)
-               Out_Y_mg= Out_Y*4;//out_y in mg, the sensitivity is 4mg/digit in this operation mode(12 bits needed)
+               Out_Y = (int16)((Y_Data[0] | (Y_Data[1]<<8)))>>4;//out_y in digit (12bit)
+               Out_Y_mg= Out_Y*2;//out_y in mg, the sensitivity is 2mg/digit in this operation mode(12 bits needed)
                OutArray[3] = (uint8_t)(Out_Y_mg & 0xFF);
                OutArray[4] = (uint8_t)(Out_Y_mg >> 8);
             
-               Out_Z = (int16)((Z_Data[0] | (Z_Data[1]<<8)))>>6;//out_z in digit (10bit)
-               Out_Z_mg= Out_Z*4;//out_z in mg (12 bits needed)
+               Out_Z = (int16)((Z_Data[0] | (Z_Data[1]<<8)))>>4;//out_z in digit (12bit)
+               Out_Z_mg= Out_Z*2;//out_z in mg (12 bits needed)
                OutArray[5] = (uint8_t)(Out_Z_mg & 0xFF);
                OutArray[6] = (uint8_t)(Out_Z_mg>> 8);
-               //sprintf(message, "OUT_Z: %d\r\n OUT_Z_MG: %d\r\n",Out_Z, Out_Z_mg);
+               //sprintf(message, "OUT_Z: %d\r\n" ,Out_Z);
                //UART_Debug_PutString(message);
                UART_Debug_PutArray(OutArray, 8);
               }
             }
-         }*/
+         }
    }
 /* [] END OF FILE */
